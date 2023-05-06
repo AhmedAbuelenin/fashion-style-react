@@ -1,7 +1,14 @@
 import './App.css'
+import {Header, Footer} from './sections'
 
 function App() {
-  return <></>
+  return (
+    <>
+      <Header />
+      {/* <Container /> */}
+      <Footer />
+    </>
+  )
 }
 
 export default App
