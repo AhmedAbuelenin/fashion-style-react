@@ -1,0 +1,17 @@
+.global-header {
+  height: 10rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-content: center;
+}
+
+.global-nav__items {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.global-icons {
+  display: flex;
+  gap: 2.5rem;
+}
