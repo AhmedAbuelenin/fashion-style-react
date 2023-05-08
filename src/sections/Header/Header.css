@@ -9,7 +9,9 @@
 }
 
 .global-nav {
+  display: flex;
   justify-self: flex-start;
+  align-items: center;
 }
 
 .global-nav__items {
