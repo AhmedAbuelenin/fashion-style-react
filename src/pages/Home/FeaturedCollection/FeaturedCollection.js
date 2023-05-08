@@ -13,33 +13,28 @@ const FeaturedCollection = ({data, loading}) => {
 
       {!loading ? (
         <ul className='featured__list'>
-          {data.map((item, index) => {
-            if (index < 3) {
-              return (
-                <li key={item.code} className='featured__item'>
-                  <div className='featured__img-container'>
-                    <img
-                      src={item.images[0].baseUrl}
-                      alt='item img'
-                      className='featured__img'
-                    />
-                    <button className='global-button featured__quick-view'>
-                      QUICK VIEW
-                    </button>
-                  </div>
-                  <div className='featured__details'>
-                    <span className='featured__name'>{item.name}</span>
-                    <div className='featured__price'>
-                      <span className='featured__currency'>$</span>
-                      <span>{item.price.value}</span>
-                    </div>
-                    <button className='global-button'>ADD TO CART</button>
-                  </div>
-                </li>
-              )
-            }
-            return null
-          })}
+          {data.map(item => (
+            <li key={item.code} className='featured__item'>
+              <div className='featured__img-container'>
+                <img
+                  src={item.images[0].baseUrl}
+                  alt='item img'
+                  className='featured__img'
+                />
+                <button className='global-button featured__quick-view'>
+                  QUICK VIEW
+                </button>
+              </div>
+              <div className='featured__details'>
+                <span className='featured__name'>{item.name}</span>
+                <div className='featured__price'>
+                  <span className='featured__currency'>$</span>
+                  <span>{item.price.value}</span>
+                </div>
+                <button className='global-button'>ADD TO CART</button>
+              </div>
+            </li>
+          ))}
         </ul>
       ) : (
         <div className='centered-container'>

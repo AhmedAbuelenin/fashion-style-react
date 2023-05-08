@@ -16,7 +16,6 @@ const Home = () => {
       setLoading(true)
       const data = await getProducts()
       setData(data.results)
-      console.log('data', data.results)
     } catch (error) {
       console.log('🚀 ~ Home ~ fetchProducts ~ error:', error)
     } finally {
