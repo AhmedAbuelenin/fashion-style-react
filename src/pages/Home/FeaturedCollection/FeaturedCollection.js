@@ -27,10 +27,7 @@ const FeaturedCollection = ({data, loading}) => {
               </div>
               <div className='featured__details'>
                 <span className='featured__name'>{item.name}</span>
-                <div className='featured__price'>
-                  <span className='featured__currency'>$</span>
-                  <span>{item.price.value}</span>
-                </div>
+                <span className='featured__price'>${item.price.value}</span>
                 <button className='global-button'>ADD TO CART</button>
               </div>
             </li>

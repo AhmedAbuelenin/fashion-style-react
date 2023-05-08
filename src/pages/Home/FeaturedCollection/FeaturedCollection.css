@@ -64,10 +64,6 @@
   margin: 1.2rem 0;
 }
 
-.featured__currency {
-  font-weight: var(--font-weight-regular);
-}
-
 .featured__price {
   margin-bottom: 1.7rem;
   font-size: var(--font-size-15);
