@@ -3,3 +3,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.global-button {
+  padding: 1.3rem 2.4rem;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  transition: var(--transition-timing-sec);
+}
+
+.global-button:hover {
+  background-color: var(--color-gray-hover);
+}

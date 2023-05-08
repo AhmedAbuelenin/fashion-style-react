@@ -23,7 +23,7 @@ const FeaturedCollection = ({data, loading}) => {
                       alt='item img'
                       className='featured__img'
                     />
-                    <button className='featured__button featured__quick-view'>
+                    <button className='global-button featured__quick-view'>
                       QUICK VIEW
                     </button>
                   </div>
@@ -33,7 +33,7 @@ const FeaturedCollection = ({data, loading}) => {
                       <span className='featured__currency'>$</span>
                       <span>{item.price.value}</span>
                     </div>
-                    <button className='featured__button'>ADD TO CART</button>
+                    <button className='global-button'>ADD TO CART</button>
                   </div>
                 </li>
               )

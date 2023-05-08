@@ -17,14 +17,3 @@
   font-size: var(--font-size-64);
   padding: 0 0 3rem;
 }
-
-.hero-wrapper__button-link {
-  padding: 1.3rem 2.4rem;
-  background-color: var(--color-primary);
-  color: var(--color-light);
-  transition: var(--transition-timing-sec);
-}
-
-.hero-wrapper__button-link:hover {
-  background-color: var(--color-gray-hover);
-}

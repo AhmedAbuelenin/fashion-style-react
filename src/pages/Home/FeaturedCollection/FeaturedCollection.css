@@ -69,13 +69,3 @@
   font-size: var(--font-size-15);
   font-weight: var(--font-weight-bold);
 }
-
-.featured__button {
-  padding: 1.3rem 2.4rem;
-  color: var(--color-light);
-  background-color: var(--color-dark);
-}
-
-.featured__button:hover {
-  background-color: var(--color-gray-hover);
-}
