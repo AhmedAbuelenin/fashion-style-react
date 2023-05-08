@@ -5,9 +5,9 @@ const Hero = () => {
   return (
     <div className='hero-wrapper'>
       <div className='hero-wrapper__content'>
-        <h1 className='hero-wrapper__title'>
+        <h2 className='hero-wrapper__title'>
           Find Your Fit: <br /> Wide Range of Fashion
-        </h1>
+        </h2>
         <Link to='/foodList' className='hero-wrapper__button-link'>
           SHOP NOW
         </Link>

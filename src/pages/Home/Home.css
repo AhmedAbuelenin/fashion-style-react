@@ -1,0 +1,4 @@
+.home-wrapper {
+  display: grid;
+  row-gap: 10rem;
+}
