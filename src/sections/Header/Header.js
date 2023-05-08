@@ -16,18 +16,15 @@ const Header = () => {
             <Link to='/blog'>Blog</Link>
           </li>
           <li className='global-nav__item'>
-            <Link to='/foodList'>Menu</Link>
+            <Link to='/foodList'>Shop</Link>
           </li>
           <li className='global-nav__item'>
             <Link to='/contact'>Contact</Link>
           </li>
         </ul>
       </nav>
-      <Link to='/#' className='logo-img'>
-        <img
-          src='https://demo.athemes.com/botiga/wp-content/uploads/sites/125/2021/07/BOTIGA.svg'
-          alt='logo img'
-        />
+      <Link to='/' className='logo-text'>
+        Fashion Mode
       </Link>
       <div className='global-icons'>
         <IoIosSearch size={24} />

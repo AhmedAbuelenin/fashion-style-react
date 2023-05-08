@@ -4,6 +4,12 @@
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-content: center;
+  padding-inline: 4rem;
+  background-color: var(--color-light);
+}
+
+.global-nav {
+  justify-self: flex-start;
 }
 
 .global-nav__items {
@@ -11,7 +17,20 @@
   gap: 3.5rem;
 }
 
+.global-nav__item {
+  transition: var(--transition-timing-sec);
+}
+
+.global-nav__item:hover {
+  color: var(--color-gray-hover);
+}
+
+.logo-text {
+  font-size: var(--font-size-24);
+}
+
 .global-icons {
   display: flex;
   gap: 2.5rem;
+  justify-self: flex-end;
 }
