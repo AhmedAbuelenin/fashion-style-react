@@ -27,6 +27,7 @@ const Home = () => {
     <div className='home-wrapper'>
       <Hero />
       <FeaturedCollection {...{data, loading}} />
+      <div></div>
     </div>
   )
 }

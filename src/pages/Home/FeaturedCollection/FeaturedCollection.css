@@ -15,9 +15,14 @@
 }
 
 .featured__list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 1rem;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.featured__item {
+  max-width: 35rem;
 }
 
 .featured__details {
@@ -32,9 +37,8 @@
 
 .featured__img {
   display: block;
+  width: 100%;
   opacity: 1;
-  width: 35rem;
-  height: auto;
   transition: var(--transition-timing-sec);
 }
 
