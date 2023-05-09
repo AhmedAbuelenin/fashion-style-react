@@ -13,6 +13,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: var(--font-family-inter);
+  color: var(--color-primary);
   line-height: 1.2;
 }
 
@@ -40,4 +41,8 @@ button {
 ol,
 ul {
   list-style: none;
+}
+
+input[type='text'] {
+  background-color: transparent;
 }

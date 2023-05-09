@@ -2,7 +2,9 @@ import './FeaturedCollection.css'
 import '../../../styles/_global.scss'
 import {Loader} from '../../../components'
 
-const FeaturedCollection = ({data, loading}) => {
+const FeaturedCollection = props => {
+  const {data, loading, onQuickViewPress, onItemPress} = props
+
   return (
     <div className='featured'>
       <h2 className='featured__heading'>Featured Collection</h2>
@@ -15,13 +17,15 @@ const FeaturedCollection = ({data, loading}) => {
         <ul className='featured__list'>
           {data.map(item => (
             <li key={item.code} className='featured__item'>
-              <div className='featured__img-container'>
+              <div className='featured__img-container' onClick={onItemPress}>
                 <img
                   src={item.images[0].baseUrl}
                   alt='item img'
                   className='featured__img'
                 />
-                <button className='global-button featured__quick-view'>
+                <button
+                  className='global-button featured__quick-view'
+                  onClick={() => onQuickViewPress(item)}>
                   QUICK VIEW
                 </button>
               </div>
