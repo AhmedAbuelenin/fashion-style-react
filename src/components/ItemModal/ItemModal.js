@@ -1,10 +1,26 @@
 import './ItemModal.css'
 import '../../styles/_global.scss'
+import {VscChromeClose} from 'react-icons/vsc'
 
-const ItemModal = ({item, onContentClick, onClose}) => {
+const ItemModal = props => {
+  const {
+    item,
+    qty,
+    onDecrement,
+    onIncrement,
+    onContentPress,
+    onTextChange,
+    onClose
+  } = props
+
   return (
     <div className='item-modal' onClick={onClose}>
-      <div className='item-modal__content' onClick={onContentClick}>
+      <div className='item-modal__content' onClick={onContentPress}>
+        <VscChromeClose
+          className='item-modal__close'
+          size={24}
+          onClick={onClose}
+        />
         <div className='item-modal__img-container'>
           <img
             src={item.images[0].baseUrl}
@@ -22,9 +38,18 @@ const ItemModal = ({item, onContentClick, onClose}) => {
 
           <div className='item-modal__action-container'>
             <div className='item-modal__count-container'>
-              <span className='item-modal__operator'>-</span>
-              <input type='text' value={1} className='item-modal__input' />
-              <span className='item-modal__operator item-modal__plus-operator'>
+              <span onClick={onDecrement} className='item-modal__operator'>
+                -
+              </span>
+              <input
+                type='number'
+                value={qty}
+                onChange={onTextChange}
+                className='item-modal__input'
+              />
+              <span
+                onClick={onIncrement}
+                className='item-modal__operator item-modal__plus-operator'>
                 +
               </span>
             </div>
@@ -34,7 +59,7 @@ const ItemModal = ({item, onContentClick, onClose}) => {
           </div>
           <div className='item-modal__divider'></div>
           <span className='item-modal__category'>
-            CATEGORY:{item.categoryName}
+            CATEGORY:{` ${item.categoryName}`}
           </span>
         </div>
       </div>

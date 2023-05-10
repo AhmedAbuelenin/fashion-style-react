@@ -6,24 +6,35 @@ import {ItemModal} from '../../components'
 
 const Home = () => {
   const [data, setData] = useState([])
+  const [qty, setQty] = useState('1')
   const [loading, setLoading] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const itemRef = useRef({})
 
   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true)
+        const data = await getProducts()
+        setData(data.results)
+      } catch (error) {
+      } finally {
+        setLoading(false)
+      }
+    }
+
     fetchProducts()
   }, [])
 
-  const fetchProducts = async () => {
-    try {
-      setLoading(true)
-      const data = await getProducts()
-      setData(data.results)
-    } catch (error) {
-    } finally {
-      setLoading(false)
+  useEffect(() => {
+    const resetQty = () => {
+      setQty(1)
     }
-  }
+
+    if (!isVisible) {
+      resetQty()
+    }
+  }, [isVisible])
 
   const toggleVisibleModal = () => {
     setIsVisible(visible => !visible)
@@ -38,8 +49,26 @@ const Home = () => {
     toggleVisibleModal()
   }, [])
 
-  const stopPropagation = useCallback(event => {
+  const stopClicksFromChildren = useCallback(event => {
     event.stopPropagation()
+  }, [])
+
+  const handleQtyChange = useCallback(event => {
+    const maxInputLength = 3
+    if (event.target.value.length <= maxInputLength) {
+      setQty(event.target.value)
+    }
+  }, [])
+
+  const handleIncrement = useCallback(() => {
+    const maxQty = 999
+    if (qty < maxQty) {
+      setQty(value => Number(value) + 1)
+    }
+  }, [qty])
+
+  const handleDecrement = useCallback(() => {
+    setQty(value => Number(value) - 1 || 1)
   }, [])
 
   return (
@@ -53,8 +82,12 @@ const Home = () => {
       {isVisible ? (
         <ItemModal
           item={itemRef.current}
+          qty={qty}
+          onTextChange={handleQtyChange}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
           onClose={closeModal}
-          onContentClick={stopPropagation}
+          onContentPress={stopClicksFromChildren}
         />
       ) : null}
       <div></div>

@@ -43,6 +43,8 @@ ul {
   list-style: none;
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
   background-color: transparent;
+  outline: none;
 }

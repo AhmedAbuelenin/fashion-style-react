@@ -10,6 +10,7 @@
 }
 
 .item-modal__content {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   column-gap: 3rem;
@@ -20,6 +21,13 @@
   padding: 3.5rem;
 }
 
+.item-modal__close {
+  position: absolute;
+  top: -6%;
+  right: -0.3%;
+  color: var(--color-light);
+}
+
 .item-modal__img-container {
   display: flex;
   justify-content: center;
@@ -27,6 +35,7 @@
 
 .item-modal__img {
   max-width: 60%;
+  transition: var(--transition-timing-sec);
 }
 
 .item-modal__name {
@@ -76,8 +85,26 @@
   text-align: center;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 .item-modal__operator {
   font-size: var(--font-size-27);
+  transition: var(--transition-timing-sec);
+}
+
+.item-modal__operator:hover {
+  color: var(--color-gray-hover);
+  cursor: pointer;
 }
 
 .item-modal__divider {
