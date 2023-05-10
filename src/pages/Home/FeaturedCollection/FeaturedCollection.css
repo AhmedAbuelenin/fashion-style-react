@@ -1,5 +1,5 @@
 .featured {
-  max-width: 114rem;
+  max-width: var(--width-content);
   margin: 0 auto;
 }
 
