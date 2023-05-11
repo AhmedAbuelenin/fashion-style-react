@@ -72,21 +72,23 @@ const Home = () => {
   }, [])
 
   return (
-    <div className='home-wrapper'>
+    <>
       <Hero />
-      <FeaturedCollection {...{data, loading}} onQuickViewPress={showModal} />
-      {isVisible ? (
-        <Modal onModalPress={stopClicksFromChildren} onClose={closeModal}>
-          <ItemContent
-            item={itemRef.current}
-            qty={qty}
-            onTextChange={handleQtyChange}
-            onIncrement={handleIncrement}
-            onDecrement={handleDecrement}
-          />
-        </Modal>
-      ) : null}
-    </div>
+      <div className='content-wrapper'>
+        <FeaturedCollection {...{data, loading}} onQuickViewPress={showModal} />
+        {isVisible ? (
+          <Modal onModalPress={stopClicksFromChildren} onClose={closeModal}>
+            <ItemContent
+              item={itemRef.current}
+              qty={qty}
+              onTextChange={handleQtyChange}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+            />
+          </Modal>
+        ) : null}
+      </div>
+    </>
   )
 }
 

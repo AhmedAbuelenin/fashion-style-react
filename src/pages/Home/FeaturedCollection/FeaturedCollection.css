@@ -1,8 +1,3 @@
-.featured {
-  max-width: var(--width-content);
-  margin: 0 auto;
-}
-
 .featured__heading {
   margin: 3rem 0 1.6rem;
   font-size: var(--font-size-32);
@@ -18,11 +13,10 @@
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .featured__item {
-  max-width: 35rem;
+  flex-basis: 29rem;
 }
 
 .featured__details {
@@ -37,7 +31,8 @@
 
 .featured__img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
   opacity: 1;
   transition: var(--transition-timing-sec);
 }
@@ -69,3 +64,16 @@
   font-size: var(--font-size-15);
   font-weight: var(--font-weight-bold);
 }
+
+/*
+Start Responsive
+*/
+@media (max-width: 985px) {
+  .featured__list {
+    justify-content: center;
+  }
+}
+
+/*
+End Responsive
+*/

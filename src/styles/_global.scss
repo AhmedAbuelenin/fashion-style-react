@@ -1,3 +1,9 @@
+.content-wrapper {
+  max-width: var(--width-content);
+  margin: 12rem auto 17rem;
+  padding-inline: 2rem;
+}
+
 .centered-container {
   display: flex;
   justify-content: center;
