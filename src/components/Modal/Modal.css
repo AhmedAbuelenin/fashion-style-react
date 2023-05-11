@@ -1,0 +1,22 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark-overlay);
+  display: flex;
+  align-items: center;
+}
+
+.modal__content {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  column-gap: 3rem;
+  width: 60%;
+  min-height: 60%;
+  margin: 0 auto;
+  background-color: var(--color-light-gray-bg);
+  padding: 3.5rem;
+}

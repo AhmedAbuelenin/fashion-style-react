@@ -1,9 +1,10 @@
 import './FeaturedCollection.css'
 import '../../../styles/_global.scss'
 import {Loader} from '../../../components'
+import {Link} from 'react-router-dom'
 
 const FeaturedCollection = props => {
-  const {data, loading, onQuickViewPress, onItemPress} = props
+  const {data, loading, onQuickViewPress} = props
 
   return (
     <div className='featured'>
@@ -17,12 +18,14 @@ const FeaturedCollection = props => {
         <ul className='featured__list'>
           {data.map(item => (
             <li key={item.code} className='featured__item'>
-              <div className='featured__img-container' onClick={onItemPress}>
-                <img
-                  src={item.images[0].baseUrl}
-                  alt='item img'
-                  className='featured__img'
-                />
+              <div className='featured__img-container'>
+                <Link to='/itemDetails'>
+                  <img
+                    src={item.images[0].baseUrl}
+                    alt='item img'
+                    className='featured__img'
+                  />
+                </Link>
                 <button
                   className='global-button featured__quick-view'
                   onClick={() => onQuickViewPress(item)}>

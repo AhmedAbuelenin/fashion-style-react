@@ -1,7 +1,16 @@
 import './App.css'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {Footer, Header} from './sections'
-import {Home, Blog, Contact, Login, Cart, NoPage, FoodList} from './pages'
+import {
+  Home,
+  Blog,
+  Contact,
+  Login,
+  Cart,
+  NoPage,
+  FoodList,
+  ItemDetails
+} from './pages'
 
 const App = () => {
   return (
@@ -14,6 +23,7 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/itemDetails' element={<ItemDetails />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />

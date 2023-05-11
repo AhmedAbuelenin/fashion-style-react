@@ -1,8 +1,8 @@
 import './Home.css'
 import {useCallback, useEffect, useRef, useState} from 'react'
-import {FeaturedCollection, Hero} from './index'
+import {FeaturedCollection, Hero, ItemContent} from './index'
 import {getProducts} from '../../services'
-import {ItemModal} from '../../components'
+import {Modal} from '../../components'
 
 const Home = () => {
   const [data, setData] = useState([])
@@ -74,23 +74,18 @@ const Home = () => {
   return (
     <div className='home-wrapper'>
       <Hero />
-      <FeaturedCollection
-        {...{data, loading}}
-        onQuickViewPress={showModal}
-        onItemPress={() => {}}
-      />
+      <FeaturedCollection {...{data, loading}} onQuickViewPress={showModal} />
       {isVisible ? (
-        <ItemModal
-          item={itemRef.current}
-          qty={qty}
-          onTextChange={handleQtyChange}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-          onClose={closeModal}
-          onContentPress={stopClicksFromChildren}
-        />
+        <Modal onModalPress={stopClicksFromChildren} onClose={closeModal}>
+          <ItemContent
+            item={itemRef.current}
+            qty={qty}
+            onTextChange={handleQtyChange}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+          />
+        </Modal>
       ) : null}
-      <div></div>
     </div>
   )
 }
