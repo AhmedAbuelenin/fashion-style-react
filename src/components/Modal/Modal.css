@@ -7,16 +7,30 @@
   background-color: var(--color-dark-overlay);
   display: flex;
   align-items: center;
+  padding-inline: 2rem;
 }
 
 .modal__content {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  column-gap: 3rem;
-  width: 60%;
-  min-height: 60%;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
-  background-color: var(--color-light-gray-bg);
-  padding: 3.5rem;
+}
+
+.item-modal__close {
+  align-self: flex-end;
+  margin-bottom: 0.7rem;
+  color: var(--color-light);
+}
+
+@media (max-width: 1000px) {
+  .item-modal__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 1.8rem;
+  }
+
+  .modal__content {
+    height: 90%;
+    overflow-y: scroll;
+  }
 }

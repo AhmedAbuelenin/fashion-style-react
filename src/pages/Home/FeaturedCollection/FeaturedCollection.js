@@ -19,7 +19,8 @@ const FeaturedCollection = props => {
           {data.map(item => (
             <li key={item.code} className='featured__item'>
               <div className='featured__img-container'>
-                <Link to='/itemDetails'>
+                <Link
+                  to={`/itemDetailsPage/${item.code.replace('_group_', '')}`}>
                   <img
                     src={item.images[0].baseUrl}
                     alt='item img'

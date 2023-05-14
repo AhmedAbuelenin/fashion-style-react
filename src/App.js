@@ -9,7 +9,7 @@ import {
   Cart,
   NoPage,
   FoodList,
-  ItemDetails
+  ItemDetailsPage
 } from './pages'
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/itemDetails' element={<ItemDetails />} />
+        <Route path='/itemDetailsPage/:id' element={<ItemDetailsPage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />

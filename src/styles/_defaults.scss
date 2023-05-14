@@ -4,13 +4,18 @@
   padding: 0;
   margin: 0;
   font: inherit;
+  box-sizing: border-box;
 }
 
 html {
+  height: 100%;
   font-size: 10px;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   font-size: 1.6rem;
   font-family: var(--font-family-inter);
   color: var(--color-primary);

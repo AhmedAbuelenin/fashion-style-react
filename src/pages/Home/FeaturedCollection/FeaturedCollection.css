@@ -1,3 +1,7 @@
+.featured {
+  max-width: var(--width-content);
+}
+
 .featured__heading {
   margin: 3rem 0 1.6rem;
   font-size: var(--font-size-32);
@@ -10,13 +14,9 @@
 }
 
 .featured__list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 3rem;
-  flex-wrap: wrap;
-}
-
-.featured__item {
-  flex-basis: 29rem;
 }
 
 .featured__details {
@@ -31,8 +31,7 @@
 
 .featured__img {
   display: block;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   opacity: 1;
   transition: var(--transition-timing-sec);
 }

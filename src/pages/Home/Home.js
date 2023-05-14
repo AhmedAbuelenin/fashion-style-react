@@ -1,15 +1,23 @@
 import './Home.css'
 import {useCallback, useEffect, useRef, useState} from 'react'
-import {FeaturedCollection, Hero, ItemContent} from './index'
+import {FeaturedCollection, Hero} from './index'
 import {getProducts} from '../../services'
-import {Modal} from '../../components'
+import {Modal, ItemDetails} from '../../components'
 
 const Home = () => {
   const [data, setData] = useState([])
   const [qty, setQty] = useState('1')
   const [loading, setLoading] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const itemRef = useRef({})
+
+  const itemRef = useRef(null)
+  const item = itemRef.current
+  const _item = {
+    name: item?.name,
+    description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
+    price: item?.price.value,
+    image: item?.images[0].baseUrl
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -78,8 +86,8 @@ const Home = () => {
         <FeaturedCollection {...{data, loading}} onQuickViewPress={showModal} />
         {isVisible ? (
           <Modal onModalPress={stopClicksFromChildren} onClose={closeModal}>
-            <ItemContent
-              item={itemRef.current}
+            <ItemDetails
+              item={_item}
               qty={qty}
               onTextChange={handleQtyChange}
               onIncrement={handleIncrement}

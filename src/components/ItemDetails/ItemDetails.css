@@ -1,39 +1,49 @@
-.item-modal__close {
+.item-details {
+  max-width: var(--width-content);
+  margin: 0 auto;
+  padding: 3.5rem;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  background-color: var(--color-light-gray-bg);
+}
+
+.item-details__close {
   position: absolute;
   top: -6%;
   right: -0.3%;
   color: var(--color-light);
 }
 
-.item-modal__img-container {
-  display: flex;
-  justify-content: center;
-}
-
-.item-modal__img {
-  max-width: 60%;
+.item-details__img {
+  height: 60rem;
+  object-fit: cover;
   transition: var(--transition-timing-sec);
 }
 
-.item-modal__name {
+.item-details__content {
+  flex: 1;
+}
+
+.item-details__name {
   display: block;
   font-size: var(--font-size-32);
   line-height: 1.68;
   overflow-wrap: anywhere;
 }
 
-.item-modal__price {
+.item-details__price {
   display: block;
   font-size: var(--font-size-24);
   font-weight: var(--font-weight-bold);
   margin: 2rem 0;
 }
 
-.item-modal__description {
+.item-details__description {
   line-height: 1.68;
 }
 
-.item-modal__action-container {
+.item-details__action-container {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -41,22 +51,21 @@
   margin: 3rem 0;
 }
 
-.item-modal__button {
+.item-details__button {
   padding: 1.7rem 2.4rem;
   flex: 1;
   white-space: nowrap;
 }
 
-.item-modal__count-container {
+.item-details__count-container {
   border: 0.2rem solid var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 20%;
-  padding: 0.8rem 0.5rem;
+  padding: 0.8rem;
 }
 
-.item-modal__input {
+.item-details__input {
   border: none;
   width: 6rem;
   text-align: center;
@@ -74,21 +83,38 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.item-modal__operator {
+.item-details__operator {
   font-size: var(--font-size-27);
   transition: var(--transition-timing-sec);
 }
 
-.item-modal__operator:hover {
+.item-details__operator:hover {
   color: var(--color-gray-hover);
   cursor: pointer;
 }
 
-.item-modal__divider {
+.item-details__divider {
   border: 0.1rem solid var(--color-light-gray-divider);
   margin: 2.5rem 0;
 }
 
-.item-modal__category {
+.item-details__category {
   font-size: var(--font-size-14);
 }
+
+/* Start Responsive */
+@media (max-width: 900px) {
+  .item-details__img {
+    height: 45rem;
+  }
+
+  .item-details__name {
+    font-size: var(--font-size-24);
+  }
+
+  .item-details__price {
+    font-size: var(--font-size-20);
+  }
+}
+
+/* End Responsive */
