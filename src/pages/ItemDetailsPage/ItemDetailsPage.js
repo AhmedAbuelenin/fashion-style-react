@@ -6,6 +6,8 @@ import '../../styles/_global.scss'
 import './ItemDetailsPage.css'
 
 const ItemDetailsPage = () => {
+  console.log('ItemDetailsPage is rendered')
+
   const {id} = useParams()
 
   const [data, setData] = useState(null)

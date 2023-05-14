@@ -1,0 +1,1 @@
+export {getFeaturedCollection} from './featuredCollection'

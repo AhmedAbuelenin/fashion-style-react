@@ -12,7 +12,7 @@ const Interceptor = axios.create({
 Interceptor.interceptors.request.use(
   async config => {
     config.headers = {
-      'X-RapidAPI-Key': 'f8b173667emsh0a9a958f9d481cbp119cd5jsnc4d066b36f7a',
+      'X-RapidAPI-Key': '9bdda7be1bmsh13b7aaf56dfbb8ep1b0e43jsnae32cb8d388c',
       'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
     }
     return config
@@ -32,21 +32,17 @@ Interceptor.interceptors.response.use(
     const _status = response?.status
     if (!_status) {
       return Promise.reject({
-        response: {
-          data: {
-            message: message.includes('timeout')
-              ? message
-              : message.includes('cancel')
-              ? 'canceled'
-              : 'ui-networkConnectionError'
-          }
-        }
+        message: message.includes('timeout')
+          ? message
+          : message.includes('cancel')
+          ? 'canceled'
+          : 'network error'
       })
     }
     if (_status === 401 || _status === 403) {
       //   setTimeout(handleUserLogout, 300)
     }
-    return Promise.reject(error)
+    return Promise.reject({message: error.response.data.message})
   }
 )
 

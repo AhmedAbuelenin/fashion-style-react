@@ -1,15 +1,18 @@
 import './Home.css'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import {FeaturedCollection, Hero, ItemModal} from './index'
-import {getProducts} from '../../services'
 import {ItemDetails} from '../../components'
+import {useDispatch, useSelector} from 'react-redux'
+import {getFeaturedCollection} from '../../redux/thunk'
 
 const Home = () => {
-  const [data, setData] = useState([])
+  console.log('Home page is rendered')
+
   const [qty, setQty] = useState('1')
-  const [loading, setLoading] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
+  const dispatch = useDispatch()
+  const {data} = useSelector(state => state.featuredCollection)
   const itemRef = useRef(null)
   const item = itemRef.current
   const _item = {
@@ -20,18 +23,13 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true)
-        const data = await getProducts()
-        setData(data.results)
-      } catch (error) {
-      } finally {
-        setLoading(false)
-      }
+    const fetchProducts = () => {
+      dispatch(getFeaturedCollection())
     }
 
-    fetchProducts()
+    if (data.length === 0) {
+      fetchProducts()
+    }
   }, [])
 
   useEffect(() => {
@@ -83,7 +81,8 @@ const Home = () => {
     <>
       <Hero />
       <div className='content-wrapper'>
-        <FeaturedCollection {...{data, loading}} onQuickViewPress={showModal} />
+        <FeaturedCollection {...{data}} onQuickViewPress={showModal} />
+
         {isVisible ? (
           <ItemModal onModalPress={stopClicksFromChildren} onClose={closeModal}>
             <ItemDetails
