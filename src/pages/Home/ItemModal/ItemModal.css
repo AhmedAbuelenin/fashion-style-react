@@ -1,4 +1,4 @@
-.modal {
+.item-modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -10,7 +10,7 @@
   padding-inline: 2rem;
 }
 
-.modal__content {
+.item-modal__content {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -25,11 +25,11 @@
 @media (max-width: 1000px) {
   .item-modal__close {
     position: absolute;
-    top: 0.6rem;
+    top: 1.4rem;
     right: 1.8rem;
   }
 
-  .modal__content {
+  .item-modal__content {
     height: 90%;
     overflow-y: scroll;
   }
