@@ -61,8 +61,9 @@ const Home = () => {
 
   const handleQtyChange = useCallback(event => {
     const maxInputLength = 3
-    if (event.target.value.length <= maxInputLength) {
-      setQty(event.target.value)
+    const _value = event.target.value
+    if (_value >= 1 && _value.length <= maxInputLength) {
+      setQty(_value)
     }
   }, [])
 
