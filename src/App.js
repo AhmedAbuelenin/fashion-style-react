@@ -8,7 +8,7 @@ import {
   Login,
   Cart,
   NoPage,
-  FoodList,
+  Shop,
   ItemDetailsPage
 } from './pages'
 
@@ -19,7 +19,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/blog' element={<Blog />} />
-        <Route path='/foodList' element={<FoodList />} />
+        <Route path='/shop' element={<Shop />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
