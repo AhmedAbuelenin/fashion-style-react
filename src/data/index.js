@@ -1,3 +1,3 @@
-export {mainPagesLinks} from './mainPagesLinks'
-export {otherPageLinks} from './otherPagesLinks'
-export {socialLinks} from './socialLinks'
+export {mainPagesData} from './mainPagesData'
+export {otherPagesData} from './otherPagesData'
+export {socialsData} from './socialsData'

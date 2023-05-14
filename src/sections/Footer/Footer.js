@@ -1,5 +1,5 @@
 import './Footer.css'
-import {mainPagesLinks, otherPageLinks, socialLinks} from '../../data'
+import {mainPagesData, otherPagesData, socialsData} from '../../data'
 import {Link} from 'react-router-dom'
 
 const Footer = () => {
@@ -13,36 +13,36 @@ const Footer = () => {
           </div>
           <nav className='footer__nav footer__nav-quick-links'>
             <span className='footer__quick-links'>Quick links</span>
-            {mainPagesLinks.map(item => (
+            {mainPagesData.map(page => (
               <Link
-                key={item.id}
-                to={item.path}
+                key={page.id}
+                to={page.path}
                 className='footer__internal-link'>
-                {item.name}
+                {page.name}
               </Link>
             ))}
           </nav>
           <nav className='footer__nav'>
             <span className='footer__about'>About</span>
-            {otherPageLinks.map(item => (
+            {otherPagesData.map(page => (
               <Link
-                key={item.id}
-                to={item.path}
+                key={page.id}
+                to={page.path}
                 className='footer__internal-link'>
-                {item.name}
+                {page.name}
               </Link>
             ))}
           </nav>
         </div>
         <div className='footer__bottom'>
           <div className='footer__social-links'>
-            {socialLinks.map(item => {
-              const Icon = item.iconName
+            {socialsData.map(social => {
+              const Icon = social.iconName
               return (
                 <a
-                  key={item.id}
-                  title={item.title}
-                  href={item.href}
+                  key={social.id}
+                  title={social.title}
+                  href={social.href}
                   target='_blank'
                   rel='noreferrer'
                   className='footer__external-link'>

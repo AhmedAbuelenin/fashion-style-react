@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.global-nav__items {
+.global-nav__list {
   display: flex;
   gap: 3.5rem;
 }

@@ -1,6 +1,6 @@
 import {BsFacebook, BsInstagram, BsTwitter} from 'react-icons/bs'
 
-export const socialLinks = [
+export const socialsData = [
   {
     id: 1,
     title: 'visit our facebook page',
