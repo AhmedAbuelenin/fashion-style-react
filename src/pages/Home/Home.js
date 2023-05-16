@@ -4,6 +4,7 @@ import {FeaturedCollection, Hero, ItemModal} from './index'
 import {ItemDetails} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFeaturedCollection} from '../../redux/thunk'
+import {setCartItem} from '../../redux/slices'
 
 const Home = () => {
   console.log('Home page is rendered')
@@ -78,11 +79,19 @@ const Home = () => {
     setQty(value => Number(value) - 1 || 1)
   }, [])
 
+  const addItemToCart = useCallback(item => {
+    dispatch(setCartItem(item))
+  }, [])
+
   return (
     <>
       <Hero />
       <div className='content-wrapper'>
-        <FeaturedCollection {...{data}} onQuickViewPress={showModal} />
+        <FeaturedCollection
+          {...{data}}
+          onQuickViewPress={showModal}
+          onAddToCart={addItemToCart}
+        />
 
         {isVisible ? (
           <ItemModal onModalPress={stopClicksFromChildren} onClose={closeModal}>

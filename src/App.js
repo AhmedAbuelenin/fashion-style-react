@@ -9,7 +9,8 @@ import {
   Cart,
   NoPage,
   Shop,
-  ItemDetailsPage
+  ItemDetailsPage,
+  Checkout
 } from './pages'
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/itemDetailsPage/:id' element={<ItemDetailsPage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>

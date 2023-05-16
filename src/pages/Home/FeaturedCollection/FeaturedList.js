@@ -4,7 +4,7 @@ import {Loader} from '../../../components'
 import '../../../styles/_global.scss'
 import './FeaturedList.css'
 
-const FeaturedList = ({onQuickViewPress}) => {
+const FeaturedList = ({onQuickViewPress, onAddToCart}) => {
   const {data, loading, status} = useSelector(state => state.featuredCollection)
 
   if (data.length > 0)
@@ -29,7 +29,11 @@ const FeaturedList = ({onQuickViewPress}) => {
             <div className='featured__details'>
               <span className='featured__name'>{item.name}</span>
               <span className='featured__price'>${item.price.value}</span>
-              <button className='global-button'>ADD TO CART</button>
+              <button
+                className='global-button'
+                onClick={() => onAddToCart(item)}>
+                ADD TO CART
+              </button>
             </div>
           </li>
         ))}

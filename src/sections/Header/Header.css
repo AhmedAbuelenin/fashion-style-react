@@ -32,7 +32,31 @@
 }
 
 .global-icons {
+  position: relative;
   display: flex;
   gap: 2.5rem;
   justify-self: flex-end;
+}
+
+.global-icons__search:hover {
+  cursor: pointer;
+}
+
+.global-icons__cart-count {
+  position: absolute;
+  top: -0.7rem;
+  right: -0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  font-size: var(--font-size-10);
+  min-height: 1.8rem;
+  min-width: 1.8rem;
+  border-radius: 50%;
+  background-color: var(--color-dark-red);
+}
+
+.global-icons__cart:hover + .cart-modal {
+  display: block;
 }
