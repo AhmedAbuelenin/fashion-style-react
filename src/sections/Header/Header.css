@@ -64,3 +64,7 @@
 .global-icons__cart:hover + .cart-modal {
   display: block;
 }
+
+.global-icons__icon:active {
+  border: 0.1rem dashed var(--color-gray-hover);
+}

@@ -51,11 +51,18 @@ const Header = () => {
         Fashion Mode
       </Link>
       <div className='global-icons'>
-        <IoIosSearch size={24} className='global-icons__search' />
-        <Link to='/login' className='global-icons__icon'>
+        <IoIosSearch
+          title='Search for a product'
+          size={24}
+          className='global-icons__icon global-icons__search'
+        />
+        <Link title='Your account' to='/login' className='global-icons__icon'>
           <AiOutlineUser size={24} />
         </Link>
-        <Link to='/cart' className='global-icons__icon global-icons__cart'>
+        <Link
+          title='View your shopping cart'
+          to='/cart'
+          className='global-icons__icon global-icons__cart'>
           <BsCart2 size={24} />
           <span className='global-icons__cart-count'>{totalSum.qty}</span>
         </Link>
