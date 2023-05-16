@@ -1,0 +1,18 @@
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 3.5rem;
+  right: 3rem;
+  z-index: 1;
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition-timing-sec);
+}
+
+.scroll-to-top-btn:hover {
+  background-color: var(--color-gray-hover);
+}

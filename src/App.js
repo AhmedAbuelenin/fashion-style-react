@@ -12,6 +12,7 @@ import {
   ItemDetailsPage,
   Checkout
 } from './pages'
+import {ScrollToTopButton} from './components'
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />
+      <ScrollToTopButton />
     </Router>
   )
 }
