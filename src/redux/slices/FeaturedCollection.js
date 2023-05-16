@@ -13,6 +13,22 @@ const featuredCollectionSlice = createSlice({
   reducers: {
     setData: (state, action) => {
       state.data = action.payload
+    },
+    setFeaturedSelected: (state, action) => {
+      state.data = state.data.map(item => {
+        if (item.code === action.payload) {
+          return {...item, selected: true}
+        }
+        return item
+      })
+    },
+    toggleItemLoading: (state, action) => {
+      state.data = state.data.map(item => {
+        if (item.code === action.payload) {
+          return {...item, loading: !item.loading}
+        }
+        return item
+      })
     }
   },
   extraReducers: builder => {
@@ -31,6 +47,7 @@ const featuredCollectionSlice = createSlice({
   }
 })
 
-export const {setData} = featuredCollectionSlice.actions
+export const {setData, setFeaturedSelected, toggleItemLoading} =
+  featuredCollectionSlice.actions
 
 export default featuredCollectionSlice.reducer

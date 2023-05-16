@@ -27,6 +27,10 @@
   color: var(--color-gray-hover);
 }
 
+.global-nav__item-title {
+  font-size: var(--font-size-16);
+}
+
 .logo-text {
   font-size: var(--font-size-24);
 }

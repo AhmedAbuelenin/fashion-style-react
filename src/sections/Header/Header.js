@@ -40,7 +40,9 @@ const Header = () => {
         <ul className='global-nav__list'>
           {mainPagesData.map(page => (
             <li key={page.id} className='global-nav__item'>
-              <Link to={page.path}>{page.name}</Link>
+              <Link to={page.path} className='global-nav__item-title'>
+                {page.name}
+              </Link>
             </li>
           ))}
         </ul>
