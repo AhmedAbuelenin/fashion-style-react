@@ -1,0 +1,35 @@
+.counter {
+  border: 0.2rem solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+}
+
+.counter__input {
+  border: none;
+  width: 6rem;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.counter__operator {
+  font-size: var(--font-size-27);
+  transition: var(--transition-timing-sec);
+}
+
+.counter__operator:hover {
+  color: var(--color-gray-hover);
+  cursor: pointer;
+}

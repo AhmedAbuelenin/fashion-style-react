@@ -9,7 +9,6 @@ import {setCartItem} from '../../redux/slices'
 const Home = () => {
   console.log('Home page is rendered')
 
-  const [qty, setQty] = useState('1')
   const [isVisible, setIsVisible] = useState(false)
 
   const dispatch = useDispatch()
@@ -33,16 +32,6 @@ const Home = () => {
     }
   }, [])
 
-  useEffect(() => {
-    const resetQty = () => {
-      setQty(1)
-    }
-
-    if (!isVisible) {
-      resetQty()
-    }
-  }, [isVisible])
-
   const toggleVisibleModal = () => {
     setIsVisible(visible => !visible)
   }
@@ -58,25 +47,6 @@ const Home = () => {
 
   const stopClicksFromChildren = useCallback(event => {
     event.stopPropagation()
-  }, [])
-
-  const handleQtyChange = useCallback(event => {
-    const maxInputLength = 3
-    const _value = event.target.value
-    if (_value >= 1 && _value.length <= maxInputLength) {
-      setQty(_value)
-    }
-  }, [])
-
-  const handleIncrement = useCallback(() => {
-    const maxQty = 999
-    if (qty < maxQty) {
-      setQty(value => Number(value) + 1)
-    }
-  }, [qty])
-
-  const handleDecrement = useCallback(() => {
-    setQty(value => Number(value) - 1 || 1)
   }, [])
 
   const addItemToCart = useCallback(item => {
@@ -95,13 +65,7 @@ const Home = () => {
 
         {isVisible ? (
           <ItemModal onModalPress={stopClicksFromChildren} onClose={closeModal}>
-            <ItemDetails
-              item={_item}
-              qty={qty}
-              onTextChange={handleQtyChange}
-              onIncrement={handleIncrement}
-              onDecrement={handleDecrement}
-            />
+            <ItemDetails item={_item} />
           </ItemModal>
         ) : null}
       </div>

@@ -57,42 +57,6 @@
   white-space: nowrap;
 }
 
-.item-details__count-container {
-  border: 0.2rem solid var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem;
-}
-
-.item-details__input {
-  border: none;
-  width: 6rem;
-  text-align: center;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
-.item-details__operator {
-  font-size: var(--font-size-27);
-  transition: var(--transition-timing-sec);
-}
-
-.item-details__operator:hover {
-  color: var(--color-gray-hover);
-  cursor: pointer;
-}
-
 .item-details__divider {
   border: 0.1rem solid var(--color-light-gray-divider);
   margin: 2.5rem 0;

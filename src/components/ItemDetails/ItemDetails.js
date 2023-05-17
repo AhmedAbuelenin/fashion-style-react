@@ -1,4 +1,5 @@
 import './ItemDetails.css'
+import {Counter} from './../index'
 
 const ItemDetails = props => {
   const {item, qty, onDecrement, onIncrement, onTextChange} = props
@@ -12,22 +13,7 @@ const ItemDetails = props => {
         <p className='item-details__description'>{item.description}</p>
 
         <div className='item-details__action-container'>
-          <div className='item-details__count-container'>
-            <span onClick={onDecrement} className='item-details__operator'>
-              -
-            </span>
-            <input
-              type='number'
-              value={qty}
-              onChange={onTextChange}
-              className='item-details__input'
-            />
-            <span
-              onClick={onIncrement}
-              className='item-details__operator item-details__plus-operator'>
-              +
-            </span>
-          </div>
+          <Counter {...{qty, onDecrement, onIncrement, onTextChange}} />
           <button className='global-button item-details__button'>
             ADD TO CART
           </button>
