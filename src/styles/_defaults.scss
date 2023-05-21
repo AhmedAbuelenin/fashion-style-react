@@ -50,8 +50,12 @@ ul {
   list-style: none;
 }
 
-input[type='text'],
-input[type='number'] {
+input {
   background-color: transparent;
+  border: 0;
   outline: none;
+}
+
+input[type='submit'] {
+  cursor: pointer;
 }

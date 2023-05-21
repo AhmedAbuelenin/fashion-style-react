@@ -19,7 +19,8 @@ const Home = () => {
     name: item?.name,
     description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
     price: item?.price.value,
-    image: item?.images[0].baseUrl
+    image: item?.images[0].baseUrl,
+    categoryName: item?.categoryName
   }
 
   useEffect(() => {

@@ -6,7 +6,7 @@ const Counter = props => {
 
   const {count, onChangeCount, containerClass, countClass, operatorClass} =
     props
-  const [qty, setQty] = useState(count)
+  const [qty, setQty] = useState(count || 1)
 
   const handleQtyChange = useCallback(
     event => {
@@ -33,12 +33,14 @@ const Counter = props => {
   }, [qty, onChangeCount])
 
   const handleDecrement = useCallback(() => {
-    setQty(value => {
-      const _value = Number(value) - 1 || 1
-      onChangeCount(_value)
-      return _value
-    })
-  }, [onChangeCount])
+    if (qty > 1) {
+      setQty(value => {
+        const _value = Number(value) - 1
+        onChangeCount(_value)
+        return _value
+      })
+    }
+  }, [qty, onChangeCount])
 
   return (
     <div className={`counter ${containerClass}`}>

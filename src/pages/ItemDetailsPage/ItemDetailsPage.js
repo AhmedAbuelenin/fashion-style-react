@@ -18,7 +18,8 @@ const ItemDetailsPage = () => {
     name: data?.name,
     description: data?.description,
     price: data?.whitePrice.price,
-    image: data?.articlesList[0].galleryDetails[0].baseUrl
+    image: data?.articlesList[0].galleryDetails[0].baseUrl,
+    categoryName: data?.customerGroup
   }
 
   useEffect(() => {

@@ -1,15 +1,19 @@
 .counter {
-  border: 0.2rem solid var(--color-primary);
+  border: 0.1rem solid var(--color-primary);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.8rem;
+  padding: 0.7rem 0.9rem;
 }
 
 .counter__input {
   border: none;
-  width: 6rem;
+  width: 5rem;
+  padding: 0;
   text-align: center;
+}
+
+.counter__input:focus {
+  border: none;
 }
 
 /* Chrome, Safari, Edge, Opera */

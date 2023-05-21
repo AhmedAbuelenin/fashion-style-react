@@ -1,0 +1,12 @@
+.cart-totals__subtitle-price-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-totals__subtitle {
+  font-size: var(--font-size-13);
+}
+
+.cart-totals__divider {
+  margin: 1.3rem 0 1.7rem;
+}

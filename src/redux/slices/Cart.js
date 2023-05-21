@@ -1,7 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {convertArrayToObject} from '../../utils/convertArrayToObject'
+import {convertObjToArray} from '../../utils/convertObjToArray'
 
 const initialState = {
-  data: []
+  data: [],
+  isCartUpdateNeeded: false
 }
 
 const cartSlice = createSlice({
@@ -26,10 +29,23 @@ const cartSlice = createSlice({
     },
     removeCartItem: (state, action) => {
       state.data = state.data.filter(item => item.code !== action.payload)
+    },
+    updateCartItems: (state, action) => {
+      const obj = convertArrayToObject(state.data)
+
+      action.payload.forEach(item => {
+        if (obj[item.code]) {
+          obj[item.code].quantity = item.quantity
+        }
+      })
+
+      const updatedArr = convertObjToArray(obj)
+
+      state.data = updatedArr
     }
   }
 })
 
-export const {setCartItem, removeCartItem} = cartSlice.actions
+export const {setCartItem, removeCartItem, updateCartItems} = cartSlice.actions
 
 export default cartSlice.reducer

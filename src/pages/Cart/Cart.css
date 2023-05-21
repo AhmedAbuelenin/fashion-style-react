@@ -1,0 +1,29 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart__coupon-update-cart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 3rem 0 12rem;
+}
+
+.cart__button {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.cart__no-products {
+  display: block;
+  background-color: var(--color-light-gray);
+  padding: 2rem 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.cart__return-shop-button {
+  align-self: flex-start;
+  padding-top: 1.7rem;
+  padding-bottom: 1.7rem;
+}

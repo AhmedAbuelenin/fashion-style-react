@@ -9,7 +9,7 @@ const CartModal = ({data, subtotal, onRemoveItem}) => {
       <div className='cart-modal__header-list-container'>
         <div className='cart-modal__header-divider-container'>
           <span className='cart-modal__header'>Your Cart</span>
-          <hr className='cart-modal__divider' />
+          <hr className='global-divider' />
         </div>
         {data.length > 0 ? (
           <>
@@ -17,9 +17,7 @@ const CartModal = ({data, subtotal, onRemoveItem}) => {
               {data.map(item => {
                 const {code, name, quantity, price, images} = item
                 return (
-                  <li
-                    key={code}
-                    className='cart-modal__item cart-modal__divider'>
+                  <li key={code} className='cart-modal__item global-divider'>
                     <div className='cart-modal__img-container'>
                       <img
                         src={images[0].baseUrl}
@@ -50,7 +48,7 @@ const CartModal = ({data, subtotal, onRemoveItem}) => {
                   ${subtotal.toFixed(2)}
                 </span>
               </div>
-              <hr className='cart-modal__divider' />
+              <hr className='global-divider' />
               <Link
                 to='/checkout'
                 className='global-button cart-modal__checkout-link'>

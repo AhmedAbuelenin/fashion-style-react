@@ -1,0 +1,25 @@
+.cart-totals {
+  background-color: var(--color-light-gray);
+  width: 45%;
+  align-self: flex-end;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  min-height: 25rem;
+}
+
+.cart-totals__heading {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+}
+
+.cart-totals__total-price {
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-bold);
+}
+
+.cart-totals__checkout-button {
+  padding-top: 1.7rem;
+  padding-bottom: 1.7rem;
+}

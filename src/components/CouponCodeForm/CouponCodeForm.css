@@ -1,0 +1,8 @@
+.coupon-form {
+  display: flex;
+}
+
+.coupon-form__button {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

@@ -58,7 +58,6 @@
 }
 
 .item-details__divider {
-  border: 0.1rem solid var(--color-light-gray-divider);
   margin: 2.5rem 0;
 }
 
