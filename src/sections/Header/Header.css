@@ -35,18 +35,18 @@
   font-size: var(--font-size-24);
 }
 
-.global-icons {
+.global-header__icons {
   position: relative;
   display: flex;
   gap: 2.5rem;
   justify-self: flex-end;
 }
 
-.global-icons__search:hover {
+.global-header__search:hover {
   cursor: pointer;
 }
 
-.global-icons__cart-count {
+.global-header__cart-count {
   position: absolute;
   top: -0.7rem;
   right: -0.7rem;
@@ -61,10 +61,11 @@
   background-color: var(--color-dark-red);
 }
 
-.global-icons__cart:hover + .cart-modal {
+.global-header__cart:hover + .cart-modal {
   display: block;
 }
 
-.global-icons__icon:active {
+.global-header__icon:active {
   border: 0.1rem dashed var(--color-gray-hover);
+  padding: 0.3rem;
 }

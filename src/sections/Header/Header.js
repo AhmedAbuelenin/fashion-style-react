@@ -1,17 +1,18 @@
-import './Header.css'
-import {IoIosSearch} from 'react-icons/io'
+import {useCallback, useEffect, useState} from 'react'
 import {AiOutlineUser} from 'react-icons/ai'
 import {BsCart2} from 'react-icons/bs'
-import {Link} from 'react-router-dom'
-import {mainPagesData} from '../../data'
+import {IoIosSearch} from 'react-icons/io'
 import {useDispatch, useSelector} from 'react-redux'
-import {useCallback, useEffect, useState} from 'react'
-import CartModal from './CartModal/CartModal'
+import {Link, useLocation} from 'react-router-dom'
+import {mainPagesData} from '../../data'
 import {removeCartItem} from '../../redux/slices'
+import CartModal from './CartModal/CartModal'
+import './Header.css'
 
 const Header = () => {
   const dispatch = useDispatch()
   const {data} = useSelector(state => state.cart)
+  const {pathname} = useLocation()
   const [totalSum, setTotalSum] = useState({qty: 0, price: 0})
 
   useEffect(() => {
@@ -50,28 +51,30 @@ const Header = () => {
       <Link to='/' className='logo-text'>
         Fashion Mode
       </Link>
-      <div className='global-icons'>
+      <div className='global-header__icons'>
         <IoIosSearch
           title='Search for a product'
           size={24}
-          className='global-icons__icon global-icons__search'
+          className='global-header__icon global-header__search'
         />
-        <Link title='Your account' to='/login' className='global-icons__icon'>
+        <Link title='Your account' to='/login' className='global-header__icon'>
           <AiOutlineUser size={24} />
         </Link>
         <Link
           title='View your shopping cart'
           to='/cart'
-          className='global-icons__icon global-icons__cart'>
+          className='global-header__icon global-header__cart'>
           <BsCart2 size={24} />
-          <span className='global-icons__cart-count'>{totalSum.qty}</span>
+          <span className='global-header__cart-count'>{totalSum.qty}</span>
         </Link>
 
-        <CartModal
-          data={data}
-          subtotal={totalSum.price}
-          onRemoveItem={handleItemRemove}
-        />
+        {pathname !== '/cart' ? (
+          <CartModal
+            data={data}
+            subtotal={totalSum.price}
+            onRemoveItem={handleItemRemove}
+          />
+        ) : null}
       </div>
     </div>
   )
