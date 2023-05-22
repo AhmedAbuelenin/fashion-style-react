@@ -24,11 +24,22 @@ const Cart = () => {
     watch
   } = useForm({
     defaultValues: {
+      couponCode: '',
       isCouponValid: false,
       subtotal: 0,
       isCartUpdateNeeded: false
     }
   })
+
+  useEffect(() => {
+    const subscription = watch(({couponCode, isCouponValid}, {name, type}) => {
+      if (couponCode.length === 0 && isCouponValid) {
+        setValue('isCouponValid', false)
+      }
+    })
+
+    return () => subscription.unsubscribe()
+  }, [watch])
 
   useEffect(() => {
     const calcCartSubtotal = () => {
