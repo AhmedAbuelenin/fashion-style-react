@@ -1,3 +1,7 @@
+.coupon-form-container {
+  margin-inline-end: 2rem;
+}
+
 .coupon-form {
   display: flex;
 }

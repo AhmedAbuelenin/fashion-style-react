@@ -1,0 +1,16 @@
+.cart__actions-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 3rem 0 12rem;
+}
+
+.cart__form-loader-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart__button {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

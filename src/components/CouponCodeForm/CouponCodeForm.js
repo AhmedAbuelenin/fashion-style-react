@@ -1,3 +1,4 @@
+import {memo} from 'react'
 import '../../styles/_global.scss'
 import './CouponCodeForm.css'
 
@@ -29,4 +30,12 @@ const CouponCodeForm = props => {
   )
 }
 
-export default CouponCodeForm
+function areEquals(prevProps, nextProps) {
+  return (
+    prevProps.register === nextProps.register &&
+    prevProps.errors['couponCode'] === nextProps.errors['couponCode'] &&
+    prevProps.onSubmit === nextProps.onSubmit
+  )
+}
+
+export default memo(CouponCodeForm, areEquals)

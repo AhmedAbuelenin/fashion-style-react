@@ -1,13 +1,13 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useCallback, useEffect, useRef} from 'react'
 import {useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {ContentWrapper, CouponCodeForm} from '../../components'
+import {ContentWrapper} from '../../components'
 import {removeCartItem, updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
-import './Cart.css'
-import {CartItemsTable, CartTotals} from './index'
 import {convertObjToArray} from '../../utils/convertObjToArray'
+import './Cart.css'
+import {CartActions, CartItemsTable, CartTotals} from './index'
 
 const Cart = () => {
   console.log('Cart is rendering')
@@ -24,6 +24,7 @@ const Cart = () => {
     watch
   } = useForm({
     defaultValues: {
+      loading: false,
       couponCode: '',
       isCouponValid: false,
       subtotal: 0,
@@ -72,61 +73,63 @@ const Cart = () => {
     setError('couponCode', {type: 'validation', message: msg})
   }
 
-  const handleCouponSubmit = async data => {
+  const handleCouponSubmit = useCallback(data => {
     //Call api endpoint instead to validate coupon code here
     if (!data.couponCode) {
       showCouponCodeValidationErr('Field is required')
       return
     }
-    if (data.couponCode === 'testCoupon') {
-      setValue('isCouponValid', true)
-      return
-    }
 
-    showCouponCodeValidationErr('Invalid coupon code')
-    setValue('isCouponValid', false)
-  }
+    setValue('loading', true)
+    setTimeout(() => {
+      if (data.couponCode === 'testCoupon') {
+        setValue('isCouponValid', true)
+        return
+      }
 
-  const handleCartUpdate = () => {
+      showCouponCodeValidationErr('Invalid coupon code')
+      setValue('isCouponValid', false)
+    }, 1000)
+    setTimeout(() => {
+      setValue('loading', false)
+    }, 1050)
+  }, [])
+
+  const handleCartUpdate = useCallback(() => {
     const items = convertObjToArray(itemsObjRef.current)
     dispatch(updateCartItems(items))
     handleCartUpdateStatus(false)
-  }
-
-  if (data.length > 0)
-    return (
-      <ContentWrapper wrapperClass='cart' heading='Cart'>
-        <CartItemsTable
-          data={data}
-          onChangeCount={handleQtyChange}
-          onItemRemove={handleItemRemove}
-        />
-        <div className='cart__coupon-update-cart-container'>
-          <CouponCodeForm
-            register={register}
-            {...{errors}}
-            onSubmit={handleSubmit(handleCouponSubmit)}
-          />
-          <button
-            className='global-button cart__button'
-            onClick={handleCartUpdate}
-            disabled={!watch('isCartUpdateNeeded')}>
-            UPDATE CART
-          </button>
-        </div>
-        <CartTotals
-          hasValidCoupon={watch('isCouponValid')}
-          subtotal={watch('subtotal')}
-        />
-      </ContentWrapper>
-    )
+  }, [])
 
   return (
     <ContentWrapper wrapperClass='cart' heading='Cart'>
-      <span className='cart__no-products'>Your cart is currently empty.</span>
-      <Link to='/shop' className='global-button cart__return-shop-button'>
-        RETURN TO SHOP
-      </Link>
+      {data.length > 0 ? (
+        <>
+          <CartItemsTable
+            data={data}
+            onChangeCount={handleQtyChange}
+            onItemRemove={handleItemRemove}
+          />
+          <CartActions
+            {...{register, errors, watch}}
+            onSubmit={handleSubmit(handleCouponSubmit)}
+            onUpdateCart={handleCartUpdate}
+          />
+          <CartTotals
+            hasValidCoupon={watch('isCouponValid')}
+            subtotal={watch('subtotal')}
+          />
+        </>
+      ) : (
+        <>
+          <span className='cart__no-products'>
+            Your cart is currently empty.
+          </span>
+          <Link to='/shop' className='global-button cart__return-shop-button'>
+            RETURN TO SHOP
+          </Link>
+        </>
+      )}
     </ContentWrapper>
   )
 }

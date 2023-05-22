@@ -3,18 +3,6 @@
   flex-direction: column;
 }
 
-.cart__coupon-update-cart-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 3rem 0 12rem;
-}
-
-.cart__button {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
 .cart__no-products {
   display: block;
   background-color: var(--color-light-gray);
