@@ -44,7 +44,9 @@ const CartItem = props => {
           onChangeCount={onCountChange}
         />
       </td>
-      <td className='cart__td-subtotal'>${price.value * quantity}</td>
+      <td className='cart__td-subtotal'>
+        ${(price.value * quantity).toFixed(2)}
+      </td>
     </>
   )
 }
