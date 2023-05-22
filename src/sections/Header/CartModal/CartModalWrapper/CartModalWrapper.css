@@ -1,0 +1,23 @@
+.cart-modal {
+  display: none;
+  position: absolute;
+  top: 3rem;
+  right: 0rem;
+  z-index: 1;
+  width: 38rem;
+  padding-top: 2.5rem;
+  background-color: var(--color-light);
+  box-shadow: 0 0.8rem 4rem var(--color-dark-shadow);
+  transition: var(--transition-timing-sec);
+}
+
+.cart-modal:hover {
+  display: block;
+}
+
+.cart-modal__header {
+  display: block;
+  font-size: var(--font-size-24);
+  padding: 2rem 0;
+  margin-inline: 3rem;
+}

@@ -1,0 +1,32 @@
+.cart-modal__summary {
+  padding: 3rem;
+  background-color: var(--color-light-gray);
+}
+
+.cart-modal__subtotal-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.cart-modal__total-price {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+}
+
+.cart-modal__divider {
+  border-bottom: 0.1rem solid var(--color-light-gray-divider);
+  border-width: 0 0 0.1rem 0;
+}
+
+.cart-modal__checkout-link {
+  display: block;
+  font-size: var(--font-size-14);
+  margin: 2.3rem 0 1.5rem;
+}
+
+.cart-modal__view-cart-link {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+}
