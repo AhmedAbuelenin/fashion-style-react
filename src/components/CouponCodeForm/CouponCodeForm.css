@@ -6,6 +6,12 @@
   display: flex;
 }
 
+.coupon-form__input-bg {
+  background-image: url(../../assets/icons/check-mark.png);
+  background-repeat: no-repeat;
+  background-position: right 1.1rem center;
+}
+
 .coupon-form__button {
   padding-top: 2rem;
   padding-bottom: 2rem;

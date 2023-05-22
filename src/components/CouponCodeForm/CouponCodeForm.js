@@ -5,7 +5,7 @@ import './CouponCodeForm.css'
 const CouponCodeForm = props => {
   console.log('CouponCodeForm is rendering')
 
-  const {register, errors, onSubmit} = props
+  const {register, errors, onSubmit, isCouponValid} = props
 
   return (
     <div className='coupon-form-container'>
@@ -14,7 +14,9 @@ const CouponCodeForm = props => {
           {...register('couponCode')}
           type='text'
           placeholder='Coupon code'
-          className='global-text-input coupon-form__input'
+          className={`global-text-input ${
+            isCouponValid ? 'coupon-form__input-bg' : ''
+          }`}
         />
         <input
           type='submit'
@@ -34,7 +36,8 @@ function areEquals(prevProps, nextProps) {
   return (
     prevProps.register === nextProps.register &&
     prevProps.errors['couponCode'] === nextProps.errors['couponCode'] &&
-    prevProps.onSubmit === nextProps.onSubmit
+    prevProps.onSubmit === nextProps.onSubmit &&
+    prevProps.isCouponValid === nextProps.isCouponValid
   )
 }
 

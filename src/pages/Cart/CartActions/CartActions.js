@@ -16,7 +16,8 @@ const CartActions = props => {
           {...{
             register: memoObj.register,
             errors: memoObj.errors,
-            onSubmit: memoObj.onSubmit
+            onSubmit: memoObj.onSubmit,
+            isCouponValid: watch('isCouponValid')
           }}
         />
         {watch('loading') ? <Loader /> : null}
