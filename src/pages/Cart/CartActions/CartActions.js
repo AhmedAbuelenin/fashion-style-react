@@ -20,7 +20,11 @@ const CartActions = props => {
             isCouponValid: watch('isCouponValid')
           }}
         />
-        {watch('loading') ? <Loader /> : null}
+        {watch('loading') ? (
+          <div className='cart__loader'>
+            <Loader />
+          </div>
+        ) : null}
       </div>
       <button
         className='global-button cart__button'

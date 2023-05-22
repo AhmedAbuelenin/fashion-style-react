@@ -7,7 +7,10 @@
 
 .cart__form-loader-container {
   display: flex;
-  align-items: center;
+}
+
+.cart__loader {
+  padding-top: 1.4rem;
 }
 
 .cart__button {
