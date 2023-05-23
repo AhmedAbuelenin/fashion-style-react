@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {convertArrayToObject} from '../../utils/convertArrayToObject'
-import {convertObjToArray} from '../../utils/convertObjToArray'
+import {convertArrayToObject, convertObjToArray} from '../../utils'
 
 const initialState = {
   data: [],

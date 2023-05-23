@@ -8,7 +8,7 @@ import {CartModal} from '../index'
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
 
-  const {data, totalSum, onRemoveItem} = props
+  const {data, totals, onRemoveItem} = props
 
   const {pathname} = useLocation()
 
@@ -27,13 +27,13 @@ const SearchAndCartBar = props => {
         to='/cart'
         className={`global-header__icon global-header__cart`}>
         <BsCart2 size={24} />
-        <span className='global-header__cart-count'>{totalSum.qty}</span>
+        <span className='global-header__cart-count'>{totals.qty}</span>
       </Link>
 
       {pathname !== '/cart' ? (
         <CartModal
           data={data}
-          subtotal={totalSum.price}
+          subtotal={totals.price}
           onRemoveItem={onRemoveItem}
         />
       ) : null}

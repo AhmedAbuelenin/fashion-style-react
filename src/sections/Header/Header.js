@@ -4,26 +4,19 @@ import {Link} from 'react-router-dom'
 import {removeCartItem} from '../../redux/slices'
 import './Header.css'
 import {GlobalNav, SearchAndCartBar} from './index'
+import {calcCartTotals} from '../../utils'
 
 const Header = () => {
   const dispatch = useDispatch()
   const {data} = useSelector(state => state.cart)
-  const [totalSum, setTotalSum] = useState({qty: 0, price: 0})
+  const [totals, setTotals] = useState({qty: 0, price: 0})
 
   useEffect(() => {
-    const calcTotalSum = () => {
-      let qtySum = 0
-      let priceSum = 0
-
-      data.forEach(item => {
-        qtySum += item.quantity
-        priceSum += item.quantity * item.price.value
-      })
-
-      setTotalSum({qty: qtySum, price: priceSum})
+    const getCartTotals = () => {
+      setTotals(calcCartTotals(data))
     }
 
-    calcTotalSum()
+    getCartTotals()
   }, [data])
 
   const handleItemRemove = useCallback(id => {
@@ -36,7 +29,7 @@ const Header = () => {
       <Link to='/' className='logo-text'>
         Fashion Mode
       </Link>
-      <SearchAndCartBar {...{data, totalSum}} onRemoveItem={handleItemRemove} />
+      <SearchAndCartBar {...{data, totals}} onRemoveItem={handleItemRemove} />
     </div>
   )
 }

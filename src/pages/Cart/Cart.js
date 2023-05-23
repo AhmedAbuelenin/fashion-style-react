@@ -8,6 +8,7 @@ import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
 import './Cart.css'
 import {CartActions, CartTableList, CartTotals} from './index'
+import {calcCartTotals} from '../../utils'
 
 const Cart = () => {
   console.log('Cart is rendering')
@@ -43,17 +44,11 @@ const Cart = () => {
   }, [watch])
 
   useEffect(() => {
-    const calcCartSubtotal = () => {
-      let sum = 0
-
-      data.forEach(item => {
-        sum += item.quantity * item.price.value
-      })
-
-      setValue('subtotal', sum)
+    const getCartTotals = () => {
+      setValue('subtotal', calcCartTotals(data).price)
     }
 
-    calcCartSubtotal()
+    getCartTotals()
   }, [data])
 
   const handleCartUpdateStatus = status => {
