@@ -1,0 +1,22 @@
+.global-nav {
+  display: flex;
+  justify-self: flex-start;
+  align-items: center;
+}
+
+.global-nav__list {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.global-nav__item {
+  transition: var(--transition-timing-sec);
+}
+
+.global-nav__item:hover {
+  color: var(--color-gray-hover);
+}
+
+.global-nav__item-title {
+  font-size: var(--font-size-16);
+}

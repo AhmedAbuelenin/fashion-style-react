@@ -8,64 +8,6 @@
   background-color: var(--color-light);
 }
 
-.global-nav {
-  display: flex;
-  justify-self: flex-start;
-  align-items: center;
-}
-
-.global-nav__list {
-  display: flex;
-  gap: 3.5rem;
-}
-
-.global-nav__item {
-  transition: var(--transition-timing-sec);
-}
-
-.global-nav__item:hover {
-  color: var(--color-gray-hover);
-}
-
-.global-nav__item-title {
-  font-size: var(--font-size-16);
-}
-
 .logo-text {
   font-size: var(--font-size-24);
-}
-
-.global-header__icons {
-  position: relative;
-  display: flex;
-  gap: 2.5rem;
-  justify-self: flex-end;
-}
-
-.global-header__search:hover {
-  cursor: pointer;
-}
-
-.global-header__cart-count {
-  position: absolute;
-  top: -0.7rem;
-  right: -0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-light);
-  font-size: var(--font-size-10);
-  min-height: 1.8rem;
-  min-width: 1.8rem;
-  border-radius: 50%;
-  background-color: var(--color-dark-red);
-}
-
-.global-header__cart:hover + .cart-modal {
-  display: block;
-}
-
-.global-header__icon:active {
-  border: 0.1rem dashed var(--color-gray-hover);
-  padding: 0.3rem;
 }
