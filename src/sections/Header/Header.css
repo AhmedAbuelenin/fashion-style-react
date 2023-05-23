@@ -1,4 +1,7 @@
 .global-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   height: 10rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11,3 +14,20 @@
 .logo-text {
   font-size: var(--font-size-24);
 }
+
+/* Start Responsive */
+@media (max-width: 1000px) {
+  .global-header {
+    display: flex;
+    align-items: center;
+    padding-inline: 2rem;
+  }
+
+  .logo-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* End Responsive */

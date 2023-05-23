@@ -7,7 +7,7 @@
   width: 38rem;
   padding-top: 2.5rem;
   background-color: var(--color-light);
-  box-shadow: 0 0.8rem 4rem var(--color-dark-shadow);
+  box-shadow: 0 0.8rem 4rem var(--color-dark-cart-shadow);
   transition: var(--transition-timing-sec);
 }
 

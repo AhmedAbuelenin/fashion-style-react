@@ -5,6 +5,10 @@
   justify-self: flex-end;
 }
 
+.global-header__menu {
+  display: none;
+}
+
 .global-header__search:hover {
   cursor: pointer;
 }
@@ -32,3 +36,22 @@
   border: 0.1rem dashed var(--color-gray-hover);
   padding: 0.3rem;
 }
+
+/* Start Responsive */
+@media (max-width: 1000px) {
+  .global-header__icons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .global-header__cart {
+    display: none;
+  }
+
+  .global-header__menu {
+    display: inline;
+    cursor: pointer;
+  }
+}
+
+/* End Responsive */

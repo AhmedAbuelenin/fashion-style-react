@@ -20,3 +20,21 @@
 .global-nav__item-title {
   font-size: var(--font-size-16);
 }
+
+/* Start Responsive */
+@media (max-width: 1000px) {
+  .global-nav {
+    display: none;
+  }
+
+  .global-nav__list {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .global-nav--shown {
+    display: flex;
+  }
+}
+
+/* End Responsive */

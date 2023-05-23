@@ -1,0 +1,36 @@
+.global-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: var(--transition-timing-sec);
+}
+
+.global-sidebar--hidden {
+  display: none;
+}
+
+.global-sidebar__content {
+  width: 30%;
+  height: 100%;
+  padding: 3rem;
+  background-color: var(--color-light);
+  box-shadow: 0 0.5rem 1.5rem 0.3rem var(--color-dark-sidebar-shadow);
+}
+
+.global-sidebar__close-container {
+  text-align: end;
+  margin-bottom: rem;
+}
+
+.global-sidebar__close {
+  border: 0.1rem dotted var(--color-gray-hover);
+}
+
+.global-sidebar__close:hover {
+  border: none;
+  color: var(--color-gray-hover);
+  cursor: pointer;
+}

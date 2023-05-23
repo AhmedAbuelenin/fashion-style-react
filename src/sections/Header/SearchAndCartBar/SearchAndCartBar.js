@@ -1,14 +1,15 @@
-import {AiOutlineUser} from 'react-icons/ai'
+import {memo} from 'react'
 import {BsCart2} from 'react-icons/bs'
 import {IoIosSearch} from 'react-icons/io'
+import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
 import {Link, useLocation} from 'react-router-dom'
-import './SearchAndCartBar.css'
 import {CartModal} from '../index'
+import './SearchAndCartBar.css'
 
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
 
-  const {data, totals, onRemoveItem} = props
+  const {data, totals, onRemoveItem, onMenuPress} = props
 
   const {pathname} = useLocation()
 
@@ -16,12 +17,15 @@ const SearchAndCartBar = props => {
     <div className='global-header__icons'>
       <IoIosSearch
         title='Search for a product'
-        size={24}
+        size={28}
         className='global-header__icon global-header__search'
       />
-      <Link title='Your account' to='/login' className='global-header__icon'>
-        <AiOutlineUser size={24} />
-      </Link>
+      <BurgerIcon
+        color='#212121'
+        size={30}
+        onClick={onMenuPress}
+        className='global-header__menu'
+      />
       <Link
         title='View your shopping cart'
         to='/cart'
@@ -41,4 +45,4 @@ const SearchAndCartBar = props => {
   )
 }
 
-export default SearchAndCartBar
+export default memo(SearchAndCartBar)
