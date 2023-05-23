@@ -1,5 +1,5 @@
-export {default as CartItemsTable} from './CartItemsTable/CartItemsTable'
-export {default as CartItem} from './CartItem/CartItem'
+export {default as CartTableList} from './CartTableList/CartTableList'
+export {default as CartTableItem} from './CartTableItem/CartTableItem'
 export {default as CartActions} from './CartActions/CartActions'
 export {default as CartTotals} from './CartTotals/CartTotals'
 export {default as CartTotalsItem} from './CartTotalsItem/CartTotalsItem'

@@ -7,7 +7,7 @@ import {removeCartItem, updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
 import './Cart.css'
-import {CartActions, CartItemsTable, CartTotals} from './index'
+import {CartActions, CartTableList, CartTotals} from './index'
 
 const Cart = () => {
   console.log('Cart is rendering')
@@ -105,7 +105,7 @@ const Cart = () => {
     <ContentWrapper wrapperClass='cart' heading='Cart'>
       {data.length > 0 ? (
         <>
-          <CartItemsTable
+          <CartTableList
             data={data}
             onChangeCount={handleQtyChange}
             onItemRemove={handleItemRemove}

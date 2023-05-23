@@ -1,11 +1,11 @@
 import {memo} from 'react'
 import {cartItemDetails} from '../../../data'
 import '../../../styles/_global.scss'
-import {CartItem} from '../index'
-import './CartItemsTable.css'
+import {CartTableItem} from '../index'
+import './CartTableList.css'
 
-const CartItemsTable = props => {
-  console.log('CartItemsTable is rendering')
+const CartTableList = props => {
+  console.log('CartTableList is rendering')
 
   const {data, onItemRemove, onChangeCount} = props
 
@@ -27,7 +27,7 @@ const CartItemsTable = props => {
       <tbody>
         {data.map(item => (
           <tr key={item.code}>
-            <CartItem {...{item, onItemRemove, onChangeCount}} />
+            <CartTableItem {...{item, onItemRemove, onChangeCount}} />
           </tr>
         ))}
       </tbody>
@@ -39,4 +39,4 @@ function areEquals(prevProps, nextProps) {
   return prevProps.data === nextProps.data
 }
 
-export default memo(CartItemsTable, areEquals)
+export default memo(CartTableList, areEquals)

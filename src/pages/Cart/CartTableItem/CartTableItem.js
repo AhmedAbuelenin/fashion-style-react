@@ -1,10 +1,10 @@
 import {memo} from 'react'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {Counter} from '../../../components'
-import './CartItem.css'
+import './CartTableItem.css'
 
-const CartItem = props => {
-  console.log('CartItem is rendering')
+const CartTableItem = props => {
+  console.log('CartTableItem is rendering')
 
   const {item, onItemRemove, onChangeCount} = props
   const {code, name, price, quantity, images} = item
@@ -55,4 +55,4 @@ function areEquals(prevProps, nextProps) {
   return prevProps.item.quantity === nextProps.item.quantity
 }
 
-export default memo(CartItem, areEquals)
+export default memo(CartTableItem, areEquals)
