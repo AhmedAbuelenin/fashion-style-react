@@ -2,12 +2,16 @@ import {memo} from 'react'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {Counter} from '../../../components'
 import './CartTableItem.css'
+import {Link} from 'react-router-dom'
+import {generateItemIDFromCode} from '../../../utils'
 
 const CartTableItem = props => {
   console.log('CartTableItem is rendering')
 
   const {item, onItemRemove, onChangeCount} = props
   const {code, name, price, quantity, images} = item
+
+  const itemId = generateItemIDFromCode(item.code)
 
   const onCountChange = newQty => {
     onChangeCount({code, quantity: newQty})
@@ -27,13 +31,17 @@ const CartTableItem = props => {
         />
       </td>
       <td className='cart__td-img'>
-        <img
-          src={images[0].baseUrl}
-          alt='item img'
-          className='cart__item-img'
-        />
+        <Link to={`/itemDetailsPage/${itemId}`}>
+          <img
+            src={images[0].baseUrl}
+            alt='item img'
+            className='cart__item-img'
+          />
+        </Link>
       </td>
-      <td className='cart__td-name'>{name}</td>
+      <td className='cart__td-name'>
+        <Link to={`/itemDetailsPage/${itemId}`}>{name}</Link>
+      </td>
       <td className='cart__td-price'>${price.value}</td>
       <td className='cart__td-quantity'>
         <Counter

@@ -1,11 +1,12 @@
 import {useCallback} from 'react'
-import {RxReload as LoadingIcon} from 'react-icons/rx'
 import {IoMdCheckmark as CheckIcon} from 'react-icons/io'
+import {RxReload as LoadingIcon} from 'react-icons/rx'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Loader} from '../../../components'
 import {setFeaturedSelected, toggleItemLoading} from '../../../redux/slices'
 import '../../../styles/_global.scss'
+import {generateItemIDFromCode} from '../../../utils'
 import './FeaturedList.css'
 
 const FeaturedList = ({onQuickViewPress, onAddToCart}) => {
@@ -37,7 +38,7 @@ const FeaturedList = ({onQuickViewPress, onAddToCart}) => {
           return (
             <li key={item.code} className='featured__item'>
               <div className='featured__img-container'>
-                <Link to={`/itemDetailsPage/${code.replace('_group_', '')}`}>
+                <Link to={`/itemDetailsPage/${generateItemIDFromCode(code)}`}>
                   <img
                     src={images[0].baseUrl}
                     alt='item img'
