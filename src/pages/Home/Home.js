@@ -9,10 +9,6 @@ const Home = () => {
   console.log('Home page is rendered')
 
   const [isProductModalVisible, setIsProductModalVisible] = useState(false)
-  console.log(
-    '🚀 ~ file: Home.js:12 ~ Home ~ isProductModalVisible:',
-    isProductModalVisible
-  )
   const [selectedProduct, setSelectedProduct] = useState(null)
 
   const dispatch = useDispatch()
