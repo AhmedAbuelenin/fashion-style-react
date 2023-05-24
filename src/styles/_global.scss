@@ -49,6 +49,13 @@
   margin-top: 0.5rem;
 }
 
+.global-general-err-msg {
+  display: block;
+  font-size: var(--font-size-16);
+  color: var(--color-red-err);
+  text-align: center;
+}
+
 input.global-input-err {
   border-color: var(--color-red-err);
 }

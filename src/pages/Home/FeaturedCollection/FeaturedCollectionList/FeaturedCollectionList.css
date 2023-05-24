@@ -1,0 +1,14 @@
+.featured-collection__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 3rem;
+}
+
+/* Start Responsive */
+@media (max-width: 985px) {
+  .featured-collection__list {
+    justify-content: center;
+  }
+}
+
+/* End Responsive */

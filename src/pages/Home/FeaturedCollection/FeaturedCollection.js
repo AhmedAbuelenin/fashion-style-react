@@ -1,8 +1,7 @@
 import {ProductDetails} from '../../../components'
 import '../../../styles/_global.scss'
-import {ProductModal} from '../index'
+import {ProductModal, FeaturedCollectionList} from '../index'
 import './FeaturedCollection.css'
-import FeaturedList from './FeaturedList'
 
 const FeaturedCollection = props => {
   const {
@@ -16,12 +15,12 @@ const FeaturedCollection = props => {
 
   return (
     <div className='featured'>
-      <h2 className='featured__heading'>Featured Collection</h2>
-      <p className='featured__description'>
+      <h2 className='featured-collection__heading'>Featured Collection</h2>
+      <p className='featured-collection__description'>
         A powerful headline about your product’s features to give focus to your
         chosen product featured
       </p>
-      <FeaturedList {...{onQuickViewPress, onAddToCart}} />
+      <FeaturedCollectionList {...{onQuickViewPress, onAddToCart}} />
 
       {isModalVisible ? (
         <ProductModal {...{onModalPress, onClose}}>
