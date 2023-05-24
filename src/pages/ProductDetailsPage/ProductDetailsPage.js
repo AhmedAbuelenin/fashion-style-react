@@ -1,18 +1,18 @@
 import {useCallback, useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import {Loader, ItemDetails} from '../../components'
+import {Loader, ProductDetails} from '../../components'
 import {getProduct} from '../../services'
 import '../../styles/_global.scss'
-import './ItemDetailsPage.css'
+import './ProductDetailsPage.css'
 
-const ItemDetailsPage = () => {
-  console.log('ItemDetailsPage is rendered')
+const ProductDetailsPage = () => {
+  console.log('ProductDetailsPage is rendered')
 
   const {id} = useParams()
 
   const [data, setData] = useState(null)
   const [qty, setQty] = useState('1')
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
 
   const item = {
     name: data?.name,
@@ -25,13 +25,13 @@ const ItemDetailsPage = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        setLoading(true)
+        // setLoading(true)
         const _data = await getProduct(id)
         setData(_data.product)
       } catch (error) {
         console.log('🚀 ~ fetchDetails ~ error:', error)
       } finally {
-        setLoading(false)
+        // setLoading(false)
       }
     }
 
@@ -61,7 +61,7 @@ const ItemDetailsPage = () => {
   if (data) {
     return (
       <div className='item-details-page'>
-        <ItemDetails
+        <ProductDetails
           item={item}
           qty={qty}
           onTextChange={handleQtyChange}
@@ -88,4 +88,4 @@ const ItemDetailsPage = () => {
   // }
 }
 
-export default ItemDetailsPage
+export default ProductDetailsPage

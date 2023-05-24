@@ -9,7 +9,7 @@ import {
   Cart,
   NoPage,
   Shop,
-  ItemDetailsPage,
+  ProductDetailsPage,
   Checkout
 } from './pages'
 import {ScrollToTopButton} from './components'
@@ -26,7 +26,10 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
-        <Route path='/itemDetailsPage/:id' element={<ItemDetailsPage />} />
+        <Route
+          path='/productDetailsPage/:id'
+          element={<ProductDetailsPage />}
+        />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />

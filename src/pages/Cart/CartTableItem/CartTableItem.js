@@ -31,7 +31,7 @@ const CartTableItem = props => {
         />
       </td>
       <td className='cart__td-img'>
-        <Link to={`/itemDetailsPage/${itemId}`}>
+        <Link to={`/productDetailsPage/${itemId}`}>
           <img
             src={images[0].baseUrl}
             alt='item img'
@@ -40,7 +40,7 @@ const CartTableItem = props => {
         </Link>
       </td>
       <td className='cart__td-name'>
-        <Link to={`/itemDetailsPage/${itemId}`}>{name}</Link>
+        <Link to={`/productDetailsPage/${itemId}`}>{name}</Link>
       </td>
       <td className='cart__td-price'>${price.value}</td>
       <td className='cart__td-quantity'>

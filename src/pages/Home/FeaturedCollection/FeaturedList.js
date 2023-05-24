@@ -38,7 +38,8 @@ const FeaturedList = ({onQuickViewPress, onAddToCart}) => {
           return (
             <li key={item.code} className='featured__item'>
               <div className='featured__img-container'>
-                <Link to={`/itemDetailsPage/${generateItemIDFromCode(code)}`}>
+                <Link
+                  to={`/productDetailsPage/${generateItemIDFromCode(code)}`}>
                   <img
                     src={images[0].baseUrl}
                     alt='item img'

@@ -1,27 +1,22 @@
-import './Home.css'
-import {useCallback, useEffect, useRef, useState} from 'react'
-import {FeaturedCollection, Hero, ItemModal} from './index'
-import {ItemDetails} from '../../components'
+import {useCallback, useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {getFeaturedCollection} from '../../redux/thunk'
 import {setCartItem} from '../../redux/slices'
+import {getFeaturedCollection} from '../../redux/thunk'
+import './Home.css'
+import {FeaturedCollection, Hero} from './index'
 
 const Home = () => {
   console.log('Home page is rendered')
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [isProductModalVisible, setIsProductModalVisible] = useState(false)
+  console.log(
+    '🚀 ~ file: Home.js:12 ~ Home ~ isProductModalVisible:',
+    isProductModalVisible
+  )
+  const [selectedProduct, setSelectedProduct] = useState(null)
 
   const dispatch = useDispatch()
   const {data} = useSelector(state => state.featuredCollection)
-  const itemRef = useRef(null)
-  const item = itemRef.current
-  const _item = {
-    name: item?.name,
-    description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
-    price: item?.price.value,
-    image: item?.images[0].baseUrl,
-    categoryName: item?.categoryName
-  }
 
   useEffect(() => {
     const fetchProducts = () => {
@@ -33,24 +28,31 @@ const Home = () => {
     }
   }, [])
 
-  const toggleVisibleModal = () => {
-    setIsVisible(visible => !visible)
+  const toggleVisibleProductModal = useCallback(() => {
+    setIsProductModalVisible(visible => !visible)
+  }, [])
+
+  const prepareSelectedProductToView = item => {
+    const _item = {
+      name: item?.name,
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
+      price: item?.price.value,
+      image: item?.images[0].baseUrl,
+      categoryName: item?.categoryName
+    }
+    setSelectedProduct(_item)
   }
 
-  const showModal = useCallback(item => {
-    itemRef.current = item
-    toggleVisibleModal()
+  const showProductModal = useCallback(item => {
+    prepareSelectedProductToView(item)
+    toggleVisibleProductModal()
   }, [])
 
-  const closeModal = useCallback(() => {
-    toggleVisibleModal()
-  }, [])
-
-  const stopClicksFromChildren = useCallback(event => {
+  const disableClickOnProductModal = useCallback(event => {
     event.stopPropagation()
   }, [])
 
-  const addItemToCart = useCallback(item => {
+  const addProductToCart = useCallback(item => {
     dispatch(setCartItem(item))
   }, [])
 
@@ -60,15 +62,13 @@ const Home = () => {
       <div className='content-wrapper'>
         <FeaturedCollection
           {...{data}}
-          onQuickViewPress={showModal}
-          onAddToCart={addItemToCart}
+          selectedProduct={selectedProduct}
+          isModalVisible={isProductModalVisible}
+          onQuickViewPress={showProductModal}
+          onAddToCart={addProductToCart}
+          onModalPress={disableClickOnProductModal}
+          onClose={toggleVisibleProductModal}
         />
-
-        {isVisible ? (
-          <ItemModal onModalPress={stopClicksFromChildren} onClose={closeModal}>
-            <ItemDetails item={_item} />
-          </ItemModal>
-        ) : null}
       </div>
     </>
   )
