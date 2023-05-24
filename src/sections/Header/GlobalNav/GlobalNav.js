@@ -1,7 +1,7 @@
+import {memo} from 'react'
 import {Link} from 'react-router-dom'
 import {mainPagesData} from '../../../data'
 import './GlobalNav.css'
-import {memo} from 'react'
 
 const GlobalNav = ({visibleSideBar, onLinkPress}) => {
   console.log('GlobalNav is rendering')

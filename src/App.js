@@ -1,18 +1,16 @@
+import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import './App.css'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import {Footer, Header} from './sections'
-import {
-  Home,
-  Blog,
-  Contact,
-  Login,
-  Cart,
-  NoPage,
-  Shop,
-  ProductDetailsPage,
-  Checkout
-} from './pages'
 import {ScrollToTopButton} from './components'
+import {
+  Cart,
+  Checkout,
+  Contact,
+  Home,
+  NoPage,
+  ProductDetailsPage,
+  Shop
+} from './pages'
+import {Footer, Header} from './sections'
 
 const App = () => {
   return (
@@ -20,10 +18,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/blog' element={<Blog />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route
