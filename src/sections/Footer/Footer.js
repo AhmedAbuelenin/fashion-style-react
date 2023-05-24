@@ -8,7 +8,7 @@ const Footer = () => {
       <div className='footer__content'>
         <div className='footer__top'>
           <div className='footer__logo-container'>
-            <span>Fashion Mode</span>
+            <span>Fashion Style</span>
             <p className='footer__slogan'>Fashion that fits your lifestyle.</p>
           </div>
           <nav className='footer__nav footer__nav-quick-links'>
@@ -52,7 +52,7 @@ const Footer = () => {
             })}
           </div>
           <span className='footer__copyright'>
-            © 2023 Fashion Mode. Proudly powered by Fashion Mode
+            © 2023 Fashion Style. Proudly powered by Fashion Style
           </span>
         </div>
       </div>

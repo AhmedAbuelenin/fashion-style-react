@@ -42,7 +42,7 @@ const Header = () => {
         onWindowClick={toggleVisibleSideBar}
       />
       <Link to='/' className='logo-text'>
-        Fashion Mode
+        Fashion Style
       </Link>
       <SearchAndCartBar
         {...{data, totals}}
