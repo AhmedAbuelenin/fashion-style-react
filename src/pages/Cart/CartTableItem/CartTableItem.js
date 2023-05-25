@@ -9,7 +9,7 @@ const CartTableItem = props => {
   console.log('CartTableItem is rendering')
 
   const {item, onItemRemove, onChangeCount} = props
-  const {code, name, price, quantity, images} = item
+  const {code, name, price, quantity, image} = item
 
   const itemId = generateItemIDFromCode(item.code)
 
@@ -32,17 +32,13 @@ const CartTableItem = props => {
       </td>
       <td className='cart__td-img'>
         <Link to={`/productDetailsPage/${itemId}`}>
-          <img
-            src={images[0].baseUrl}
-            alt='item img'
-            className='cart__item-img'
-          />
+          <img src={image} alt='item img' className='cart__item-img' />
         </Link>
       </td>
       <td className='cart__td-name'>
         <Link to={`/productDetailsPage/${itemId}`}>{name}</Link>
       </td>
-      <td className='cart__td-price'>${price.value}</td>
+      <td className='cart__td-price'>${price}</td>
       <td className='cart__td-quantity'>
         <Counter
           containerClass='cart__counter'
@@ -52,9 +48,7 @@ const CartTableItem = props => {
           onChangeCount={onCountChange}
         />
       </td>
-      <td className='cart__td-subtotal'>
-        ${(price.value * quantity).toFixed(2)}
-      </td>
+      <td className='cart__td-subtotal'>${(price * quantity).toFixed(2)}</td>
     </>
   )
 }
