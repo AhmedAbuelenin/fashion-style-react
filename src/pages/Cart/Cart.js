@@ -1,14 +1,12 @@
-import React, {useCallback, useEffect, useRef} from 'react'
-import {useForm} from 'react-hook-form'
+import React, {useCallback, useRef, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {ContentWrapper} from '../../components'
-import {removeCartItem, updateCartItems} from '../../redux/slices'
+import {updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
 import './Cart.css'
 import {CartActions, CartTableList, CartTotals} from './index'
-import {calcCartTotals} from '../../utils'
 
 const Cart = () => {
   console.log('Cart is rendering')
@@ -16,104 +14,40 @@ const Cart = () => {
   const dispatch = useDispatch()
   const {data} = useSelector(state => state.cart)
   const itemsObjRef = useRef({})
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-    setValue,
-    setError,
-    watch
-  } = useForm({
-    defaultValues: {
-      loading: false,
-      couponCode: '',
-      isCouponValid: false,
-      subtotal: 0,
-      isCartUpdateNeeded: false
-    }
-  })
 
-  useEffect(() => {
-    const subscription = watch(({couponCode, isCouponValid}, {name, type}) => {
-      if (couponCode.length === 0 && isCouponValid) {
-        setValue('isCouponValid', false)
-      }
-    })
+  const [isCartUpdateNeeded, setIsCartUpdateNeeded] = useState(false)
+  const [isCouponValid, setIsCouponValid] = useState(false)
 
-    return () => subscription.unsubscribe()
-  }, [watch])
-
-  useEffect(() => {
-    const getCartTotals = () => {
-      setValue('subtotal', calcCartTotals(data).price)
-    }
-
-    getCartTotals()
-  }, [data])
-
-  const handleCartUpdateStatus = status => {
-    setValue('isCartUpdateNeeded', status)
+  const handleEnableStatusOfCartUpdateBtn = status => {
+    setIsCartUpdateNeeded(status)
   }
 
-  const handleQtyChange = item => {
+  const handleQtyChange = useCallback(item => {
     itemsObjRef.current[item.code] = item
-    handleCartUpdateStatus(true)
-  }
-
-  const handleItemRemove = itemId => {
-    dispatch(removeCartItem(itemId))
-  }
-
-  const showCouponCodeValidationErr = msg => {
-    setError('couponCode', {type: 'validation', message: msg})
-  }
-
-  const handleCouponSubmit = useCallback(data => {
-    //Call api endpoint instead to validate coupon code here
-    if (!data.couponCode) {
-      showCouponCodeValidationErr('Field is required')
-      return
-    }
-
-    setValue('loading', true)
-    setTimeout(() => {
-      if (data.couponCode === 'testCoupon') {
-        setValue('isCouponValid', true)
-        return
-      }
-
-      showCouponCodeValidationErr('Invalid coupon code')
-      setValue('isCouponValid', false)
-    }, 1000)
-    setTimeout(() => {
-      setValue('loading', false)
-    }, 1050)
+    handleEnableStatusOfCartUpdateBtn(true)
   }, [])
 
   const handleCartUpdate = useCallback(() => {
     const items = convertObjToArray(itemsObjRef.current)
     dispatch(updateCartItems(items))
-    handleCartUpdateStatus(false)
+    handleEnableStatusOfCartUpdateBtn(false)
+  }, [])
+
+  const handleCouponStatus = useCallback(couponStatus => {
+    setIsCouponValid(couponStatus)
   }, [])
 
   return (
     <ContentWrapper wrapperClass='cart' heading='Cart'>
       {data.length > 0 ? (
         <>
-          <CartTableList
-            data={data}
-            onChangeCount={handleQtyChange}
-            onItemRemove={handleItemRemove}
-          />
+          <CartTableList {...{data}} onChangeCount={handleQtyChange} />
           <CartActions
-            {...{register, errors, watch}}
-            onSubmit={handleSubmit(handleCouponSubmit)}
+            {...{isCartUpdateNeeded}}
+            onApplyCoupon={handleCouponStatus}
             onUpdateCart={handleCartUpdate}
           />
-          <CartTotals
-            hasValidCoupon={watch('isCouponValid')}
-            subtotal={watch('subtotal')}
-          />
+          <CartTotals {...{data, isCouponValid}} />
         </>
       ) : (
         <>

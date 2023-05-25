@@ -1,39 +1,24 @@
-import {useMemo} from 'react'
-import {CouponCodeForm, Loader} from '../../../components'
+import {memo} from 'react'
+import {CouponCodeForm} from '../../../components'
 import './CartActions.css'
 
 const CartActions = props => {
-  const {register, errors, watch, onSubmit, onUpdateCart} = props
+  console.log('CartActions is rendering')
 
-  const memoObj = useMemo(() => {
-    return {register, errors, onSubmit}
-  }, [register, errors['couponCode']])
+  const {isCartUpdateNeeded, onUpdateCart, onApplyCoupon} = props
 
   return (
     <div className='cart__actions-container'>
-      <div className='cart__form-loader-container'>
-        <CouponCodeForm
-          {...{
-            register: memoObj.register,
-            errors: memoObj.errors,
-            onSubmit: memoObj.onSubmit,
-            isCouponValid: watch('isCouponValid')
-          }}
-        />
-        {watch('loading') ? (
-          <div className='cart__loader'>
-            <Loader />
-          </div>
-        ) : null}
-      </div>
+      <CouponCodeForm {...{onApplyCoupon}} />
+      <div className='cart__form-loader-container'></div>
       <button
         className='global-button cart__button'
         onClick={onUpdateCart}
-        disabled={!watch('isCartUpdateNeeded')}>
+        disabled={!isCartUpdateNeeded}>
         UPDATE CART
       </button>
     </div>
   )
 }
 
-export default CartActions
+export default memo(CartActions)

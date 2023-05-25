@@ -1,24 +1,28 @@
-import {memo} from 'react'
+import {memo, useCallback} from 'react'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
-import {Counter} from '../../../components'
-import './CartTableItem.css'
+import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {Counter} from '../../../components'
+import {removeCartItem} from '../../../redux/slices'
 import {generateItemIDFromCode} from '../../../utils'
+import './CartTableItem.css'
 
 const CartTableItem = props => {
   console.log('CartTableItem is rendering')
 
-  const {item, onItemRemove, onChangeCount} = props
+  const {item, onChangeCount} = props
   const {code, name, price, quantity, image} = item
 
   const itemId = generateItemIDFromCode(item.code)
 
-  const onCountChange = newQty => {
-    onChangeCount({code, quantity: newQty})
-  }
+  const dispatch = useDispatch()
 
-  const onRemoveItem = () => {
-    onItemRemove(code)
+  const onCountChange = useCallback(newQty => {
+    onChangeCount({code, quantity: newQty})
+  }, [])
+
+  const removeItemFromCart = () => {
+    dispatch(removeCartItem(itemId))
   }
 
   return (
@@ -27,7 +31,7 @@ const CartTableItem = props => {
         <CloseIcon
           className='cart__delete-icon'
           size={18}
-          onClick={onRemoveItem}
+          onClick={removeItemFromCart}
         />
       </td>
       <td className='cart__td-img'>

@@ -5,14 +5,6 @@
   margin: 3rem 0 12rem;
 }
 
-.cart__form-loader-container {
-  display: flex;
-}
-
-.cart__loader {
-  padding-top: 1.4rem;
-}
-
 .cart__button {
   padding-top: 2rem;
   padding-bottom: 2rem;

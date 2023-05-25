@@ -1,21 +1,86 @@
-import {memo} from 'react'
+import {memo, useCallback, useEffect} from 'react'
+import {useForm} from 'react-hook-form'
 import '../../styles/_global.scss'
+import Loader from '../Loader/Loader'
 import './CouponCodeForm.css'
 
-const CouponCodeForm = props => {
+const CouponForm = ({onApplyCoupon}) => {
   console.log('CouponCodeForm is rendering')
 
-  const {register, errors, onSubmit, isCouponValid} = props
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+    setValue,
+    setError,
+    watch
+  } = useForm({
+    defaultValues: {
+      coupon: '',
+      isValid: false,
+      loading: false
+    }
+  })
+
+  useEffect(() => {
+    const subscription = watch(({coupon, isValid}, {name, type}) => {
+      if (coupon.length === 0 && isValid) {
+        handleInvalidStatus()
+      }
+    })
+
+    return () => subscription.unsubscribe()
+  }, [watch])
+
+  const handleInvalidStatus = () => {
+    setValue('isValid', false)
+    onApplyCoupon(false)
+  }
+
+  const handleValidStatus = () => {
+    setValue('isValid', true)
+    onApplyCoupon(true)
+  }
+
+  const showValidationErr = msg => {
+    setError('coupon', {type: 'validation', message: msg})
+  }
+
+  const handleLoading = status => {
+    setValue('loading', status)
+  }
+
+  const onSubmit = useCallback(data => {
+    //Call api endpoint instead to validate coupon code here
+    if (!data.coupon) {
+      showValidationErr('Field is required')
+      return
+    }
+
+    handleLoading(true)
+    setTimeout(() => {
+      if (data.coupon === 'testCoupon') {
+        handleValidStatus()
+        return
+      }
+
+      showValidationErr('Invalid coupon code')
+      handleInvalidStatus()
+    }, 1000)
+    setTimeout(() => {
+      handleLoading(false)
+    }, 1050)
+  }, [])
 
   return (
     <div className='coupon-form-container'>
-      <form onSubmit={onSubmit} className='coupon-form'>
+      <form onSubmit={handleSubmit(onSubmit)} className='coupon-form'>
         <input
-          {...register('couponCode')}
+          {...register('coupon')}
           type='text'
           placeholder='Coupon code'
           className={`global-text-input ${
-            isCouponValid ? 'coupon-form__input-bg' : ''
+            watch('isValid') ? 'coupon-form__input-bg' : ''
           }`}
         />
         <input
@@ -24,21 +89,17 @@ const CouponCodeForm = props => {
           value='APPLY COUPON'
           className='global-button coupon-form__button'
         />
+        {watch('loading') ? (
+          <div className='coupon-form__loader'>
+            <Loader />
+          </div>
+        ) : null}
       </form>
-      {errors.couponCode ? (
-        <span className='global-err-msg'>{errors.couponCode.message}</span>
+      {errors.coupon ? (
+        <span className='global-err-msg'>{errors.coupon.message}</span>
       ) : null}
     </div>
   )
 }
 
-function areEquals(prevProps, nextProps) {
-  return (
-    prevProps.register === nextProps.register &&
-    prevProps.errors['couponCode'] === nextProps.errors['couponCode'] &&
-    prevProps.onSubmit === nextProps.onSubmit &&
-    prevProps.isCouponValid === nextProps.isCouponValid
-  )
-}
-
-export default memo(CouponCodeForm, areEquals)
+export default memo(CouponForm)

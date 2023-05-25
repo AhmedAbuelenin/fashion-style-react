@@ -7,7 +7,7 @@ import './CartTableList.css'
 const CartTableList = props => {
   console.log('CartTableList is rendering')
 
-  const {data, onItemRemove, onChangeCount} = props
+  const {data, onChangeCount} = props
 
   return (
     <table>
@@ -27,7 +27,7 @@ const CartTableList = props => {
       <tbody>
         {data.map(item => (
           <tr key={item.code}>
-            <CartTableItem {...{item, onItemRemove, onChangeCount}} />
+            <CartTableItem {...{item, onChangeCount}} />
           </tr>
         ))}
       </tbody>

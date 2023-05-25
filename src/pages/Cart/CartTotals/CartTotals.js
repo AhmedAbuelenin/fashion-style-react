@@ -1,16 +1,27 @@
-import {memo} from 'react'
+import {memo, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {cartSubtitles} from '../../../data'
 import '../../../styles/_global.scss'
+import {calcCartTotals} from '../../../utils'
 import {CartTotalsItem} from '../index'
 import './CartTotals.css'
 
-const CartTotals = ({subtotal, hasValidCoupon}) => {
+const CartTotals = ({data, isCouponValid}) => {
   console.log('CartTotals is rendering')
 
-  const discount = hasValidCoupon ? subtotal * 0.05 : 0
+  const [subtotal, setSubtotal] = useState(0)
 
-  const data = cartSubtitles.map(item => {
+  const discount = isCouponValid ? subtotal * 0.05 : 0
+
+  useEffect(() => {
+    const getCartTotals = () => {
+      setSubtotal(calcCartTotals(data).price)
+    }
+
+    getCartTotals()
+  }, [data])
+
+  const _data = cartSubtitles.map(item => {
     if (item.name !== 'discount') return item
     if (discount) return item
     return null
@@ -33,7 +44,7 @@ const CartTotals = ({subtotal, hasValidCoupon}) => {
     <div className='cart-totals'>
       <span className='cart-totals__heading'>Cart totals</span>
       <div className='cart-totals__content'>
-        {data.map(item => {
+        {_data.map(item => {
           if (item) {
             const {id, name} = item
             return (
