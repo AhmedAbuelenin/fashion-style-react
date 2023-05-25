@@ -4,7 +4,7 @@ export function calcCartTotals(products) {
 
   products.forEach(product => {
     qtySum += product.quantity
-    priceSum += product.quantity * product.price.value
+    priceSum += product.quantity * product.price
   })
 
   return {qty: qtySum, price: priceSum}

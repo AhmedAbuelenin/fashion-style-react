@@ -17,13 +17,16 @@ const cartSlice = createSlice({
       state.data = state.data.map(item => {
         if (item.code === _payload.code) {
           isExist = true
-          return {...item, quantity: item.quantity + 1}
+          const oldQty = item.quantity
+          const newQty = _payload.quantity || 1
+          const newTotalQty = oldQty + newQty
+          return {...item, quantity: newTotalQty}
         }
         return item
       })
 
       if (!isExist) {
-        state.data.push({..._payload, quantity: 1})
+        state.data = [{..._payload, quantity: 1}, ...state.data]
       }
     },
     removeCartItem: (state, action) => {

@@ -1,17 +1,10 @@
-import {ProductDetails} from '../../../components'
+import {Loader} from '../../../components'
 import '../../../styles/_global.scss'
-import {ProductModal, FeaturedCollectionList} from '../index'
+import {FeaturedCollectionList} from '../index'
 import './FeaturedCollection.css'
 
-const FeaturedCollection = props => {
-  const {
-    isModalVisible,
-    selectedProduct,
-    onQuickViewPress,
-    onAddToCart,
-    onModalPress,
-    onClose
-  } = props
+const FeaturedCollection = ({featuredResult}) => {
+  const {data, loading, status} = featuredResult
 
   return (
     <div className='featured'>
@@ -20,12 +13,14 @@ const FeaturedCollection = props => {
         A powerful headline about your product’s features to give focus to your
         chosen product featured
       </p>
-      <FeaturedCollectionList {...{onQuickViewPress, onAddToCart}} />
-
-      {isModalVisible ? (
-        <ProductModal {...{onModalPress, onClose}}>
-          <ProductDetails item={selectedProduct} />
-        </ProductModal>
+      {data.length > 0 ? (
+        <FeaturedCollectionList {...{data}} />
+      ) : loading ? (
+        <div className='centered-container'>
+          <Loader />
+        </div>
+      ) : status !== 'ok' ? (
+        <span className='global-general-err-msg'>{status.toUpperCase()}</span>
       ) : null}
     </div>
   )

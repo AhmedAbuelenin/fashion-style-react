@@ -5,12 +5,12 @@ const CartModalItems = ({data, onRemoveItem}) => {
   return (
     <ul className='cart-modal__list'>
       {data.map(item => {
-        const {code, name, quantity, price, images} = item
+        const {code, name, quantity, price, image} = item
         return (
           <li key={code} className='cart-modal__item global-divider'>
             <div className='cart-modal__img-container'>
               <img
-                src={images[0].baseUrl}
+                src={image}
                 alt='cart item img'
                 className='cart-modal__img'
               />
@@ -24,7 +24,7 @@ const CartModalItems = ({data, onRemoveItem}) => {
             <div className='cart-modal__title-price-container'>
               <span className='cart-modal__item-title'>{name}</span>
               <span className='cart-modal__item-price'>
-                {`${quantity} x $${price.value}`}
+                {`${quantity} x $${price}`}
               </span>
             </div>
           </li>

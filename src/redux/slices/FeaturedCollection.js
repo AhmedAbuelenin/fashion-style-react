@@ -1,3 +1,4 @@
+import {generateItemIDFromCode} from '../../utils'
 import {getFeaturedCollection} from '../thunk/index'
 import {createSlice} from '@reduxjs/toolkit'
 
@@ -16,7 +17,7 @@ const featuredCollectionSlice = createSlice({
     },
     setFeaturedSelected: (state, action) => {
       state.data = state.data.map(item => {
-        if (item.code === action.payload) {
+        if (generateItemIDFromCode(item.code) === action.payload) {
           return {...item, selected: true}
         }
         return item
@@ -24,7 +25,7 @@ const featuredCollectionSlice = createSlice({
     },
     toggleItemLoading: (state, action) => {
       state.data = state.data.map(item => {
-        if (item.code === action.payload) {
+        if (generateItemIDFromCode(item.code) === action.payload) {
           return {...item, loading: !item.loading}
         }
         return item

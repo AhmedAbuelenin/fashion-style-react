@@ -1,16 +1,14 @@
-import {useRef} from 'react'
 import '../../styles/_global.scss'
-import {Counter} from '../index'
+import {formatProductData} from '../../utils'
 import './ProductDetails.css'
+import ProductDetailsAction from './ProductDetailsAction/ProductDetailsAction'
 
-const ProductDetails = props => {
-  const {name, price, description, image, categoryName} = props.item
+const ProductDetails = ({item}) => {
+  console.log('ProductDetails is rendering')
 
-  const itemRef = useRef(props.item)
+  const formattedItem = formatProductData(item)
 
-  const handleCountChange = count => {
-    itemRef.current['quantity'] = count
-  }
+  const {name, price, description, image, categoryName} = formattedItem
 
   return (
     <div className='product-details'>
@@ -19,14 +17,8 @@ const ProductDetails = props => {
         <span className='product-details__name'>{name}</span>
         <span className='product-details__price'>${price}</span>
         <p className='product-details__description'>{description}</p>
-
-        <div className='product-details__action-container'>
-          <Counter onChangeCount={handleCountChange} />
-          <button className='global-button product-details__button'>
-            ADD TO CART
-          </button>
-        </div>
-        <div className='global-divider product-details__divider'></div>
+        <ProductDetailsAction item={formattedItem} />
+        <hr className='global-divider product-details__divider' />
         <span className='product-details__category'>
           CATEGORY: {`${categoryName}`}
         </span>
