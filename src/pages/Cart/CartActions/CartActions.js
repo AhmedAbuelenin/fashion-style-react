@@ -10,7 +10,6 @@ const CartActions = props => {
   return (
     <div className='cart__actions-container'>
       <CouponCodeForm {...{onApplyCoupon}} />
-      <div className='cart__form-loader-container'></div>
       <button
         className='global-button cart__button'
         onClick={onUpdateCart}

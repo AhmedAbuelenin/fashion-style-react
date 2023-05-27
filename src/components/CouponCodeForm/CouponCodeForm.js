@@ -23,7 +23,7 @@ const CouponForm = ({onApplyCoupon}) => {
   })
 
   useEffect(() => {
-    const subscription = watch(({coupon, isValid}, {name, type}) => {
+    const subscription = watch(({coupon, isValid}) => {
       if (coupon.length === 0 && isValid) {
         handleInvalidStatus()
       }
@@ -79,23 +79,23 @@ const CouponForm = ({onApplyCoupon}) => {
           {...register('coupon')}
           type='text'
           placeholder='Coupon code'
-          className={`global-text-input ${
-            watch('isValid') ? 'coupon-form__input-bg' : ''
+          className={`global-text-input coupon-form__input ${
+            watch('isValid') && !watch('loading')
+              ? 'coupon-form__input-check-bg'
+              : ''
           }`}
         />
         <input
           type='submit'
-          placeholder='APPLY COUPON'
           value='APPLY COUPON'
           className='global-button coupon-form__button'
         />
-        {watch('loading') ? (
-          <div className='coupon-form__loader'>
-            <Loader />
-          </div>
-        ) : null}
       </form>
-      {errors.coupon ? (
+      {watch('loading') ? (
+        <div className='coupon-form__loader-container'>
+          <Loader className='coupon-form__loader' />
+        </div>
+      ) : errors.coupon ? (
         <span className='global-err-msg'>{errors.coupon.message}</span>
       ) : null}
     </div>

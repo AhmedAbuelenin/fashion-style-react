@@ -1,24 +1,38 @@
-.coupon-form-container {
-  margin-inline-end: 2rem;
-  height: 9rem;
-}
-
 .coupon-form {
   display: flex;
 }
 
-.coupon-form__loader {
-  padding-top: 1.4rem;
-  margin-inline-start: 1.3rem;
+.coupon-form__loader-container {
+  margin-top: 1rem;
 }
 
-.coupon-form__input-bg {
+.coupon-form__loader {
+  border: 0.4rem solid var(--color-light-gray);
+  border-top: 0.4rem solid var(--color-primary);
+  width: 2rem;
+  height: 2rem;
+}
+
+.coupon-form__input-check-bg {
   background-image: url(../../assets/icons/check-mark.png);
   background-repeat: no-repeat;
   background-position: right 1.1rem center;
 }
 
 .coupon-form__button {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
+
+/* Start Responsive */
+@media (max-width: 750px) {
+  .coupon-form-container {
+    margin-bottom: 2rem;
+  }
+
+  .coupon-form__input {
+    width: 100%;
+  }
+}
+
+/* End Responsive */

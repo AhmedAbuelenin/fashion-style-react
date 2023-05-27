@@ -23,3 +23,12 @@
   padding-top: 1.7rem;
   padding-bottom: 1.7rem;
 }
+
+/* Start Responsive */
+@media (max-width: 1000px) {
+  .cart-totals {
+    width: 100%;
+  }
+}
+
+/* End Responsive */
