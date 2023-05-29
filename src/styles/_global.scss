@@ -1,6 +1,6 @@
 .content-wrapper {
   max-width: var(--width-content);
-  margin: 12rem auto 17rem;
+  margin: 10rem auto 17rem;
   padding-inline: 2rem;
 }
 
@@ -62,6 +62,20 @@ input.global-input-err {
 
 input.global-input-focused:focus {
   border-color: var(--color-dark-border);
+}
+
+.global-input-label {
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1.5rem;
+}
+
+.global-label-mandatory-sign {
+  color: var(--color-red-mandatory);
+  margin-inline-start: 0.3rem;
+}
+
+.global-label-optional {
+  color: var(--color-primary);
 }
 
 .global-text-input {

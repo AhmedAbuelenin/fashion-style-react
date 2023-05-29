@@ -1,0 +1,21 @@
+@mixin flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@mixin flexVCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexWGap($gap: 2rem) {
+  display: flex;
+  gap: $gap;
+}

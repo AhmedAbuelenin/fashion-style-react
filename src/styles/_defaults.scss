@@ -56,6 +56,10 @@ input {
   outline: none;
 }
 
+textarea {
+  outline: none;
+}
+
 input[type='submit'] {
   cursor: pointer;
   font-size: var(--font-size-14);
