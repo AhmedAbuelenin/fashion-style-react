@@ -46,10 +46,11 @@ const ContactForm = () => {
           className='contact-form'>
           <div className='contact-form__inputs-container'>
             <InputField
+              data-testid='name'
               required
               label='Name'
               {...{register}}
-              pattern={/^[a-zA-Z\s]{3,20}$/}
+              pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,20}$/}
               error={
                 errors['Name']?.type === 'required'
                   ? 'This field is required'
@@ -59,6 +60,7 @@ const ContactForm = () => {
               }
             />
             <InputField
+              data-testid='email'
               required
               label='Email'
               {...{register}}
@@ -76,7 +78,9 @@ const ContactForm = () => {
             required
             label='Message'
             {...{register}}
-            pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z0-9@!#$%^.;,-\s]{3,800}$/}
+            pattern={
+              /^(?=(?:.*[a-zA-Z0-9@!#$%^.;,-]){3})[a-zA-Z0-9@!#$%^.;,-\s]{3,800}$/
+            }
             error={
               errors['Message']?.type === 'required'
                 ? 'This field is required'

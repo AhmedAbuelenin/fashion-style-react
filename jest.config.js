@@ -9,6 +9,6 @@ module.exports = {
     '\\.[jt]sx?$': 'babel-jest'
   },
   moduleNameMapper: {
-    '^.+\\.(css|less)$': 'identity-obj-proxy'
+    '^.+\\.(css|scss)$': 'identity-obj-proxy'
   }
 }
