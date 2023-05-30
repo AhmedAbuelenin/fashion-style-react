@@ -1,7 +1,7 @@
 import {memo} from 'react'
 import '../../styles/_global.scss'
 import {FieldWrapper, ValidationError} from '../index'
-import './InputField.css'
+import './InputField.scss'
 
 const InputField = props => {
   console.log('InputField is rendering')
@@ -9,7 +9,7 @@ const InputField = props => {
   const {required = false, register, pattern, label, error} = props
 
   return (
-    <FieldWrapper {...{required, label}}>
+    <FieldWrapper {...{required, label}} className='input-wrapper'>
       <input
         id={label}
         name={label}
@@ -17,7 +17,7 @@ const InputField = props => {
           required,
           pattern
         })}
-        className='global-text-input'
+        className='input-wrapper__field'
       />
       {error ? <ValidationError {...{error}} /> : null}
     </FieldWrapper>

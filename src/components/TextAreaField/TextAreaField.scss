@@ -1,0 +1,12 @@
+@import '../../styles/_mixins';
+
+.textarea-wrapper {
+  width: 100%;
+}
+
+.textarea-wrapper__field {
+  @include primaryInput;
+  min-height: 10rem;
+  height: 22rem;
+  max-height: 30rem;
+}

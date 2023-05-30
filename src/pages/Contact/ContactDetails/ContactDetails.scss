@@ -1,0 +1,6 @@
+@import '../../../styles/mixins';
+
+.contact-details {
+  @include flexCol;
+  max-width: 29rem;
+}

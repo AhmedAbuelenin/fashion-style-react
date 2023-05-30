@@ -1,11 +1,11 @@
-import './FieldWrapper.css'
+import './FieldWrapper.scss'
 import '../../styles/_global.scss'
 
 const FieldWrapper = props => {
-  const {required, label, children} = props
+  const {className = '', required, label, children} = props
 
   return (
-    <div className='field-wrapper'>
+    <div className={`field-wrapper ${className}`}>
       <label htmlFor={label} className='global-input-label'>
         {label}
         <span

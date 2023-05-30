@@ -1,3 +1,4 @@
 .contact-wrapper__heading {
-  font-size: var(--font-size-24);
+  font-size: var(--font-size-32);
+  margin-bottom: 3rem;
 }
