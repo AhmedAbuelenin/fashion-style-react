@@ -1,6 +1,6 @@
-import './Contact.css'
 import '../../styles/_global.scss'
-import {ContactForm} from './index'
+import './Contact.scss'
+import {ContactDetails, ContactForm, ContactHours} from './index'
 
 const Contact = () => {
   return (
@@ -11,7 +11,13 @@ const Contact = () => {
         alt='store location img'
         className='contact__img'
       />
-      <ContactForm />
+      <div className='contact__main'>
+        <ContactForm />
+        <div className='contact__details-hours'>
+          <ContactDetails />
+          <ContactHours />
+        </div>
+      </div>
     </div>
   )
 }

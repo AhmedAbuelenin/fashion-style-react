@@ -1,0 +1,5 @@
+@import '../../../styles/mixins';
+
+.contact-details {
+  @include flexCol;
+}

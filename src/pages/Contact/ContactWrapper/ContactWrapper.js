@@ -1,9 +1,11 @@
 import './ContactWrapper.css'
 
-const ContactWrapper = ({heading, children}) => {
+const ContactWrapper = props => {
+  const {className = '', heading, children} = props
+
   return (
-    <div className='contact-wrapper'>
-      <h2 className='contact-wrapper__heading'>{heading}</h2>
+    <div className={`contact-wrapper ${className}`}>
+      <h3 className='contact-wrapper__heading'>{heading}</h3>
       {children}
     </div>
   )

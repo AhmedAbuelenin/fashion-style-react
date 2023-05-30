@@ -1,0 +1,6 @@
+@import '../../styles/_mixins';
+
+.field-wrapper {
+  @include flexCol;
+  margin-bottom: 2rem;
+}

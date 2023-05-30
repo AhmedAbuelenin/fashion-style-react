@@ -1,0 +1,9 @@
+@import '../../styles/_mixins';
+
+.input-wrapper {
+  flex-grow: 1;
+}
+
+.input-wrapper__field {
+  @include primaryInput;
+}

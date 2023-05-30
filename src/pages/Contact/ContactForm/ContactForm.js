@@ -35,14 +35,16 @@ const ContactForm = () => {
   }
 
   return (
-    <ContactWrapper heading='Leave Us a Message'>
+    <ContactWrapper
+      heading='Leave Us a Message'
+      className='contact-form__wrapper'>
       {!watch('isSubmittedSuccessfully') ? (
         <form
           action='/#'
           noValidate
           onSubmit={handleSubmit(onSubmit)}
-          className='contact__form'>
-          <div className='contact__inputs-container'>
+          className='contact-form'>
+          <div className='contact-form__inputs-container'>
             <InputField
               required
               label='Name'
@@ -83,7 +85,7 @@ const ContactForm = () => {
                 : ''
             }
           />
-          <div className='contact__submit-loader'>
+          <div className='contact-form__submit-loader'>
             <input
               disabled={_sending}
               type='submit'
@@ -94,7 +96,7 @@ const ContactForm = () => {
           </div>
         </form>
       ) : (
-        <p className='contact__submission-msg'>
+        <p className='contact-form__submission-msg'>
           Thanks for contacting us! We will be in touch with you shortly.
         </p>
       )}

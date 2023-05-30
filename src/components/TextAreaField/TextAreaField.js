@@ -1,6 +1,6 @@
 import {memo} from 'react'
-import {FieldWrapper} from '../index'
-import './TextAreaField.css'
+import {FieldWrapper, ValidationError} from '../index'
+import './TextAreaField.scss'
 
 const TextAreaField = props => {
   console.log('TextAreaField is rendering')
@@ -8,19 +8,17 @@ const TextAreaField = props => {
   const {label, required = false, register, pattern, error} = props
 
   return (
-    <FieldWrapper {...{required, label}}>
+    <FieldWrapper {...{required, label}} className='textarea-wrapper'>
       <textarea
-        cols='50'
-        rows='12'
         id={label}
         name={label}
         {...register(label, {
           required,
           pattern
         })}
-        className='global-text-input'
+        className='textarea-wrapper__field'
       />
-      {error ? <span className='global-err-msg'>{error}</span> : null}
+      {error ? <ValidationError {...{error}} /> : null}
     </FieldWrapper>
   )
 }

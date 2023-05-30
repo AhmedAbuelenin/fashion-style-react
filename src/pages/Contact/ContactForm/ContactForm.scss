@@ -1,20 +1,25 @@
 @import '../../../styles/_mixins.scss';
 
-.contact__form {
+.contact-form__wrapper {
+  flex-grow: 1;
+}
+
+.contact-form {
   @include flexCol;
   margin-top: 7rem;
 }
 
-.contact__inputs-container {
+.contact-form__inputs-container {
   @include flexWGap();
+  width: 100%;
 }
 
-.contact__submit-loader {
+.contact-form__submit-loader {
   @include flexVCenter;
   gap: 2rem;
 }
 
-.contact__submission-msg {
+.contact-form__submission-msg {
   background-color: var(--color-green-bg);
   padding: 1.5rem;
   color: var(--color-dark-text);
