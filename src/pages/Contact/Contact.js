@@ -1,11 +1,11 @@
+import {ContentWrapper} from '../../components'
 import '../../styles/_global.scss'
 import './Contact.scss'
 import {ContactDetails, ContactForm, ContactHours} from './index'
 
 const Contact = () => {
   return (
-    <div className='content-wrapper contact'>
-      <h1 className='global-h1'>Contact Us</h1>
+    <ContentWrapper wrapperClass='contact' heading='Contact Us'>
       <img
         src={require('../../assets/images/map-location.png')}
         alt='store location img'
@@ -18,7 +18,7 @@ const Contact = () => {
           <ContactHours />
         </div>
       </div>
-    </div>
+    </ContentWrapper>
   )
 }
 
