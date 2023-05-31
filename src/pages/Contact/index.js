@@ -1,5 +1,4 @@
 export {default as ContactForm} from './ContactForm/ContactForm'
-export {default as ContactWrapper} from './ContactWrapper/ContactWrapper'
 export {default as ContactDetails} from './ContactDetails/ContactDetails'
 export {default as ContactInfo} from './ContactInfo/ContactInfo'
 export {default as ContactHours} from './ContactHours/ContactHours'

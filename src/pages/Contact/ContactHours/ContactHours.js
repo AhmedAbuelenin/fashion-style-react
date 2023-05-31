@@ -1,12 +1,12 @@
-import {ContactWrapper} from '../index'
+import {SectionWrapper} from '../../../components'
 import './ContactHours.scss'
 
 const ContactHours = props => {
   return (
-    <ContactWrapper heading='Store Hours' className='contact-hours'>
+    <SectionWrapper heading='Store Hours' className='contact-hours'>
       <p className='contact-hours__closed-hours'>Sun: Closed</p>
       <p className='contact-hours__open-hours'>Mon to Sat: 10 AM – 5:30 PM</p>
-    </ContactWrapper>
+    </SectionWrapper>
   )
 }
 

@@ -1,4 +1,5 @@
 export {default as ContentWrapper} from './ContentWrapper/ContentWrapper'
+export {default as SectionWrapper} from './SectionWrapper/SectionWrapper'
 export {default as Loader} from './Loader/Loader.js'
 export {default as ProductDetails} from './ProductDetails/ProductDetails'
 export {default as ScrollToTopButton} from './ScrollToTopButton/ScrollToTopButton'

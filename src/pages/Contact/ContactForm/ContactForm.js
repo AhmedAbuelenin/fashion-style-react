@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form'
 import {InputField, Loader, TextAreaField} from '../../../components'
-import {ContactWrapper} from '../index'
+import {SectionWrapper} from '../../../components'
 import './ContactForm.scss'
 
 const ContactForm = () => {
@@ -35,7 +35,7 @@ const ContactForm = () => {
   }
 
   return (
-    <ContactWrapper
+    <SectionWrapper
       heading='Leave Us a Message'
       className='contact-form__wrapper'>
       {!watch('isSubmittedSuccessfully') ? (
@@ -104,7 +104,7 @@ const ContactForm = () => {
           Thanks for contacting us! We will be in touch with you shortly.
         </p>
       )}
-    </ContactWrapper>
+    </SectionWrapper>
   )
 }
 
