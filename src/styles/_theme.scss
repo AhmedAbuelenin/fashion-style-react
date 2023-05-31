@@ -1,7 +1,6 @@
 @mixin primaryInput {
   border: 0.1rem solid var(--color-primary);
   padding: 1.2rem 1.6rem;
-  width: 100%;
 }
 
 @mixin primaryInputFocused {

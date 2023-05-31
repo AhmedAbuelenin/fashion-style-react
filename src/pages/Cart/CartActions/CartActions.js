@@ -1,5 +1,5 @@
 import {memo} from 'react'
-import {CouponCodeForm} from '../../../components'
+import {CouponForm} from '../../../components'
 import './CartActions.css'
 
 const CartActions = props => {
@@ -9,7 +9,7 @@ const CartActions = props => {
 
   return (
     <div className='cart__actions-container'>
-      <CouponCodeForm {...{onApplyCoupon}} />
+      <CouponForm {...{onApplyCoupon}} />
       <button
         className='global-button cart__button'
         onClick={onUpdateCart}

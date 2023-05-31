@@ -2,10 +2,10 @@ import {memo, useCallback, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import '../../styles/_global.scss'
 import Loader from '../Loader/Loader'
-import './CouponCodeForm.scss'
+import './CouponForm.scss'
 
-const CouponForm = ({onApplyCoupon}) => {
-  console.log('CouponCodeForm is rendering')
+const CouponForm = ({formClass, onApplyCoupon}) => {
+  console.log('CouponForm is rendering')
 
   const {
     register,
@@ -77,7 +77,9 @@ const CouponForm = ({onApplyCoupon}) => {
 
   return (
     <div className='coupon-form-container'>
-      <form onSubmit={handleSubmit(onSubmit)} className='coupon-form'>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={`coupon-form ${formClass}`}>
         <input
           {...register('coupon')}
           name='coupon'

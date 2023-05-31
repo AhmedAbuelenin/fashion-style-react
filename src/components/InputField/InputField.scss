@@ -6,6 +6,7 @@
 
 .input-wrapper__field {
   @include primaryInput;
+  width: 100%;
 }
 
 .input-wrapper__field:focus {

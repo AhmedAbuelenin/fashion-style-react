@@ -1,0 +1,31 @@
+.checkout-coupon-form {
+  //   background-color: var(--color-light-gray);
+  padding: 1.9rem;
+}
+
+.checkout-coupon-form__title {
+  padding: 1.9rem;
+  background-color: var(--color-light-gray);
+}
+
+.checkout-coupon-form__link {
+  text-decoration: underline;
+  color: var(--color-dark-gray-link);
+  font-size: var(--font-size-16);
+  margin-inline-start: 0.5rem;
+}
+
+.checkout-coupon-form__description-form {
+  padding: 1.9rem;
+  background-color: var(--color-light-gray);
+  transform: scaleY(0);
+  transition: var(--transition-timing-sec);
+}
+
+.checkout-coupon-form__description-form--visible {
+  transform: scaleY(1);
+}
+
+.checkout-coupon-form__description {
+  margin-bottom: 2rem;
+}
