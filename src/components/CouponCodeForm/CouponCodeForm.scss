@@ -1,3 +1,5 @@
+@import '../../styles/theme';
+
 .coupon-form {
   display: flex;
 }
@@ -13,6 +15,14 @@
   height: 2rem;
 }
 
+.coupon-form__input {
+  @include primaryInput;
+}
+
+.coupon-form__input:focus {
+  @include primaryInputFocused;
+}
+
 .coupon-form__input-check-bg {
   background-image: url(../../assets/icons/check-mark.png);
   background-repeat: no-repeat;
@@ -22,6 +32,10 @@
 .coupon-form__button {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.coupon-form__validation-err {
+  @include validationErr;
 }
 
 /* Start Responsive */

@@ -1,4 +1,4 @@
-@import '../../styles/_mixins';
+@import '../../styles/_theme';
 
 .input-wrapper {
   flex-grow: 1;
@@ -6,4 +6,8 @@
 
 .input-wrapper__field {
   @include primaryInput;
+}
+
+.input-wrapper__field:focus {
+  @include primaryInputFocused;
 }

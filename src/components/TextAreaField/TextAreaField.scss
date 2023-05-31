@@ -1,4 +1,4 @@
-@import '../../styles/_mixins';
+@import '../../styles/_theme';
 
 .textarea-wrapper {
   width: 100%;
@@ -9,4 +9,8 @@
   min-height: 10rem;
   height: 22rem;
   max-height: 30rem;
+}
+
+.textarea-wrapper__field:focus {
+  @include primaryInputFocused;
 }

@@ -1,4 +1,4 @@
-import './ValidationError.css'
+import './ValidationError.scss'
 
 const ValidationError = ({error}) => {
   return <span className='validation-err-msg'>{error}</span>

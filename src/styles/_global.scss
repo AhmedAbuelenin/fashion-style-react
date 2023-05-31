@@ -42,65 +42,9 @@
   border-width: 0 0 0.1rem 0;
 }
 
-.global-err-msg {
-  display: block;
-  font-size: var(--font-size-12);
-  color: var(--color-red-err);
-  margin-top: 0.5rem;
-}
-
 .global-general-err-msg {
   display: block;
   font-size: var(--font-size-16);
   color: var(--color-red-err);
   text-align: center;
-}
-
-input.global-input-err {
-  border-color: var(--color-red-err);
-}
-
-input.global-input-focused:focus {
-  border-color: var(--color-dark-border);
-}
-
-.global-input-label {
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1.5rem;
-}
-
-.global-label-mandatory-sign {
-  color: var(--color-red-mandatory);
-  margin-inline-start: 0.3rem;
-}
-
-.global-label-optional {
-  color: var(--color-primary);
-}
-
-.global-text-input {
-  border: 0.1rem solid var(--color-primary);
-  padding: 1.2rem 1.6rem;
-}
-
-.global-text-input:focus {
-  border-width: 0.2rem;
-}
-
-.global-loader {
-  border: 0.5rem solid var(--color-light-gray);
-  border-top: 0.5rem solid var(--color-primary);
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }

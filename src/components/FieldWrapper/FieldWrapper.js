@@ -6,11 +6,11 @@ const FieldWrapper = props => {
 
   return (
     <div className={`field-wrapper ${className}`}>
-      <label htmlFor={label} className='global-input-label'>
+      <label htmlFor={label} className='field-wrapper__label'>
         {label}
         <span
-          className={`global-label-mandatory-sign ${
-            !required ? 'global-label-optional' : ''
+          className={`field-wrapper__mandatory-sign ${
+            !required ? 'field-wrapper__optional' : ''
           }`}>
           {required ? '*' : '(optional)'}
         </span>

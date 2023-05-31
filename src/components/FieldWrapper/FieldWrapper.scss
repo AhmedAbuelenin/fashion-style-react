@@ -4,3 +4,17 @@
   @include flexCol;
   margin-bottom: 2rem;
 }
+
+.field-wrapper__label {
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1.5rem;
+}
+
+.field-wrapper__mandatory-sign {
+  color: var(--color-red-mandatory);
+  margin-inline-start: 0.3rem;
+}
+
+.field-wrapper__optional {
+  color: var(--color-primary);
+}

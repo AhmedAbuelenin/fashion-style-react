@@ -2,7 +2,7 @@ import {memo, useCallback, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import '../../styles/_global.scss'
 import Loader from '../Loader/Loader'
-import './CouponCodeForm.css'
+import './CouponCodeForm.scss'
 
 const CouponForm = ({onApplyCoupon}) => {
   console.log('CouponCodeForm is rendering')
@@ -21,6 +21,9 @@ const CouponForm = ({onApplyCoupon}) => {
       loading: false
     }
   })
+
+  const checkClass =
+    watch('isValid') && !watch('loading') ? 'coupon-form__input-check-bg' : ''
 
   useEffect(() => {
     const subscription = watch(({coupon, isValid}) => {
@@ -77,13 +80,9 @@ const CouponForm = ({onApplyCoupon}) => {
       <form onSubmit={handleSubmit(onSubmit)} className='coupon-form'>
         <input
           {...register('coupon')}
-          type='text'
+          name='coupon'
           placeholder='Coupon code'
-          className={`global-text-input coupon-form__input ${
-            watch('isValid') && !watch('loading')
-              ? 'coupon-form__input-check-bg'
-              : ''
-          }`}
+          className={`coupon-form__input ${checkClass}`}
         />
         <input
           type='submit'
@@ -96,7 +95,9 @@ const CouponForm = ({onApplyCoupon}) => {
           <Loader className='coupon-form__loader' />
         </div>
       ) : errors.coupon ? (
-        <span className='global-err-msg'>{errors.coupon.message}</span>
+        <span className='coupon-form__validation-err'>
+          {errors.coupon.message}
+        </span>
       ) : null}
     </div>
   )
