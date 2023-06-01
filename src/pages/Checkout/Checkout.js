@@ -1,7 +1,12 @@
 import {useCallback, useState} from 'react'
 import {ContentWrapper} from '../../components'
 import './Checkout.scss'
-import {CheckoutCouponForm, BillingDetails} from './index'
+import {
+  CheckoutCouponForm,
+  BillingDetails,
+  OrderTotals,
+  AdditionalInfo
+} from './index'
 
 const Checkout = () => {
   const [isCouponValid, setIsCouponValid] = useState(false)
@@ -13,7 +18,11 @@ const Checkout = () => {
   return (
     <ContentWrapper wrapperClass='checkout' heading='Checkout'>
       <CheckoutCouponForm onApplyCoupon={handleCouponStatus} />
-      <BillingDetails />
+      <div className='checkout__main'>
+        <BillingDetails />
+        <OrderTotals />
+        <AdditionalInfo />
+      </div>
     </ContentWrapper>
   )
 }

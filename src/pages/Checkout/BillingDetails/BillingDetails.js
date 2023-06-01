@@ -112,10 +112,43 @@ const BillingDetails = ({onSubmit}) => {
         onSubmit={handleSubmit(onSubmit)}
         className='billing-details__form'>
         <div className='billing-details__name-container'>
-          <InputField required {...{register}} label='First name' />
-          <InputField required {...{register}} label='Last name' />
+          <InputField
+            required
+            {...{register}}
+            label='First name'
+            pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,10}$/}
+            error={
+              errors['Name']?.type === 'required'
+                ? 'This field is required'
+                : errors['Name']?.type === 'pattern'
+                ? 'Please enter between 3 and 10 letters'
+                : ''
+            }
+          />
+          <InputField
+            required
+            {...{register}}
+            label='Last name'
+            pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,10}$/}
+            error={
+              errors['Name']?.type === 'required'
+                ? 'This field is required'
+                : errors['Name']?.type === 'pattern'
+                ? 'Please enter between 3 and 10 letters'
+                : ''
+            }
+          />
         </div>
-        <InputField {...{register}} label='Company name' />
+        <InputField
+          {...{register}}
+          label='Company name'
+          pattern={/^(?=(?:.*[a-zA-Z]){3}).{3,20}$/}
+          error={
+            errors['Name']?.type === 'pattern'
+              ? 'Please enter between 3 and 20 letters'
+              : ''
+          }
+        />
         <LocationSelector
           required
           label='Country / Region'
@@ -130,9 +163,38 @@ const BillingDetails = ({onSubmit}) => {
           selected={watch('state')}
           onSelect={handleStateSelect}
         />
-        <InputField required {...{register}} label='Address' />
-        <InputField required {...{register}} label='Phone' />
-        <InputField required {...{register}} label='Email address' />
+        <InputField
+          required
+          {...{register}}
+          label='Address'
+          pattern={/^(?=(?:.*[a-zA-Z]){3}).{3,20}$/}
+        />
+        <InputField
+          required
+          {...{register}}
+          label='Phone'
+          pattern={/^[0-9]{8,15}$/}
+          error={
+            errors['Email']?.type === 'required'
+              ? 'This field is required'
+              : errors['Phone']?.type === 'pattern'
+              ? 'Please enter between 8 and 15 digits'
+              : ''
+          }
+        />
+        <InputField
+          required
+          {...{register}}
+          label='Email address'
+          pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}
+          error={
+            errors['Email']?.type === 'required'
+              ? 'This field is required'
+              : errors['Email']?.type === 'pattern'
+              ? 'Please enter a valid email format'
+              : ''
+          }
+        />
       </form>
     </SectionWrapper>
   )
