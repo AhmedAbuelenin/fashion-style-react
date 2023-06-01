@@ -5,18 +5,30 @@ import './TextAreaField.scss'
 const TextAreaField = props => {
   console.log('TextAreaField is rendering')
 
-  const {label, required = false, register, pattern, error} = props
+  const {
+    containerClass = '',
+    textareaClass = '',
+    label,
+    placeholder,
+    required = false,
+    register,
+    pattern,
+    error
+  } = props
 
   return (
-    <FieldWrapper {...{required, label}} className='textarea-wrapper'>
+    <FieldWrapper
+      {...{required, label}}
+      className={`textarea-wrapper ${containerClass}`}>
       <textarea
         id={label}
         name={label}
+        {...{placeholder}}
         {...register(label, {
           required,
           pattern
         })}
-        className='textarea-wrapper__field'
+        className={`textarea-wrapper__field ${textareaClass}`}
       />
       {error ? <ValidationError {...{error}} /> : null}
     </FieldWrapper>

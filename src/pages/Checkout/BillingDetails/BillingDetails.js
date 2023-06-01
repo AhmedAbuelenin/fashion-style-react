@@ -1,7 +1,4 @@
 import {useEffect, useRef} from 'react'
-import {useForm} from 'react-hook-form'
-import {RiArrowDropDownFill as ArrowIcon} from 'react-icons/ri'
-import Select from 'react-select'
 import {InputField, SectionWrapper} from '../../../components'
 import {
   getCountries,
@@ -11,30 +8,8 @@ import {
 import {LocationSelector} from '../index'
 import './BillingDetails.scss'
 
-const BillingDetails = ({onSubmit}) => {
-  const {
-    register,
-    formState: {errors},
-    handleSubmit,
-    setValue,
-    watch
-  } = useForm({
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      companyName: '',
-      countries: [],
-      states: [],
-      country: null,
-      state: null,
-      address: '',
-      phone: '',
-      email: '',
-      orderNotes: ''
-    }
-  })
-
-  console.log('country', watch('country'))
+const BillingDetails = props => {
+  const {register, setValue, errors, watch} = props
 
   const universalApiAuthToken = useRef('')
   const _country = watch('country')
@@ -107,10 +82,7 @@ const BillingDetails = ({onSubmit}) => {
 
   return (
     <SectionWrapper heading='Billing Details'>
-      <form
-        noValidate
-        onSubmit={handleSubmit(onSubmit)}
-        className='billing-details__form'>
+      <form noValidate className='billing-details__form'>
         <div className='billing-details__name-container'>
           <InputField
             required
