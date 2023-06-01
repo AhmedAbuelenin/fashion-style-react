@@ -1,0 +1,33 @@
+.location-select__control {
+  border-radius: 0 !important;
+  padding: 1.1rem 0.7rem;
+}
+
+.location-select__control:hover {
+  border-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.location-select__value-container {
+  color: var(--color-primary);
+}
+
+.location-select__indicator-separator {
+  display: none;
+}
+
+.location-select__option {
+  color: var(--color-primary);
+  background-color: var(--color-light);
+}
+
+.location-select__option:hover {
+  background-color: #0073aa !important;
+  color: var(--color-light) !important;
+  cursor: pointer;
+}
+
+.location-select__option--is-selected {
+  background-color: #dddddd !important;
+  color: var(--color-primary) !important;
+}

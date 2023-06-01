@@ -1,6 +1,5 @@
 .checkout-coupon-form {
-  //   background-color: var(--color-light-gray);
-  padding: 1.9rem;
+  margin-bottom: 5rem;
 }
 
 .checkout-coupon-form__title {
@@ -16,13 +15,17 @@
 }
 
 .checkout-coupon-form__description-form {
-  padding: 1.9rem;
+  opacity: 0;
+  height: 0;
   background-color: var(--color-light-gray);
   transform: scaleY(0);
   transition: var(--transition-timing-sec);
 }
 
 .checkout-coupon-form__description-form--visible {
+  opacity: 1;
+  height: auto;
+  padding: 1.9rem;
   transform: scaleY(1);
 }
 

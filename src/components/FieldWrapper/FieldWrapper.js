@@ -1,5 +1,4 @@
 import './FieldWrapper.scss'
-import '../../styles/_global.scss'
 
 const FieldWrapper = props => {
   const {className = '', required, label, children} = props

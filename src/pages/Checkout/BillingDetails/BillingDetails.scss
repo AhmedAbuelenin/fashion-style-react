@@ -1,0 +1,14 @@
+@import '../../../styles/mixins';
+
+.billing-details__name-container {
+  @include flexWGap();
+}
+
+.billing-details__select--focused {
+  outline: none;
+  border: 0.1rem solid var(--color-dark);
+}
+
+.billing-details__select {
+  padding: 1.2rem 1.6rem;
+}
