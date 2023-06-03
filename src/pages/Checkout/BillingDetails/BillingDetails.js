@@ -81,7 +81,9 @@ const BillingDetails = props => {
   }
 
   return (
-    <SectionWrapper heading='Billing Details'>
+    <SectionWrapper
+      heading='Billing Details'
+      className='billing-details-wrapper'>
       <form noValidate className='billing-details__form'>
         <div className='billing-details__name-container'>
           <InputField
@@ -96,6 +98,7 @@ const BillingDetails = props => {
                 ? 'Please enter between 3 and 10 letters'
                 : ''
             }
+            containerClass='billing-details__first-name'
           />
           <InputField
             required
@@ -109,6 +112,7 @@ const BillingDetails = props => {
                 ? 'Please enter between 3 and 10 letters'
                 : ''
             }
+            containerClass='billing-details__last-name'
           />
         </div>
         <InputField

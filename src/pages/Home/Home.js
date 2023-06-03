@@ -9,6 +9,8 @@ const Home = () => {
 
   const dispatch = useDispatch()
   const featuredResult = useSelector(state => state.featuredCollection)
+  const {coupon} = useSelector(state => state.cart)
+  console.log('🚀 ~ file: Home.js:13 ~ Home ~ coupon:', coupon)
 
   useEffect(() => {
     const fetchProducts = () => {

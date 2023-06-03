@@ -1,25 +1,20 @@
-import {memo, useEffect, useState} from 'react'
+import {memo} from 'react'
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {cartSubtitles} from '../../../data'
 import '../../../styles/_global.scss'
-import {calcCartTotals} from '../../../utils'
 import {CartTotalsItem} from '../index'
 import './CartTotals.css'
 
-const CartTotals = ({data, isCouponValid}) => {
+const CartTotals = ({data}) => {
   console.log('CartTotals is rendering')
 
-  const [subtotal, setSubtotal] = useState(0)
+  const {
+    coupon,
+    totals: {price: totalPrice}
+  } = useSelector(state => state.cart)
 
-  const discount = isCouponValid ? subtotal * 0.05 : 0
-
-  useEffect(() => {
-    const getCartTotals = () => {
-      setSubtotal(calcCartTotals(data).price)
-    }
-
-    getCartTotals()
-  }, [data])
+  const discount = coupon.status ? totalPrice * 0.05 : 0
 
   const _data = cartSubtitles.map(item => {
     if (item.name !== 'discount') return item
@@ -30,11 +25,11 @@ const CartTotals = ({data, isCouponValid}) => {
   const getValue = key => {
     switch (key) {
       case 'subtotal':
-        return subtotal
+        return totalPrice
       case 'discount':
         return discount
       case 'total':
-        return subtotal - discount
+        return totalPrice - discount
       default:
         return 'Key is not defined'
     }

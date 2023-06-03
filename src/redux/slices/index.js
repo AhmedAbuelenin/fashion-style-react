@@ -1,4 +1,10 @@
-export {setCartItem, removeCartItem, updateCartItems} from './Cart'
+export {
+  setCartItem,
+  removeCartItem,
+  updateCartItems,
+  setCoupon,
+  setCartTotals
+} from './Cart'
 export {
   setData,
   setFeaturedSelected,

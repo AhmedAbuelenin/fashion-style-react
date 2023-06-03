@@ -1,0 +1,31 @@
+.order-totals table {
+  width: 100%;
+}
+
+.order-totals tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.order-totals th {
+  font-weight: var(--font-weight-bold);
+}
+
+.order-totals thead tr {
+  border-bottom: 0.1rem solid var(--color-light-gray-divider);
+}
+
+.order-totals tfoot tr {
+  border-top: 0.1rem solid var(--color-light-gray-divider);
+}
+
+.order-totals__subtotal-value {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+}
+
+.order-totals__total-value {
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-bold);
+}

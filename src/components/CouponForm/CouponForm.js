@@ -3,9 +3,14 @@ import {useForm} from 'react-hook-form'
 import '../../styles/_global.scss'
 import Loader from '../Loader/Loader'
 import './CouponForm.scss'
+import {useSelector} from 'react-redux'
 
-const CouponForm = ({formClass, onApplyCoupon}) => {
+const CouponForm = props => {
   console.log('CouponForm is rendering')
+
+  const {formClass, onApplyCoupon} = props
+
+  const {coupon} = useSelector(state => state.cart)
 
   const {
     register,
@@ -16,8 +21,8 @@ const CouponForm = ({formClass, onApplyCoupon}) => {
     watch
   } = useForm({
     defaultValues: {
-      coupon: '',
-      isValid: false,
+      coupon: coupon?.value,
+      isValid: coupon?.status,
       loading: false
     }
   })
@@ -37,12 +42,12 @@ const CouponForm = ({formClass, onApplyCoupon}) => {
 
   const handleInvalidStatus = () => {
     setValue('isValid', false)
-    onApplyCoupon(false)
+    onApplyCoupon({status: false, value: watch('coupon')})
   }
 
   const handleValidStatus = () => {
     setValue('isValid', true)
-    onApplyCoupon(true)
+    onApplyCoupon({status: true, value: watch('coupon')})
   }
 
   const showValidationErr = msg => {

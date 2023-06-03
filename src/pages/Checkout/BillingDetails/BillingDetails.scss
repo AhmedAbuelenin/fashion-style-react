@@ -1,7 +1,12 @@
 @import '../../../styles/mixins';
 
+.billing-details-wrapper {
+  margin-bottom: 6rem;
+}
+
 .billing-details__name-container {
   @include flexWGap();
+  flex-wrap: wrap;
 }
 
 .billing-details__select--focused {
@@ -11,4 +16,15 @@
 
 .billing-details__select {
   padding: 1.2rem 1.6rem;
+}
+
+@media (max-width: 800px) {
+  .billing-details__name-container {
+    gap: 0;
+  }
+
+  .billing-details__first-name,
+  .billing-details__last-name {
+    width: 100%;
+  }
 }

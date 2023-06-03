@@ -6,10 +6,19 @@ import './InputField.scss'
 const InputField = props => {
   console.log('InputField is rendering')
 
-  const {required = false, register, pattern, label, error} = props
+  const {
+    containerClass = '',
+    required = false,
+    register,
+    pattern,
+    label,
+    error
+  } = props
 
   return (
-    <FieldWrapper {...{required, label}} className='input-wrapper'>
+    <FieldWrapper
+      {...{required, label}}
+      className={`input-wrapper ${containerClass}`}>
       <input
         id={label}
         name={label}

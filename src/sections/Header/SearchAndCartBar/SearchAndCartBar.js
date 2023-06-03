@@ -12,6 +12,7 @@ const SearchAndCartBar = props => {
   const {data, totals, onRemoveItem, onMenuPress} = props
 
   const {pathname} = useLocation()
+  const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
 
   return (
     <div className='global-header__icons'>
@@ -34,12 +35,8 @@ const SearchAndCartBar = props => {
         <span className='global-header__cart-count'>{totals.qty}</span>
       </Link>
 
-      {pathname !== '/cart' ? (
-        <CartModal
-          data={data}
-          subtotal={totals.price}
-          onRemoveItem={onRemoveItem}
-        />
+      {!isCartOrCheckoutPath ? (
+        <CartModal {...{data, onRemoveItem}} subtotal={totals.price} />
       ) : null}
     </div>
   )

@@ -3,7 +3,9 @@ import {convertArrayToObject, convertObjToArray} from '../../utils'
 
 const initialState = {
   data: [],
-  isCartUpdateNeeded: false
+  isCartUpdateNeeded: false,
+  coupon: {status: false, value: ''},
+  totals: {price: 0, qty: 0}
 }
 
 const cartSlice = createSlice({
@@ -44,10 +46,22 @@ const cartSlice = createSlice({
       const updatedArr = convertObjToArray(obj)
 
       state.data = updatedArr
+    },
+    setCoupon: (state, action) => {
+      state.coupon = action.payload
+    },
+    setCartTotals: (state, action) => {
+      state.totals = action.payload
     }
   }
 })
 
-export const {setCartItem, removeCartItem, updateCartItems} = cartSlice.actions
+export const {
+  setCartItem,
+  removeCartItem,
+  updateCartItems,
+  setCoupon,
+  setCartTotals
+} = cartSlice.actions
 
 export default cartSlice.reducer

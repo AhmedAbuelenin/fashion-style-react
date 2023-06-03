@@ -2,7 +2,7 @@ import React, {useCallback, useRef, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {ContentWrapper} from '../../components'
-import {updateCartItems} from '../../redux/slices'
+import {setCoupon, updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
 import './Cart.css'
@@ -16,7 +16,6 @@ const Cart = () => {
   const itemsObjRef = useRef({})
 
   const [isCartUpdateNeeded, setIsCartUpdateNeeded] = useState(false)
-  const [isCouponValid, setIsCouponValid] = useState(false)
 
   const handleEnableStatusOfCartUpdateBtn = status => {
     setIsCartUpdateNeeded(status)
@@ -33,8 +32,8 @@ const Cart = () => {
     handleEnableStatusOfCartUpdateBtn(false)
   }, [])
 
-  const handleCouponStatus = useCallback(couponStatus => {
-    setIsCouponValid(couponStatus)
+  const handleCoupon = useCallback(_coupon => {
+    dispatch(setCoupon(_coupon))
   }, [])
 
   return (
@@ -44,10 +43,10 @@ const Cart = () => {
           <CartTableList {...{data}} onChangeCount={handleQtyChange} />
           <CartActions
             {...{isCartUpdateNeeded}}
-            onApplyCoupon={handleCouponStatus}
+            onApplyCoupon={handleCoupon}
             onUpdateCart={handleCartUpdate}
           />
-          <CartTotals {...{data, isCouponValid}} />
+          <CartTotals {...{data}} />
         </>
       ) : (
         <>

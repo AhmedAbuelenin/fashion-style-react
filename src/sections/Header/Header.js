@@ -1,20 +1,30 @@
 import {useCallback, useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {removeCartItem} from '../../redux/slices'
+import {removeCartItem, setCartTotals} from '../../redux/slices'
 import './Header.css'
 import {GlobalNav, GlobalSideBar, SearchAndCartBar} from './index'
-import {calcCartTotals} from '../../utils'
 
 const Header = () => {
   const dispatch = useDispatch()
-  const {data} = useSelector(state => state.cart)
-  const [totals, setTotals] = useState({qty: 0, price: 0})
+  const {data, totals} = useSelector(state => state.cart)
   const [visibleSideBar, setVisibleSideBar] = useState(false)
 
   useEffect(() => {
+    const calcCartTotals = products => {
+      let qtySum = 0
+      let priceSum = 0
+
+      products.forEach(product => {
+        qtySum += product.quantity
+        priceSum += product.quantity * product.price
+      })
+
+      return {qty: qtySum, price: priceSum}
+    }
+
     const getCartTotals = () => {
-      setTotals(calcCartTotals(data))
+      dispatch(setCartTotals(calcCartTotals(data)))
     }
 
     getCartTotals()

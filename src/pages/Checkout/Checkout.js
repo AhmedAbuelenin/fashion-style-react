@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react'
+import {useCallback} from 'react'
 import {useForm} from 'react-hook-form'
 import {ContentWrapper} from '../../components'
 import './Checkout.scss'
@@ -8,8 +8,13 @@ import {
   CheckoutCouponForm,
   OrderTotals
 } from './index'
+import {useDispatch, useSelector} from 'react-redux'
+import {setCoupon} from '../../redux/slices'
 
 const Checkout = () => {
+  const dispatch = useDispatch()
+  const {coupon} = useSelector(state => state.cart)
+
   const {
     register,
     formState: {errors},
@@ -32,10 +37,8 @@ const Checkout = () => {
     }
   })
 
-  const [isCouponValid, setIsCouponValid] = useState(false)
-
-  const handleCouponStatus = useCallback(couponStatus => {
-    setIsCouponValid(couponStatus)
+  const handleCoupon = useCallback(_coupon => {
+    dispatch(setCoupon(_coupon))
   }, [])
 
   const submitOrder = data => {
@@ -44,11 +47,13 @@ const Checkout = () => {
 
   return (
     <ContentWrapper wrapperClass='checkout' heading='Checkout'>
-      <CheckoutCouponForm onApplyCoupon={handleCouponStatus} />
+      <CheckoutCouponForm {...{coupon}} onApplyCoupon={handleCoupon} />
       <div className='checkout__main'>
-        <BillingDetails {...{register, setValue, errors, watch}} />
-        <OrderTotals onPlaceOrder={handleSubmit(submitOrder)} />
-        <AdditionalInfo {...{register, errors}} />
+        <div>
+          <BillingDetails {...{register, setValue, errors, watch}} />
+          <AdditionalInfo {...{register, errors}} />
+        </div>
+        <OrderTotals {...{coupon}} onPlaceOrder={handleSubmit(submitOrder)} />
       </div>
     </ContentWrapper>
   )
