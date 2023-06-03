@@ -10,6 +10,7 @@ import {
 } from './index'
 import {useDispatch, useSelector} from 'react-redux'
 import {setCoupon} from '../../redux/slices'
+import {yupResolver} from '@hookform/resolvers/yup'
 
 const Checkout = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,7 @@ const Checkout = () => {
       email: '',
       orderNotes: ''
     }
+    // resolver:
   })
 
   const handleCoupon = useCallback(_coupon => {

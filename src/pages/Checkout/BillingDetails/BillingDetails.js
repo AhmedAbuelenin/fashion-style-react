@@ -89,12 +89,13 @@ const BillingDetails = props => {
           <InputField
             required
             {...{register}}
+            id='firstName'
             label='First name'
             pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,10}$/}
             error={
-              errors['Name']?.type === 'required'
+              errors['firstName']?.type === 'required'
                 ? 'This field is required'
-                : errors['Name']?.type === 'pattern'
+                : errors['firstName']?.type === 'pattern'
                 ? 'Please enter between 3 and 10 letters'
                 : ''
             }
@@ -103,12 +104,13 @@ const BillingDetails = props => {
           <InputField
             required
             {...{register}}
+            id='lastName'
             label='Last name'
             pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,10}$/}
             error={
-              errors['Name']?.type === 'required'
+              errors['lastName']?.type === 'required'
                 ? 'This field is required'
-                : errors['Name']?.type === 'pattern'
+                : errors['lastName']?.type === 'pattern'
                 ? 'Please enter between 3 and 10 letters'
                 : ''
             }
@@ -117,16 +119,18 @@ const BillingDetails = props => {
         </div>
         <InputField
           {...{register}}
+          id='companyName'
           label='Company name'
           pattern={/^(?=(?:.*[a-zA-Z]){3}).{3,20}$/}
           error={
-            errors['Name']?.type === 'pattern'
+            errors['companyName']?.type === 'pattern'
               ? 'Please enter between 3 and 20 letters'
               : ''
           }
         />
         <LocationSelector
           required
+          id='country'
           label='Country / Region'
           data={watch('countries')}
           value={watch('country')}
@@ -134,6 +138,7 @@ const BillingDetails = props => {
         />
         <LocationSelector
           required
+          id='state'
           label='State'
           data={watch('states')}
           selected={watch('state')}
@@ -142,18 +147,27 @@ const BillingDetails = props => {
         <InputField
           required
           {...{register}}
+          id='address'
           label='Address'
           pattern={/^(?=(?:.*[a-zA-Z]){3}).{3,20}$/}
+          error={
+            errors['address']?.type === 'required'
+              ? 'This field is required'
+              : errors['address']?.type === 'pattern'
+              ? 'Please enter between 3 and 20 letters'
+              : ''
+          }
         />
         <InputField
           required
           {...{register}}
+          id='phone'
           label='Phone'
           pattern={/^[0-9]{8,15}$/}
           error={
-            errors['Email']?.type === 'required'
+            errors['phone']?.type === 'required'
               ? 'This field is required'
-              : errors['Phone']?.type === 'pattern'
+              : errors['phone']?.type === 'pattern'
               ? 'Please enter between 8 and 15 digits'
               : ''
           }
@@ -161,12 +175,13 @@ const BillingDetails = props => {
         <InputField
           required
           {...{register}}
+          id='email'
           label='Email address'
           pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}
           error={
-            errors['Email']?.type === 'required'
+            errors['email']?.type === 'required'
               ? 'This field is required'
-              : errors['Email']?.type === 'pattern'
+              : errors['email']?.type === 'pattern'
               ? 'Please enter a valid email format'
               : ''
           }

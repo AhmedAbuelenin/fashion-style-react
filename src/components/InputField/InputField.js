@@ -9,6 +9,7 @@ const InputField = props => {
   const {
     containerClass = '',
     required = false,
+    id,
     register,
     pattern,
     label,
@@ -20,9 +21,9 @@ const InputField = props => {
       {...{required, label}}
       className={`input-wrapper ${containerClass}`}>
       <input
-        id={label}
-        name={label}
-        {...register(label, {
+        {...{id}}
+        name={id}
+        {...register(id, {
           required,
           pattern
         })}
