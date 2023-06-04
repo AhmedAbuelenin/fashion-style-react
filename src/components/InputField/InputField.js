@@ -1,5 +1,4 @@
 import {memo} from 'react'
-import '../../styles/_global.scss'
 import {FieldWrapper, ValidationError} from '../index'
 import './InputField.scss'
 
@@ -10,9 +9,9 @@ const InputField = props => {
     containerClass = '',
     required = false,
     id,
+    label,
     register,
     pattern,
-    label,
     error
   } = props
 

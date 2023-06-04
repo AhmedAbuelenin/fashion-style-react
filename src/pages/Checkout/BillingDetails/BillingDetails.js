@@ -5,11 +5,12 @@ import {
   getCountryStates,
   getUniversalApiAuthToken
 } from '../../../services'
+import {getFieldErrMsg} from '../../../utils'
 import {LocationSelector} from '../index'
 import './BillingDetails.scss'
 
 const BillingDetails = props => {
-  const {register, setValue, errors, watch} = props
+  const {register, setValue, errors, clearErrors, watch} = props
 
   const universalApiAuthToken = useRef('')
   const _country = watch('country')
@@ -20,7 +21,7 @@ const BillingDetails = props => {
         const {auth_token} = await getUniversalApiAuthToken()
         universalApiAuthToken.current = auth_token
         const data = await getCountries(auth_token)
-        const formattedData = formatCountries(data)
+        const formattedData = formatOptions('country', data)
         setValue('countries', formattedData)
       } catch (error) {
         console.log('🚀 ~ fetchCountries ~ error', error)
@@ -41,7 +42,7 @@ const BillingDetails = props => {
           universalApiAuthToken.current,
           _country.value
         )
-        const formattedData = formatStates(data)
+        const formattedData = formatOptions('state', data)
         setValue('states', formattedData)
       } catch (error) {
         console.log('🚀 ~ fetchStates ~ error:', error)
@@ -54,30 +55,13 @@ const BillingDetails = props => {
     }
   }, [_country])
 
-  const formatCountries = data => {
-    const formattedCountries = data.map(({country_name}) => ({
-      value: country_name,
-      label: country_name
-    }))
+  const formatOptions = (type, data) => {
+    const formattedOptions = data.map(({country_name, state_name}) => {
+      const _value = type === 'country' ? country_name : state_name
+      return {value: _value, label: _value}
+    })
 
-    return formattedCountries
-  }
-
-  const formatStates = data => {
-    const formattedStates = data.map(({state_name}) => ({
-      value: state_name,
-      label: state_name
-    }))
-
-    return formattedStates
-  }
-
-  const handleCountrySelect = selected => {
-    setValue('country', selected)
-  }
-
-  const handleStateSelect = selected => {
-    setValue('state', selected)
+    return formattedOptions
   }
 
   return (
@@ -91,14 +75,7 @@ const BillingDetails = props => {
             {...{register}}
             id='firstName'
             label='First name'
-            pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,10}$/}
-            error={
-              errors['firstName']?.type === 'required'
-                ? 'This field is required'
-                : errors['firstName']?.type === 'pattern'
-                ? 'Please enter between 3 and 10 letters'
-                : ''
-            }
+            error={getFieldErrMsg(errors, 'firstName')}
             containerClass='billing-details__first-name'
           />
           <InputField
@@ -106,14 +83,7 @@ const BillingDetails = props => {
             {...{register}}
             id='lastName'
             label='Last name'
-            pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,10}$/}
-            error={
-              errors['lastName']?.type === 'required'
-                ? 'This field is required'
-                : errors['lastName']?.type === 'pattern'
-                ? 'Please enter between 3 and 10 letters'
-                : ''
-            }
+            error={getFieldErrMsg(errors, 'lastName')}
             containerClass='billing-details__last-name'
           />
         </div>
@@ -121,70 +91,46 @@ const BillingDetails = props => {
           {...{register}}
           id='companyName'
           label='Company name'
-          pattern={/^(?=(?:.*[a-zA-Z]){3}).{3,20}$/}
-          error={
-            errors['companyName']?.type === 'pattern'
-              ? 'Please enter between 3 and 20 letters'
-              : ''
-          }
+          error={getFieldErrMsg(errors, 'companyName')}
         />
         <LocationSelector
           required
           id='country'
           label='Country / Region'
+          {...{register, setValue, clearErrors}}
           data={watch('countries')}
-          value={watch('country')}
-          onSelect={handleCountrySelect}
+          selected={watch('country')}
+          error={getFieldErrMsg(errors, 'country')}
         />
         <LocationSelector
           required
           id='state'
           label='State'
+          {...{register, setValue, clearErrors}}
           data={watch('states')}
           selected={watch('state')}
-          onSelect={handleStateSelect}
+          error={getFieldErrMsg(errors, 'state')}
         />
         <InputField
           required
           {...{register}}
           id='address'
           label='Address'
-          pattern={/^(?=(?:.*[a-zA-Z]){3}).{3,20}$/}
-          error={
-            errors['address']?.type === 'required'
-              ? 'This field is required'
-              : errors['address']?.type === 'pattern'
-              ? 'Please enter between 3 and 20 letters'
-              : ''
-          }
+          error={getFieldErrMsg(errors, 'address')}
         />
         <InputField
           required
           {...{register}}
           id='phone'
           label='Phone'
-          pattern={/^[0-9]{8,15}$/}
-          error={
-            errors['phone']?.type === 'required'
-              ? 'This field is required'
-              : errors['phone']?.type === 'pattern'
-              ? 'Please enter between 8 and 15 digits'
-              : ''
-          }
+          error={getFieldErrMsg(errors, 'phone')}
         />
         <InputField
           required
           {...{register}}
           id='email'
           label='Email address'
-          pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}
-          error={
-            errors['email']?.type === 'required'
-              ? 'This field is required'
-              : errors['email']?.type === 'pattern'
-              ? 'Please enter a valid email format'
-              : ''
-          }
+          error={getFieldErrMsg(errors, 'email')}
         />
       </form>
     </SectionWrapper>

@@ -6,7 +6,8 @@ import {
   AdditionalInfo,
   BillingDetails,
   CheckoutCouponForm,
-  OrderTotals
+  OrderTotals,
+  FormValidationSchema
 } from './index'
 import {useDispatch, useSelector} from 'react-redux'
 import {setCoupon} from '../../redux/slices'
@@ -21,7 +22,8 @@ const Checkout = () => {
     formState: {errors},
     handleSubmit,
     setValue,
-    watch
+    watch,
+    clearErrors
   } = useForm({
     defaultValues: {
       firstName: '',
@@ -35,8 +37,8 @@ const Checkout = () => {
       phone: '',
       email: '',
       orderNotes: ''
-    }
-    // resolver:
+    },
+    resolver: yupResolver(FormValidationSchema)
   })
 
   const handleCoupon = useCallback(_coupon => {
@@ -52,7 +54,9 @@ const Checkout = () => {
       <CheckoutCouponForm {...{coupon}} onApplyCoupon={handleCoupon} />
       <div className='checkout__main'>
         <div>
-          <BillingDetails {...{register, setValue, errors, watch}} />
+          <BillingDetails
+            {...{register, setValue, errors, watch, clearErrors}}
+          />
           <AdditionalInfo {...{register, errors}} />
         </div>
         <OrderTotals {...{coupon}} onPlaceOrder={handleSubmit(submitOrder)} />

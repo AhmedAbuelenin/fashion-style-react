@@ -8,6 +8,7 @@ const TextAreaField = props => {
   const {
     containerClass = '',
     textareaClass = '',
+    id,
     label,
     placeholder,
     required = false,
@@ -21,10 +22,10 @@ const TextAreaField = props => {
       {...{required, label}}
       className={`textarea-wrapper ${containerClass}`}>
       <textarea
-        id={label}
-        name={label}
+        {...{id}}
+        name={id}
         {...{placeholder}}
-        {...register(label, {
+        {...register(id, {
           required,
           pattern
         })}

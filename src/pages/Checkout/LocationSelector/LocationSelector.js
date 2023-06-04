@@ -1,17 +1,34 @@
+import {memo, useCallback} from 'react'
 import {RiArrowDropDownFill as ArrowIcon} from 'react-icons/ri'
 import Select from 'react-select'
-import {FieldWrapper} from '../../../components'
+import {FieldWrapper, ValidationError} from '../../../components'
 import './LocationSelector.scss'
 
 const LocationSelector = props => {
   console.log('LocationSelector is rendering')
 
-  const {required, label, data, selected, onSelect} = props
+  const {
+    required,
+    id,
+    label,
+    register,
+    setValue,
+    data,
+    selected,
+    error,
+    clearErrors
+  } = props
+
+  const handleSelect = useCallback(selected => {
+    setValue(id, selected)
+    clearErrors(id)
+  }, [])
 
   return (
     <FieldWrapper {...{required, label}}>
       <Select
         id={label}
+        {...register(id)}
         className='location-select-container'
         classNamePrefix='location-select'
         styles={{
@@ -26,10 +43,19 @@ const LocationSelector = props => {
           DropdownIndicator: () => <ArrowIcon color='#888888' size={26} />
         }}
         value={selected}
-        onChange={onSelect}
+        onChange={handleSelect}
       />
+      {error ? <ValidationError {...{error}} /> : null}
     </FieldWrapper>
   )
 }
 
-export default LocationSelector
+function areEquals(prevProps, nextProps) {
+  return (
+    prevProps.data === nextProps.data &&
+    prevProps.selected === nextProps.selected &&
+    prevProps.error === nextProps.error
+  )
+}
+
+export default memo(LocationSelector, areEquals)

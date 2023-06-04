@@ -1,17 +1,18 @@
 import {SectionWrapper, TextAreaField} from '../../../components'
+import {getFieldErrMsg} from '../../../utils'
 import './AdditionalInfo.scss'
 
-const AdditionalInfo = ({register}) => {
+const AdditionalInfo = ({register, errors}) => {
   return (
     <SectionWrapper
       heading='Additional information'
       className='additional-info'>
       <TextAreaField
+        id='orderNotes'
         label='Order notes'
         {...{register}}
         placeholder='Notes about your order, e.g. special notes for delivery'
-        // pattern={}
-        // error={}
+        error={getFieldErrMsg(errors, 'orderNotes')}
         containerClass='additional-info__textarea-wrapper'
         textareaClass='additional-info__textarea'
       />

@@ -13,7 +13,7 @@ const OrderDetails = props => {
       </thead>
       <tbody>
         {data.map(item => (
-          <tr>
+          <tr key={item.code}>
             <td>{`${item.name}  x ${item.quantity}`}</td>
             <td>${item.price}</td>
           </tr>
