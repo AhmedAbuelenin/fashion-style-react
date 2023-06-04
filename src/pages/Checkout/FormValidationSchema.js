@@ -54,7 +54,7 @@ export default yup.object({
     .required('This field is required')
     .test(
       'is-valid-email-format',
-      'Please enter valid email format',
+      'Please enter a valid email format',
       value =>
         value &&
         RegExp(/^[A-Za-z0-9._$%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i).test(value)

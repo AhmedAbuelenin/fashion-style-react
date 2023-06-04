@@ -19,7 +19,7 @@ const TextAreaField = props => {
 
   return (
     <FieldWrapper
-      {...{required, label}}
+      {...{required, label, fieldId: id}}
       className={`textarea-wrapper ${containerClass}`}>
       <textarea
         {...{id}}

@@ -1,11 +1,11 @@
 import './FieldWrapper.scss'
 
 const FieldWrapper = props => {
-  const {className = '', required, label, children} = props
+  const {className = '', required, fieldId, label, children} = props
 
   return (
     <div className={`field-wrapper ${className}`}>
-      <label htmlFor={label} className='field-wrapper__label'>
+      <label htmlFor={fieldId} className='field-wrapper__label'>
         {label}
         <span
           className={`field-wrapper__mandatory-sign ${

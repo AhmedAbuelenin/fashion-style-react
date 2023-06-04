@@ -1,7 +1,14 @@
+import {yupResolver} from '@hookform/resolvers/yup'
 import {useForm} from 'react-hook-form'
-import {InputField, Loader, TextAreaField} from '../../../components'
-import {SectionWrapper} from '../../../components'
+import {
+  InputField,
+  Loader,
+  SectionWrapper,
+  TextAreaField
+} from '../../../components'
+import {getFieldErrMsg} from '../../../utils'
 import './ContactForm.scss'
+import ContactFormValidation from './ContactFormValidation'
 
 const ContactForm = () => {
   console.log('ContactForm is rendering')
@@ -14,12 +21,13 @@ const ContactForm = () => {
     watch
   } = useForm({
     defaultValues: {
-      Name: '',
-      Email: '',
-      Message: '',
+      name: '',
+      email: '',
+      message: '',
       sending: false,
       isSubmittedSuccessfully: false
-    }
+    },
+    resolver: yupResolver(ContactFormValidation)
   })
 
   const _sending = watch('sending')
@@ -48,46 +56,27 @@ const ContactForm = () => {
             <InputField
               data-testid='name'
               required
+              id='name'
               label='Name'
               {...{register}}
               pattern={/^(?=(?:.*[a-zA-Z]){3})[a-zA-Z\s]{3,20}$/}
-              error={
-                errors['Name']?.type === 'required'
-                  ? 'This field is required'
-                  : errors['Name']?.type === 'pattern'
-                  ? 'Please enter between 3 and 20 letters'
-                  : ''
-              }
+              error={getFieldErrMsg(errors, 'name')}
             />
             <InputField
               data-testid='email'
               required
+              id='email'
               label='Email'
               {...{register}}
-              pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}
-              error={
-                errors['Email']?.type === 'required'
-                  ? 'This field is required'
-                  : errors['Email']?.type === 'pattern'
-                  ? 'Please enter a valid email format'
-                  : ''
-              }
+              error={getFieldErrMsg(errors, 'email')}
             />
           </div>
           <TextAreaField
             required
+            id='message'
             label='Message'
             {...{register}}
-            pattern={
-              /^(?=(?:.*[a-zA-Z0-9@!#$%^.;,-]){3})[a-zA-Z0-9@!#$%^.;,-\s]{3,800}$/
-            }
-            error={
-              errors['Message']?.type === 'required'
-                ? 'This field is required'
-                : errors['Message']?.type === 'pattern'
-                ? 'Please enter between 3 and 800 chars'
-                : ''
-            }
+            error={getFieldErrMsg(errors, 'message')}
           />
           <div className='contact-form__submit-loader'>
             <input

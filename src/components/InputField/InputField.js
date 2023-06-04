@@ -17,7 +17,7 @@ const InputField = props => {
 
   return (
     <FieldWrapper
-      {...{required, label}}
+      {...{required, label, fieldId: id}}
       className={`input-wrapper ${containerClass}`}>
       <input
         {...{id}}

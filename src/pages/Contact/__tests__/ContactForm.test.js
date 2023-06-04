@@ -38,7 +38,9 @@ describe('ContactForm', () => {
     fireEvent.change(messageInput, {target: {value: 'a9 '}})
     fireEvent.click(screen.getByText('SEND MESSAGE'))
     expect(
-      await screen.findByText('Please enter between 3 and 800 chars')
+      await screen.findByText(
+        'Please enter between 3 and 500 chars and must include at least 3 letters'
+      )
     ).toBeInTheDocument()
   })
 
