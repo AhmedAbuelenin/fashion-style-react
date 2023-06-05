@@ -18,7 +18,7 @@ export default yup.object({
       'Please enter a valid email format',
       value =>
         value &&
-        RegExp(/^[A-Za-z0-9._$%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i).test(value)
+        RegExp(/^[A-Za-z0-9._$%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i).test(value)
     )
     .test(
       'is-between-8-to-40-chars',

@@ -11,6 +11,7 @@ const LocationSelector = props => {
     required,
     id,
     label,
+    ariaLabel,
     register,
     setValue,
     data,
@@ -25,9 +26,9 @@ const LocationSelector = props => {
   }, [])
 
   return (
-    <FieldWrapper {...{required, label}}>
+    <FieldWrapper {...{required, label, fieldId: id}}>
       <Select
-        id={label}
+        id={id}
         {...register(id)}
         className='location-select-container'
         classNamePrefix='location-select'
@@ -44,6 +45,7 @@ const LocationSelector = props => {
         }}
         value={selected}
         onChange={handleSelect}
+        aria-label={ariaLabel}
       />
       {error ? <ValidationError {...{error}} /> : null}
     </FieldWrapper>

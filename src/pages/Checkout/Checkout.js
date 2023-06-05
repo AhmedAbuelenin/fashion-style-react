@@ -6,12 +6,12 @@ import {
   AdditionalInfo,
   BillingDetails,
   CheckoutCouponForm,
-  OrderTotals,
-  FormValidationSchema
+  OrderTotals
 } from './index'
 import {useDispatch, useSelector} from 'react-redux'
 import {setCoupon} from '../../redux/slices'
 import {yupResolver} from '@hookform/resolvers/yup'
+import BillingFormValidation from './BillingFormValidation'
 
 const Checkout = () => {
   const dispatch = useDispatch()
@@ -38,7 +38,7 @@ const Checkout = () => {
       email: '',
       orderNotes: ''
     },
-    resolver: yupResolver(FormValidationSchema)
+    resolver: yupResolver(BillingFormValidation)
   })
 
   const handleCoupon = useCallback(_coupon => {

@@ -97,15 +97,17 @@ const BillingDetails = props => {
           required
           id='country'
           label='Country / Region'
+          ariaLabel='Select a country or region'
           {...{register, setValue, clearErrors}}
           data={watch('countries')}
-          selected={watch('country')}
+          selected={_country}
           error={getFieldErrMsg(errors, 'country')}
         />
         <LocationSelector
           required
           id='state'
           label='State'
+          ariaLabel='Select a state'
           {...{register, setValue, clearErrors}}
           data={watch('states')}
           selected={watch('state')}

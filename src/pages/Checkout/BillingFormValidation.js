@@ -46,7 +46,7 @@ export default yup.object({
     .required('This field is required')
     .test(
       'are-digits-between-8-and-16',
-      'Please enter between 8 and 16 digits and include phone code as +20',
+      'Please start with phone code as +20 and enter between 8 and 16 digits',
       value => value && RegExp(/^\+\d{8,16}$/).test(value)
     ),
   email: yup
@@ -57,7 +57,7 @@ export default yup.object({
       'Please enter a valid email format',
       value =>
         value &&
-        RegExp(/^[A-Za-z0-9._$%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i).test(value)
+        RegExp(/^[A-Za-z0-9._$%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i).test(value)
     )
     .test(
       'is-between-8-to-40-chars',
