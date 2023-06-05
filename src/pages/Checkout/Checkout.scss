@@ -1,8 +1,14 @@
+@import '../../styles/theme';
+
 .checkout__main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
   column-gap: 10rem;
   row-gap: 4rem;
+}
+
+.checkout__submit-success-msg {
+  margin-bottom: 4rem;
 }
 
 /* Start Responsive */

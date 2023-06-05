@@ -13,3 +13,12 @@
   color: var(--color-red-err);
   margin-top: 0.5rem;
 }
+
+@mixin submitSuccessMsg {
+  background-color: var(--color-green-bg);
+  padding: 1.5rem;
+  color: var(--color-dark-text);
+  line-height: 2.5rem;
+  border: 0.1rem solid var(--color-light-green-border);
+  margin-top: 7rem;
+}

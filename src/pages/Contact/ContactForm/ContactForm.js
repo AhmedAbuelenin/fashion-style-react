@@ -4,6 +4,7 @@ import {
   InputField,
   Loader,
   SectionWrapper,
+  SubmitSuccessMsg,
   TextAreaField
 } from '../../../components'
 import {getFieldErrMsg} from '../../../utils'
@@ -89,9 +90,9 @@ const ContactForm = () => {
           </div>
         </form>
       ) : (
-        <p className='contact-form__submission-msg'>
+        <SubmitSuccessMsg className='contact-form__submission-msg'>
           Thanks for contacting us! We will be in touch with you shortly.
-        </p>
+        </SubmitSuccessMsg>
       )}
     </SectionWrapper>
   )

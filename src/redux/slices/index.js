@@ -3,7 +3,8 @@ export {
   removeCartItem,
   updateCartItems,
   setCoupon,
-  setCartTotals
+  setCartTotals,
+  emptyCart
 } from './Cart'
 export {
   setData,

@@ -1,4 +1,4 @@
-@import '../../../styles/_mixins.scss';
+@import '../../../styles/mixins';
 
 .contact-form__wrapper {
   flex-grow: 1;
@@ -17,13 +17,4 @@
 .contact-form__submit-loader {
   @include flexVCenter;
   gap: 2rem;
-}
-
-.contact-form__submission-msg {
-  background-color: var(--color-green-bg);
-  padding: 1.5rem;
-  color: var(--color-dark-text);
-  line-height: 2.5rem;
-  border: 0.1rem solid var(--color-light-green-border);
-  margin-top: 7rem;
 }

@@ -1,9 +1,12 @@
 import {useSelector} from 'react-redux'
-import {SectionWrapper} from '../../../components'
+import {Loader, SectionWrapper} from '../../../components'
+import '../../../styles/_global.scss'
 import {OrderDetails} from '../index'
 import './OrderTotals.scss'
 
-const OrderTotals = ({coupon, onPlaceOrder}) => {
+const OrderTotals = props => {
+  const {coupon, isSending, onPlaceOrder} = props
+
   const {
     data,
     totals: {price: subtotal}
@@ -18,8 +21,15 @@ const OrderTotals = ({coupon, onPlaceOrder}) => {
         <button
           type='submit'
           onClick={onPlaceOrder}
+          disabled={isSending}
           className='global-button order-totals__button'>
-          PLACE ORDER
+          {isSending ? (
+            <div className='centered-container'>
+              <Loader />
+            </div>
+          ) : (
+            'PLACE ORDER'
+          )}
         </button>
       </div>
     </SectionWrapper>

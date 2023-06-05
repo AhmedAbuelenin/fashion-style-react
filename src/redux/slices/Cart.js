@@ -52,7 +52,10 @@ const cartSlice = createSlice({
     },
     setCartTotals: (state, action) => {
       state.totals = action.payload
-    }
+    },
+    emptyCart: () => ({
+      ...initialState
+    })
   }
 })
 
@@ -61,7 +64,8 @@ export const {
   removeCartItem,
   updateCartItems,
   setCoupon,
-  setCartTotals
+  setCartTotals,
+  emptyCart
 } = cartSlice.actions
 
 export default cartSlice.reducer

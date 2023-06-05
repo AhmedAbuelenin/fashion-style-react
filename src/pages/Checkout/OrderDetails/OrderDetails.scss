@@ -1,10 +1,11 @@
+@import '../../../styles/mixins';
+
 .order-totals table {
   width: 100%;
 }
 
 .order-totals tr {
-  display: flex;
-  justify-content: space-between;
+  @include flexJustifyBetween;
   padding: 2rem 0;
 }
 
@@ -20,8 +21,17 @@
   border-top: 0.1rem solid var(--color-light-gray-divider);
 }
 
-.order-totals__subtotal-value {
+.order-totals__subtotal-value,
+.order-totals__discount-value {
   font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+}
+
+.order-totals__name-quantity-container {
+  @include flexVCenter;
+}
+
+.order-totals__quantity {
   font-weight: var(--font-weight-bold);
 }
 

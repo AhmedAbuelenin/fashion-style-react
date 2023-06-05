@@ -1,4 +1,5 @@
 import './OrderDetails.scss'
+import {GrFormClose as CloseIcon} from 'react-icons/gr'
 
 const OrderDetails = props => {
   const {data, discount, subtotal} = props
@@ -14,7 +15,15 @@ const OrderDetails = props => {
       <tbody>
         {data.map(item => (
           <tr key={item.code}>
-            <td>{`${item.name}  x ${item.quantity}`}</td>
+            <td className='order-totals__name-quantity-container'>
+              {item.name}
+              <CloseIcon
+                color='black'
+                size='21'
+                className='order-totals__multiply-icon'
+              />
+              <span className='order-totals__quantity'>{item.quantity}</span>
+            </td>
             <td>${item.price}</td>
           </tr>
         ))}
@@ -29,7 +38,9 @@ const OrderDetails = props => {
         {discount > 0 ? (
           <tr>
             <td>Discount</td>
-            <td>-${discount}</td>
+            <td className='order-totals__discount-value'>
+              - ${discount.toFixed(2)}
+            </td>
           </tr>
         ) : null}
         <tr>

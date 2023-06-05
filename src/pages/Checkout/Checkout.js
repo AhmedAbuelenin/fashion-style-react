@@ -1,6 +1,11 @@
+import {yupResolver} from '@hookform/resolvers/yup'
 import {useCallback} from 'react'
 import {useForm} from 'react-hook-form'
-import {ContentWrapper} from '../../components'
+import {useDispatch, useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {ContentWrapper, SubmitSuccessMsg} from '../../components'
+import {emptyCart, setCoupon} from '../../redux/slices'
+import BillingFormValidation from './BillingFormValidation'
 import './Checkout.scss'
 import {
   AdditionalInfo,
@@ -8,10 +13,6 @@ import {
   CheckoutCouponForm,
   OrderTotals
 } from './index'
-import {useDispatch, useSelector} from 'react-redux'
-import {setCoupon} from '../../redux/slices'
-import {yupResolver} from '@hookform/resolvers/yup'
-import BillingFormValidation from './BillingFormValidation'
 
 const Checkout = () => {
   const dispatch = useDispatch()
@@ -36,7 +37,9 @@ const Checkout = () => {
       address: '',
       phone: '',
       email: '',
-      orderNotes: ''
+      orderNotes: '',
+      sending: false,
+      isSuccessMsgShown: false
     },
     resolver: yupResolver(BillingFormValidation)
   })
@@ -46,21 +49,47 @@ const Checkout = () => {
   }, [])
 
   const submitOrder = data => {
-    console.log('data', data)
+    setValue('sending', true)
+    setTimeout(() => {
+      dispatch(emptyCart())
+      setValue('isSuccessMsgShown', true)
+    }, 2000)
   }
 
   return (
     <ContentWrapper wrapperClass='checkout' heading='Checkout'>
-      <CheckoutCouponForm {...{coupon}} onApplyCoupon={handleCoupon} />
-      <div className='checkout__main'>
-        <div>
-          <BillingDetails
-            {...{register, setValue, errors, watch, clearErrors}}
-          />
-          <AdditionalInfo {...{register, errors}} />
-        </div>
-        <OrderTotals {...{coupon}} onPlaceOrder={handleSubmit(submitOrder)} />
-      </div>
+      {!watch('isSuccessMsgShown') ? (
+        <>
+          <CheckoutCouponForm {...{coupon}} onApplyCoupon={handleCoupon} />
+          <div className='checkout__main'>
+            <div>
+              <BillingDetails
+                {...{register, setValue, errors, watch, clearErrors}}
+              />
+              <AdditionalInfo {...{register, errors}} />
+            </div>
+            <OrderTotals
+              {...{coupon}}
+              isSending={watch('sending')}
+              onPlaceOrder={handleSubmit(submitOrder)}
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <SubmitSuccessMsg className='checkout__submit-success-msg'>
+            We have received your order successfully, one of our customer
+            service agents will contact you in a couple of days to confirm your
+            order and discuss the shipping details and the expected time to
+            receive it. We have sent all your order details to your email (
+            <strong>{watch('email')}</strong>). Thanks for shopping with Fashion
+            Style.
+          </SubmitSuccessMsg>
+          <Link to='/shop' className='global-button'>
+            RETURN TO SHOP
+          </Link>
+        </>
+      )}
     </ContentWrapper>
   )
 }
