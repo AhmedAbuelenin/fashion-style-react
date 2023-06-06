@@ -1,7 +1,10 @@
+import {memo} from 'react'
 import {FeaturedCategoriesList, FeaturedWrapper} from '../index'
 import './FeaturedCategories.scss'
 
 const FeaturedCategories = ({data}) => {
+  console.log('FeaturedCategories is rendering')
+
   return (
     <FeaturedWrapper
       heading='Featured Categories'
@@ -11,4 +14,4 @@ const FeaturedCategories = ({data}) => {
   )
 }
 
-export default FeaturedCategories
+export default memo(FeaturedCategories)
