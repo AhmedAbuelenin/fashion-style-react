@@ -46,7 +46,7 @@ const ContactForm = () => {
   return (
     <SectionWrapper
       heading='Leave Us a Message'
-      className='contact-form__wrapper'>
+      sectionClass='contact-form__wrapper'>
       {!watch('isSubmittedSuccessfully') ? (
         <form
           action='/#'

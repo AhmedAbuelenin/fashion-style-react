@@ -4,7 +4,7 @@ import './ContactDetails.scss'
 
 const ContactDetails = () => {
   return (
-    <SectionWrapper heading='Our Store' className='contact-details'>
+    <SectionWrapper heading='Our Store' sectionClass='contact-details'>
       <p className='contact-details__address'>
         Fashion Style Store, ninth Street, 5th Settlement, New Cairo, Egypt
       </p>

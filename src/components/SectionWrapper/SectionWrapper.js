@@ -1,10 +1,10 @@
 import './SectionWrapper.scss'
 
 const SectionWrapper = props => {
-  const {className, headingClass, heading, children} = props
+  const {sectionClass, headingClass, heading, children} = props
 
   return (
-    <div className={`section ${className}`}>
+    <div className={`section ${sectionClass}`}>
       <h2 className={`section__heading ${headingClass}`}>{heading}</h2>
       {children}
     </div>

@@ -67,7 +67,7 @@ const BillingDetails = props => {
   return (
     <SectionWrapper
       heading='Billing Details'
-      className='billing-details-wrapper'>
+      sectionClass='billing-details-wrapper'>
       <form noValidate className='billing-details__form'>
         <div className='billing-details__name-container'>
           <InputField

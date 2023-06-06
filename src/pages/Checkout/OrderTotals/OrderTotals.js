@@ -15,7 +15,7 @@ const OrderTotals = props => {
   const discount = coupon.status ? subtotal * 0.05 : 0
 
   return (
-    <SectionWrapper heading='Your order' className='order-totals-wrapper'>
+    <SectionWrapper heading='Your order' sectionClass='order-totals-wrapper'>
       <div className='order-totals'>
         <OrderDetails {...{data, discount, subtotal}} />
         <button

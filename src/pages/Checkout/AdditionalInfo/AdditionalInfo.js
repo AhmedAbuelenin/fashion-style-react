@@ -6,7 +6,7 @@ const AdditionalInfo = ({register, errors}) => {
   return (
     <SectionWrapper
       heading='Additional information'
-      className='additional-info'>
+      sectionClass='additional-info'>
       <TextAreaField
         id='orderNotes'
         label='Order notes'
