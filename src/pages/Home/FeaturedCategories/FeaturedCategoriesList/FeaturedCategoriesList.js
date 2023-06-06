@@ -5,7 +5,7 @@ const FeaturedCategoriesList = ({data}) => {
   return (
     <ul className='featured-categories__list'>
       {data.map(item => (
-        <li key={item.code} className='featured-categories__item'>
+        <li key={item.catName} className='featured-categories__item'>
           <Link to='/shop'>
             <img
               src={item.catImgUrl}

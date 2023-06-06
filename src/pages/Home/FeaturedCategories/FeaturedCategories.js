@@ -1,17 +1,13 @@
-import {SectionWrapper} from '../../../components'
-import {FeaturedCategoriesList} from '../index'
+import {FeaturedCategoriesList, FeaturedWrapper} from '../index'
 import './FeaturedCategories.scss'
 
 const FeaturedCategories = ({data}) => {
   return (
-    <SectionWrapper
+    <FeaturedWrapper
       heading='Featured Categories'
-      headingClass='featured-categories__heading'>
-      <p className='featured-categories__description'>
-        Step Up Your Style Game with Our Featured Fashion Categories
-      </p>
+      description='Step Up Your Style Game with Our Featured Fashion Categories description'>
       <FeaturedCategoriesList {...{data}} />
-    </SectionWrapper>
+    </FeaturedWrapper>
   )
 }
 

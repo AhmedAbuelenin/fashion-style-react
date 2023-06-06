@@ -31,6 +31,6 @@
 
 @mixin mainContentWrapper {
   max-width: var(--width-content);
-  margin: 8rem auto 17rem;
-  padding-inline: 2rem;
+  margin: 0 auto;
+  padding: 8rem 2rem 17rem;
 }

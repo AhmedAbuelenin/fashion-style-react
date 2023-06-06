@@ -1,19 +1,16 @@
-import {Loader, SectionWrapper} from '../../../components'
+import {Loader} from '../../../components'
 import '../../../styles/_global.scss'
-import {FeaturedCollectionList} from '../index'
+import {FeaturedCollectionList, FeaturedWrapper} from '../index'
 import './FeaturedCollection.scss'
 
 const FeaturedCollection = ({featuredResult}) => {
   const {data, loading, status} = featuredResult
 
   return (
-    <SectionWrapper
+    <FeaturedWrapper
       heading='Featured Collection'
-      headingClass='featured-collection__heading'>
-      <p className='featured-collection__description'>
-        Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
-        Products
-      </p>
+      description='Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
+      Products'>
       {data.length > 0 ? (
         <FeaturedCollectionList {...{data}} />
       ) : loading ? (
@@ -23,7 +20,7 @@ const FeaturedCollection = ({featuredResult}) => {
       ) : status !== 'ok' ? (
         <span className='global-general-err-msg'>{status.toUpperCase()}</span>
       ) : null}
-    </SectionWrapper>
+    </FeaturedWrapper>
   )
 }
 
