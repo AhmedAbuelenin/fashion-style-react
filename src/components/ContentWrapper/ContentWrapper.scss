@@ -1,0 +1,11 @@
+@import '../../styles/mixins';
+
+.content-wrapper {
+  @include mainContentWrapper;
+}
+
+.content-wrapper__heading {
+  font-size: var(--font-size-64);
+  text-align: center;
+  margin-bottom: 3.5rem;
+}

@@ -1,16 +1,15 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {featuredCategories} from '../../data'
 import {getFeaturedCollection} from '../../redux/thunk'
-import './Home.css'
-import {FeaturedCollection, Hero} from './index'
+import './Home.scss'
+import {FeaturedCategories, FeaturedCollection, Hero} from './index'
 
 const Home = () => {
   console.log('Home page is rendered')
 
   const dispatch = useDispatch()
   const featuredResult = useSelector(state => state.featuredCollection)
-  const {coupon} = useSelector(state => state.cart)
-  console.log('🚀 ~ file: Home.js:13 ~ Home ~ coupon:', coupon)
 
   useEffect(() => {
     const fetchProducts = () => {
@@ -25,8 +24,9 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div className='content-wrapper'>
+      <div className='home-wrapper'>
         <FeaturedCollection {...{featuredResult}} />
+        <FeaturedCategories data={featuredCategories} />
       </div>
     </>
   )

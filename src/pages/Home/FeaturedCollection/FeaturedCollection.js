@@ -9,7 +9,6 @@ const FeaturedCollection = ({featuredResult}) => {
   return (
     <SectionWrapper
       heading='Featured Collection'
-      sectionClass='featured'
       headingClass='featured-collection__heading'>
       <p className='featured-collection__description'>
         Unleash Your Style with Our Trendsetting Collection of Fashion and Gift

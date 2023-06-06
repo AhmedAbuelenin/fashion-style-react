@@ -23,3 +23,14 @@
   display: flex;
   gap: $gap;
 }
+
+@mixin gridColsAutoFit($minWidth: 25rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($minWidth, 1fr));
+}
+
+@mixin mainContentWrapper {
+  max-width: var(--width-content);
+  margin: 8rem auto 17rem;
+  padding-inline: 2rem;
+}

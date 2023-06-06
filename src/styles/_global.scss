@@ -1,9 +1,3 @@
-.content-wrapper {
-  max-width: var(--width-content);
-  margin: 8rem auto 17rem;
-  padding-inline: 2rem;
-}
-
 .centered-container {
   display: flex;
   justify-content: center;
@@ -29,12 +23,6 @@
 
 .global-button:hover {
   background-color: var(--color-gray-hover);
-}
-
-.global-h1 {
-  font-size: var(--font-size-64);
-  text-align: center;
-  margin-bottom: 3.5rem;
 }
 
 .global-divider {

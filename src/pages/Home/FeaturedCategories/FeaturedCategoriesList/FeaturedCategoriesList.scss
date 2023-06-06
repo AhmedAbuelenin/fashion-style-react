@@ -1,0 +1,16 @@
+@import '../../../../styles/mixins';
+
+.featured-categories__list {
+  @include gridColsAutoFit;
+  gap: 3rem;
+}
+
+.featured-categories__img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.featured-categories__name {
+  text-align: center;
+  margin-top: 1.5rem;
+}

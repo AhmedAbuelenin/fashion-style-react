@@ -1,3 +1,4 @@
+export {getCategories} from './categories/categories'
 export {getProducts} from './products/products'
 export {getProduct} from './products/product'
 export {getUniversalApiAuthToken} from './countries/universalApiAuthToken'
