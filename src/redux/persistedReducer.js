@@ -6,8 +6,9 @@ import rootReducer from './rootReducer'
 const persistConfig = {
   key: 'root',
   storage,
+  version: 1,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['cart']
+  blacklist: ['featuredCollection', 'cart']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

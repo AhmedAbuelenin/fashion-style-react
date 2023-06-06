@@ -5,15 +5,27 @@ import storage from 'redux-persist/lib/storage'
 import Cart from './slices/Cart'
 import FeaturedCollection from './slices/FeaturedCollection'
 
+const featuredCollectionConfig = {
+  key: 'featuredCollection',
+  storage,
+  version: 1,
+  stateReconciler: autoMergeLevel2,
+  blacklist: ['data']
+}
+
 const cartConfig = {
   key: 'cart',
   storage,
+  version: 1,
   stateReconciler: autoMergeLevel2,
   whitelist: ['data']
 }
 
 const rootReducer = combineReducers({
-  featuredCollection: FeaturedCollection,
+  featuredCollection: persistReducer(
+    featuredCollectionConfig,
+    FeaturedCollection
+  ),
   cart: persistReducer(cartConfig, Cart)
 })
 
