@@ -10,8 +10,8 @@ const FeaturedCollection = ({featuredResult}) => {
     <div className='featured'>
       <h2 className='featured-collection__heading'>Featured Collection</h2>
       <p className='featured-collection__description'>
-        A powerful headline about your product’s features to give focus to your
-        chosen product featured
+        Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
+        Products
       </p>
       {data.length > 0 ? (
         <FeaturedCollectionList {...{data}} />
