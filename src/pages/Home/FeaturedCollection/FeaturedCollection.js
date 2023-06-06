@@ -1,14 +1,16 @@
-import {Loader} from '../../../components'
+import {Loader, SectionWrapper} from '../../../components'
 import '../../../styles/_global.scss'
 import {FeaturedCollectionList} from '../index'
-import './FeaturedCollection.css'
+import './FeaturedCollection.scss'
 
 const FeaturedCollection = ({featuredResult}) => {
   const {data, loading, status} = featuredResult
 
   return (
-    <div className='featured'>
-      <h2 className='featured-collection__heading'>Featured Collection</h2>
+    <SectionWrapper
+      heading='Featured Collection'
+      className='featured'
+      headingClass='featured-collection__heading'>
       <p className='featured-collection__description'>
         Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
         Products
@@ -22,7 +24,7 @@ const FeaturedCollection = ({featuredResult}) => {
       ) : status !== 'ok' ? (
         <span className='global-general-err-msg'>{status.toUpperCase()}</span>
       ) : null}
-    </div>
+    </SectionWrapper>
   )
 }
 

@@ -1,5 +1,6 @@
 export {default as Hero} from './Hero/Hero'
 export {default as FeaturedCollection} from './FeaturedCollection/FeaturedCollection'
+export {default as FeaturedCategories} from './FeaturedCategories/FeaturedCategories'
 export {default as FeaturedCollectionList} from './FeaturedCollection/FeaturedCollectionList/FeaturedCollectionList'
 export {default as FeaturedCollectionGallery} from './FeaturedCollection/FeaturedCollectionGallery/FeaturedCollectionGallery'
 export {default as FeaturedCollectionDetails} from './FeaturedCollection/FeaturedCollectionDetails/FeaturedCollectionDetails'
