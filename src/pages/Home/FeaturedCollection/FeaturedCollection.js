@@ -1,6 +1,6 @@
-import {Loader} from '../../../components'
+import {Loader, ProductList} from '../../../components'
 import '../../../styles/_global.scss'
-import {FeaturedCollectionList, FeaturedWrapper} from '../index'
+import {FeaturedWrapper} from '../index'
 import './FeaturedCollection.scss'
 
 const FeaturedCollection = ({featuredResult}) => {
@@ -12,7 +12,7 @@ const FeaturedCollection = ({featuredResult}) => {
       description='Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
       Products'>
       {data.length > 0 ? (
-        <FeaturedCollectionList {...{data}} />
+        <ProductList {...{data}} />
       ) : loading ? (
         <div className='centered-container'>
           <Loader />

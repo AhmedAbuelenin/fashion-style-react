@@ -1,12 +1,12 @@
 import {memo, useCallback, useState} from 'react'
 import {Link} from 'react-router-dom'
-import {ProductDetails} from '../../../../components'
-import {generateItemIDFromCode} from '../../../../utils'
-import {ProductModal} from '../../index'
-import './FeaturedCollectionGallery.css'
+import {generateItemIDFromCode} from '../../../utils'
+import {ProductDetails} from '../../index'
+import {ProductModal} from '../index'
+import './ProductGallery.scss'
 
-const FeaturedCollectionGallery = ({item}) => {
-  console.log('FeaturedCollectionGallery is rendering')
+const ProductGallery = ({item}) => {
+  console.log('ProductGallery is rendering')
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
@@ -20,16 +20,16 @@ const FeaturedCollectionGallery = ({item}) => {
 
   return (
     <>
-      <div className='featured-collection__img-container'>
+      <div className='product-gallery__img-container'>
         <Link to={`/productDetailsPage/${generateItemIDFromCode(item.code)}`}>
           <img
             src={item.images[0].baseUrl}
             alt='item img'
-            className='featured-collection__img'
+            className='product-gallery__img'
           />
         </Link>
         <button
-          className='global-button featured-collection__quick-view'
+          className='global-button product-gallery__quick-view'
           onClick={toggleVisibleModal}>
           QUICK VIEW
         </button>
@@ -48,4 +48,4 @@ const FeaturedCollectionGallery = ({item}) => {
 function areEquals(prevProps, nextProps) {
   return prevProps.item.code === nextProps.item.code
 }
-export default memo(FeaturedCollectionGallery, areEquals)
+export default memo(ProductGallery, areEquals)

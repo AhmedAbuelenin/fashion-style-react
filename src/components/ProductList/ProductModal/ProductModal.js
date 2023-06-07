@@ -1,6 +1,6 @@
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import '../../../styles/_global.scss'
-import './ProductModal.css'
+import './ProductModal.scss'
 
 const ProductModal = props => {
   const {children, onModalPress, onClose} = props

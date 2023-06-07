@@ -7,11 +7,11 @@ import {
   setCartItem,
   setFeaturedSelected,
   toggleItemLoading
-} from '../../../../redux/slices'
-import {formatProductData} from '../../../../utils'
-import './FeaturedCollectionDetails.css'
+} from '../../../redux/slices'
+import {formatProductData} from '../../../utils'
+import './ProductInfo.scss'
 
-const FeaturedCollectionDetails = ({item}) => {
+const ProductInfo = ({item}) => {
   const {name, price, selected, loading} = item
 
   const dispatch = useDispatch()
@@ -35,25 +35,25 @@ const FeaturedCollectionDetails = ({item}) => {
   }, [])
 
   return (
-    <div className='featured-collection__details'>
-      <span className='featured-collection__name'>{name}</span>
-      <span className='featured-collection__price'>${price.value}</span>
+    <div className='product-info'>
+      <span className='product-info__name'>{name}</span>
+      <span className='product-info__price'>${price.value}</span>
       <button
-        className='global-button featured-collection__button'
+        className='global-button product-info__button'
         onClick={addProductToCart}>
         ADD TO CART
         {loading ? (
-          <LoadingIcon className='featured-collection__button-icon featured-collection__loading-icon' />
+          <LoadingIcon className='product-info__button-icon product-info__loading-icon' />
         ) : selected ? (
           <CheckIcon
             color='#ffffff'
             size={20}
-            className='featured-collection__button-icon featured-collection__check-icon'
+            className='product-info__button-icon product-info__check-icon'
           />
         ) : null}
       </button>
       {selected ? (
-        <Link to='/cart' className='featured-collection__view-cart-link'>
+        <Link to='/cart' className='product-info__view-cart-link'>
           View cart
         </Link>
       ) : null}
@@ -61,4 +61,4 @@ const FeaturedCollectionDetails = ({item}) => {
   )
 }
 
-export default FeaturedCollectionDetails
+export default ProductInfo

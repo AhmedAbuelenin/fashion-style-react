@@ -1,26 +1,26 @@
-.featured-collection__details {
+.product-info {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.featured-collection__name {
+.product-info__name {
   margin: 1.2rem 0;
 }
 
-.featured-collection__price {
+.product-info__price {
   margin-bottom: 1.7rem;
   font-size: var(--font-size-15);
   font-weight: var(--font-weight-bold);
 }
 
-.featured-collection__button {
+.product-info__button {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.featured-collection__loading-icon {
+.product-info__loading-icon {
   animation: spin 2s linear infinite;
   margin-inline-start: 1rem;
 }
@@ -34,11 +34,11 @@
   }
 }
 
-.featured-collection__check-icon {
+.product-info__check-icon {
   margin-inline-start: 0.5rem;
 }
 
-.featured-collection__view-cart-link {
+.product-info__view-cart-link {
   font-size: var(--font-size-15);
   text-decoration: underline;
   margin-top: 0.8rem;

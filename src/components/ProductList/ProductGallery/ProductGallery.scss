@@ -1,15 +1,15 @@
-.featured-collection__img-container {
+.product-gallery__img-container {
   position: relative;
 }
 
-.featured-collection__img {
+.product-gallery__img {
   display: block;
   width: 100%;
   opacity: 1;
   transition: var(--transition-timing-sec);
 }
 
-.featured-collection__quick-view {
+.product-gallery__quick-view {
   opacity: 0;
   position: absolute;
   left: 50%;
@@ -18,11 +18,11 @@
   transition: var(--transition-timing-sec);
 }
 
-.featured-collection__img-container:hover .featured-collection__img {
+.product-gallery__img-container:hover .product-gallery__img {
   opacity: 0.7;
   cursor: pointer;
 }
 
-.featured-collection__img-container:hover .featured-collection__quick-view {
+.product-gallery__img-container:hover .product-gallery__quick-view {
   opacity: 1;
 }
