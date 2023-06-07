@@ -1,11 +1,10 @@
 import {useEffect, useRef, useState} from 'react'
 import {useLocation} from 'react-router-dom'
-import {ContentWrapper, Loader} from '../../components'
+import {ContentWrapper, Loader, ProductList} from '../../components'
 import {getProductsByCategory} from '../../services'
 import {capitalizeString} from '../../utils'
 import './../../styles/_global.scss'
 import './ProductCategory.scss'
-import ProductCategoryList from './ProductCategoryList/ProductCategoryList'
 
 const ProductCategory = () => {
   const {pathname} = useLocation()
@@ -49,7 +48,7 @@ const ProductCategory = () => {
           {errRef.current.message.toUpperCase()}
         </span>
       ) : (
-        <ProductCategoryList {...{data}} />
+        <ProductList {...{data}} />
       )}
     </ContentWrapper>
   )

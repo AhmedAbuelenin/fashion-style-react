@@ -8,6 +8,8 @@ import {formatProductData} from '../../../utils'
 import './ProductInfo.scss'
 
 const ProductInfo = ({item}) => {
+  console.log('ProductInfo is rendering')
+
   const {name, price} = item
 
   const dispatch = useDispatch()

@@ -4,6 +4,10 @@
   gap: 3rem;
 }
 
+.product-category-list__no-data {
+  text-align: center;
+}
+
 /* Start Responsive */
 @media (max-width: 985px) {
   .product-list {
