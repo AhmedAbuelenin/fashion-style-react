@@ -13,7 +13,7 @@ export const featuredCategories = [
   },
   {
     catName: 'Gifts',
-    categoryValue: 'giftguide',
+    categoryValue: 'gifts',
     catImgUrl:
       'https://image.hm.com/assets/hm/43/ca/43ca7dcf483f89f38791fbacb8c8b78c3af6e6b6.jpg'
   },

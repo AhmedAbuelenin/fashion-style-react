@@ -8,7 +8,8 @@ import {
   Home,
   NoPage,
   ProductDetailsPage,
-  Shop
+  Shop,
+  ProductCategory
 } from './pages'
 import {Footer, Header} from './sections'
 
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
+        <Route path='/product-category/:name' element={<ProductCategory />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />

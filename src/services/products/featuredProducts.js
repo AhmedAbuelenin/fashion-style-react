@@ -1,11 +1,11 @@
 import Interceptor from '../../config/interceptor'
 
-export const getProducts = async () => {
+export const getFeaturedProducts = async () => {
   try {
     const res = await Interceptor.get(`/products/list`, {
       params: {
-        pagesize: '3',
-        categories: 'men_all'
+        categories: 'men_all',
+        pagesize: '3'
       }
     })
     return res.data
