@@ -1,7 +1,6 @@
 .footer {
   padding: 4rem 2rem 2rem;
   background-color: var(--color-light-gray);
-  justify-self: flex-end;
 }
 
 .footer__content {

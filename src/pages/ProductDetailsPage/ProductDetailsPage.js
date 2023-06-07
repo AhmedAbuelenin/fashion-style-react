@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import {Loader, ProductDetails} from '../../components'
 import {getProduct} from '../../services'
 import '../../styles/_global.scss'
-import './ProductDetailsPage.css'
+import './ProductDetailsPage.scss'
 
 const ProductDetailsPage = () => {
   console.log('ProductDetailsPage is rendered')
@@ -28,7 +28,7 @@ const ProductDetailsPage = () => {
   }, [id])
 
   return data ? (
-    <div className='item-details-page'>
+    <div className='product-details-page'>
       <ProductDetails item={data} />
     </div>
   ) : (

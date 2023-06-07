@@ -1,7 +1,7 @@
 import './ContentWrapper.scss'
 
 const ContentWrapper = props => {
-  const {wrapperClass, heading, children} = props
+  const {wrapperClass = '', heading, children} = props
 
   return (
     <div className={`content-wrapper ${wrapperClass}`}>

@@ -13,13 +13,17 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   font-size: 1.6rem;
   font-family: var(--font-family-inter);
   color: var(--color-primary);
   line-height: 1.2;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
