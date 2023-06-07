@@ -1,6 +1,7 @@
 export {getCategories} from './categories/categories'
 export {getProductsByCategory} from './products/productsByCategory'
 export {getFeaturedProducts} from './products/featuredProducts'
+export {getShopProducts} from './products/shopProducts'
 export {getProduct} from './products/product'
 export {getUniversalApiAuthToken} from './countries/universalApiAuthToken'
 export {getCountries} from './countries/countries'

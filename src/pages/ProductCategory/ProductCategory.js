@@ -38,6 +38,7 @@ const ProductCategory = () => {
   return (
     <ContentWrapper
       heading={getProductCategory()}
+      headingClass='product-category__heading'
       wrapperClass='product-category'>
       {loading ? (
         <div className='centered-container'>
