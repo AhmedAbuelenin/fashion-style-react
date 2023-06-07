@@ -3,6 +3,7 @@ import {getFeaturedCollection} from '../thunk/index'
 
 const initialState = {
   status: 'ok',
+  loading: false,
   data: []
 }
 
@@ -12,18 +13,21 @@ const featuredCollectionSlice = createSlice({
   reducers: {
     setData: (state, action) => {
       state.data = action.payload
-    },
-    extraReducers: builder => {
-      builder.addCase(getFeaturedCollection.pending, (state, action) => {
-        state.status = 'ok'
-      })
-      builder.addCase(getFeaturedCollection.fulfilled, (state, action) => {
-        state.status = 'ok'
-      })
-      builder.addCase(getFeaturedCollection.rejected, (state, action) => {
-        state.status = action.payload
-      })
     }
+  },
+  extraReducers: builder => {
+    builder.addCase(getFeaturedCollection.pending, (state, action) => {
+      state.status = 'ok'
+      state.loading = true
+    })
+    builder.addCase(getFeaturedCollection.fulfilled, (state, action) => {
+      state.status = 'ok'
+      state.loading = false
+    })
+    builder.addCase(getFeaturedCollection.rejected, (state, action) => {
+      state.status = action.payload
+      state.loading = false
+    })
   }
 })
 

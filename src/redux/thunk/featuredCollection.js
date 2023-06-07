@@ -1,11 +1,11 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import {setData} from '../slices/FeaturedCollection'
-import {getProducts} from '../../services'
+import {getFeaturedProducts} from '../../services'
 
 export const getFeaturedCollection = createAsyncThunk(
   'featuredCollection/data',
   (_, thunkAPI) =>
-    getProducts()
+    getFeaturedProducts()
       .then(({results}) => {
         return thunkAPI.dispatch(setData(results))
       })

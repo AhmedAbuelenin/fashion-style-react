@@ -11,15 +11,15 @@ const FeaturedCollection = ({featuredResult}) => {
       heading='Featured Collection'
       description='Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
       Products'>
-      {data.length > 0 ? (
-        <ProductList {...{data}} />
-      ) : loading ? (
+      {loading ? (
         <div className='centered-container'>
           <Loader />
         </div>
       ) : status !== 'ok' ? (
         <span className='global-general-err-msg'>{status.toUpperCase()}</span>
-      ) : null}
+      ) : (
+        <ProductList {...{data}} />
+      )}
     </FeaturedWrapper>
   )
 }

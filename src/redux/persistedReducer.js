@@ -8,7 +8,7 @@ const persistConfig = {
   storage,
   version: 1,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['featuredCollection', 'cart']
+  blacklist: ['featuredCollection']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
