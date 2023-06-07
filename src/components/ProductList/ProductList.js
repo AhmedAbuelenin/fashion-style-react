@@ -3,9 +3,9 @@ import './ProductList.scss'
 
 const ProductList = ({data}) => {
   return (
-    <ul className='featured-collection__list'>
+    <ul className='product-list'>
       {data.map(item => (
-        <li key={item.code} className='featured-collection__item'>
+        <li key={item.code} className='product-list__item'>
           <ProductGallery {...{item}} />
           <ProductInfo {...{item}} />
         </li>

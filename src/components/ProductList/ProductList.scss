@@ -1,4 +1,4 @@
-.featured-collection__list {
+.product-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 3rem;
@@ -6,7 +6,7 @@
 
 /* Start Responsive */
 @media (max-width: 985px) {
-  .featured-collection__list {
+  .product-list {
     justify-content: center;
   }
 }

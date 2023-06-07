@@ -6,8 +6,4 @@ export {
   setCartTotals,
   emptyCart
 } from './Cart'
-export {
-  setData,
-  setFeaturedSelected,
-  toggleItemLoading
-} from './FeaturedCollection'
+export {setData} from './FeaturedCollection'

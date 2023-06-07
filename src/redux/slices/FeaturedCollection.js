@@ -1,10 +1,8 @@
-import {generateItemIDFromCode} from '../../utils'
-import {getFeaturedCollection} from '../thunk/index'
 import {createSlice} from '@reduxjs/toolkit'
+import {getFeaturedCollection} from '../thunk/index'
 
 const initialState = {
   status: 'ok',
-  loading: false,
   data: []
 }
 
@@ -15,40 +13,20 @@ const featuredCollectionSlice = createSlice({
     setData: (state, action) => {
       state.data = action.payload
     },
-    setFeaturedSelected: (state, action) => {
-      state.data = state.data.map(item => {
-        if (generateItemIDFromCode(item.code) === action.payload) {
-          return {...item, selected: true}
-        }
-        return item
+    extraReducers: builder => {
+      builder.addCase(getFeaturedCollection.pending, (state, action) => {
+        state.status = 'ok'
       })
-    },
-    toggleItemLoading: (state, action) => {
-      state.data = state.data.map(item => {
-        if (generateItemIDFromCode(item.code) === action.payload) {
-          return {...item, loading: !item.loading}
-        }
-        return item
+      builder.addCase(getFeaturedCollection.fulfilled, (state, action) => {
+        state.status = 'ok'
+      })
+      builder.addCase(getFeaturedCollection.rejected, (state, action) => {
+        state.status = action.payload
       })
     }
-  },
-  extraReducers: builder => {
-    builder.addCase(getFeaturedCollection.pending, (state, action) => {
-      state.status = 'ok'
-      state.loading = true
-    })
-    builder.addCase(getFeaturedCollection.fulfilled, (state, action) => {
-      state.status = 'ok'
-      state.loading = false
-    })
-    builder.addCase(getFeaturedCollection.rejected, (state, action) => {
-      state.status = action.payload
-      state.loading = false
-    })
   }
 })
 
-export const {setData, setFeaturedSelected, toggleItemLoading} =
-  featuredCollectionSlice.actions
+export const {setData} = featuredCollectionSlice.actions
 
 export default featuredCollectionSlice.reducer

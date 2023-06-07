@@ -1,42 +1,46 @@
-import {useCallback} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {IoMdCheckmark as CheckIcon} from 'react-icons/io'
 import {RxReload as LoadingIcon} from 'react-icons/rx'
 import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {
-  setCartItem,
-  setFeaturedSelected,
-  toggleItemLoading
-} from '../../../redux/slices'
+import {setCartItem} from '../../../redux/slices'
 import {formatProductData} from '../../../utils'
 import './ProductInfo.scss'
 
 const ProductInfo = ({item}) => {
-  const {name, price, selected, loading} = item
+  const {name, price} = item
 
   const dispatch = useDispatch()
 
-  const updateProductLoadingStatus = itemId => {
-    dispatch(toggleItemLoading(itemId))
+  const [loading, setLoading] = useState(false)
+  const [isSelected, setIsSelected] = useState(false)
+
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        toggleLoading()
+        markAsSelected()
+      }, 1000)
+    }
+  }, [loading])
+
+  const toggleLoading = () => {
+    setLoading(status => !status)
   }
 
-  const markProductAsSelected = itemId => {
-    updateProductLoadingStatus(itemId)
-    setTimeout(() => {
-      dispatch(setFeaturedSelected(itemId))
-      updateProductLoadingStatus(itemId)
-    }, 1000)
+  const markAsSelected = () => {
+    setIsSelected(true)
   }
 
   const addProductToCart = useCallback(() => {
+    toggleLoading()
     const formattedItem = formatProductData(item)
-    markProductAsSelected(formattedItem.code)
     dispatch(setCartItem(formattedItem))
   }, [])
 
   return (
     <div className='product-info'>
-      <span className='product-info__name'>{name}</span>
+      <p className='product-info__name'>{name}</p>
       <span className='product-info__price'>${price.value}</span>
       <button
         className='global-button product-info__button'
@@ -44,7 +48,7 @@ const ProductInfo = ({item}) => {
         ADD TO CART
         {loading ? (
           <LoadingIcon className='product-info__button-icon product-info__loading-icon' />
-        ) : selected ? (
+        ) : isSelected ? (
           <CheckIcon
             color='#ffffff'
             size={20}
@@ -52,7 +56,7 @@ const ProductInfo = ({item}) => {
           />
         ) : null}
       </button>
-      {selected ? (
+      {isSelected ? (
         <Link to='/cart' className='product-info__view-cart-link'>
           View cart
         </Link>
