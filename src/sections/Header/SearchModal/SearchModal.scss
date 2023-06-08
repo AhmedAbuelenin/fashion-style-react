@@ -2,17 +2,16 @@
 
 .search-modal-wrapper {
   display: none;
-  position: absolute;
-  top: 10rem;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-light);
-  padding: 4rem 15rem;
-  transition: var(--transition-timing-sec);
+  @include overlayWrapper($top: 10rem, $bg: var(--color-dark-cart-shadow));
 }
 
 .search-modal-wrapper--visible {
   display: block;
+}
+
+.search-modal-wrapper__main {
+  background-color: var(--color-light);
+  padding: 4rem 15rem;
 }
 
 .search-modal {

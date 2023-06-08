@@ -50,7 +50,10 @@ const SearchAndCartBar = props => {
 
         {!isCartOrCheckoutPath ? <CartModal subtotal={totals.price} /> : null}
       </div>
-      <SearchModal isVisible={visibleSearchModal} />
+      <SearchModal
+        isVisible={visibleSearchModal}
+        onWindowClick={toggleVisibleSearchModal}
+      />
     </>
   )
 }
