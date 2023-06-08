@@ -5,7 +5,7 @@ import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {useSelector} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
-import {CartModal} from '../index'
+import {CartModal, SearchModal} from '../index'
 import './SearchAndCartBar.css'
 
 const SearchAndCartBar = props => {
@@ -22,33 +22,36 @@ const SearchAndCartBar = props => {
   }, [])
 
   return (
-    <div className='global-header__icons'>
-      {!visibleSearchModal ? (
-        <SearchIcon
-          title='Search for a product'
-          size={28}
-          onClick={toggleVisibleSearchModal}
-          className='global-header__icon global-header__search'
+    <>
+      <div className='global-header__icons'>
+        {!visibleSearchModal ? (
+          <SearchIcon
+            title='Search for a product'
+            size={28}
+            onClick={toggleVisibleSearchModal}
+            className='global-header__icon global-header__search'
+          />
+        ) : (
+          <CloseIcon size={24} onClick={toggleVisibleSearchModal} />
+        )}
+        <BurgerIcon
+          color='#212121'
+          size={30}
+          onClick={props.onMenuPress}
+          className='global-header__menu'
         />
-      ) : (
-        <CloseIcon size={24} onClick={toggleVisibleSearchModal} />
-      )}
-      <BurgerIcon
-        color='#212121'
-        size={30}
-        onClick={props.onMenuPress}
-        className='global-header__menu'
-      />
-      <Link
-        title='View your shopping cart'
-        to='/cart'
-        className={`global-header__icon global-header__cart`}>
-        <BsCart2 size={24} />
-        <span className='global-header__cart-count'>{totals.qty}</span>
-      </Link>
+        <Link
+          title='View your shopping cart'
+          to='/cart'
+          className={`global-header__icon global-header__cart`}>
+          <BsCart2 size={24} />
+          <span className='global-header__cart-count'>{totals.qty}</span>
+        </Link>
 
-      {!isCartOrCheckoutPath ? <CartModal subtotal={totals.price} /> : null}
-    </div>
+        {!isCartOrCheckoutPath ? <CartModal subtotal={totals.price} /> : null}
+      </div>
+      <SearchModal isVisible={visibleSearchModal} />
+    </>
   )
 }
 

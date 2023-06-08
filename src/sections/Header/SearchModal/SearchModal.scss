@@ -1,0 +1,35 @@
+@import '../../../styles/theme';
+
+.search-modal-wrapper {
+  display: none;
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-light);
+  padding: 4rem 15rem;
+  transition: var(--transition-timing-sec);
+}
+
+.search-modal-wrapper--visible {
+  display: block;
+}
+
+.search-modal {
+  display: flex;
+  width: 100%;
+}
+
+.search-modal__input {
+  @include primaryInput;
+  flex-grow: 1;
+  margin-inline-end: 0.8rem;
+}
+
+.search-modal__input:focus {
+  @include primaryInputFocused;
+}
+
+.search-modal__search-link {
+  padding: 1.3rem 1.4rem 0.8rem;
+}
