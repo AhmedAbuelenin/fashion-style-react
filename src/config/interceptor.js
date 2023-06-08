@@ -12,7 +12,7 @@ const Interceptor = axios.create({
 Interceptor.interceptors.request.use(
   async config => {
     config.headers = {
-      'X-RapidAPI-Key': '9bdda7be1bmsh13b7aaf56dfbb8ep1b0e43jsnae32cb8d388c',
+      'X-RapidAPI-Key': 'f270594031msh8826d47f868c248p1f26d3jsn4587487e3b3d',
       'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
     }
     return config
