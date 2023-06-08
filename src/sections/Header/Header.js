@@ -5,14 +5,19 @@ import {GlobalNav, GlobalSideBar, SearchAndCartBar} from './index'
 
 const Header = () => {
   const [visibleSideBar, setVisibleSideBar] = useState(false)
+  const [visibleSearchModal, setVisibleSearchModal] = useState(false)
 
   const toggleVisibleSideBar = useCallback(() => {
     setVisibleSideBar(visible => !visible)
   }, [])
 
+  const toggleVisibleSearchModal = useCallback(() => {
+    setVisibleSearchModal(status => !status)
+  }, [])
+
   return (
     <div className='global-header'>
-      <GlobalNav />
+      <GlobalNav {...{visibleSearchModal}} />
       <GlobalSideBar
         {...{visibleSideBar}}
         onLinkPress={toggleVisibleSideBar}
@@ -21,7 +26,11 @@ const Header = () => {
       <Link to='/' className='logo-text'>
         Fashion Style
       </Link>
-      <SearchAndCartBar onMenuPress={toggleVisibleSideBar} />
+      <SearchAndCartBar
+        {...{visibleSearchModal}}
+        onMenuPress={toggleVisibleSideBar}
+        onToggleVisibleSearchModal={toggleVisibleSearchModal}
+      />
     </div>
   )
 }

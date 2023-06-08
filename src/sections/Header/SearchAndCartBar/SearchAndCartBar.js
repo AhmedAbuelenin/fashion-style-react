@@ -1,4 +1,4 @@
-import {memo, useCallback, useState} from 'react'
+import {memo} from 'react'
 import {BsCart2} from 'react-icons/bs'
 import {IoIosSearch as SearchIcon} from 'react-icons/io'
 import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
@@ -11,15 +11,11 @@ import './SearchAndCartBar.css'
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
 
+  const {visibleSearchModal, onToggleVisibleSearchModal} = props
+
   const {totals} = useSelector(state => state.cart)
   const {pathname} = useLocation()
   const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
-
-  const [visibleSearchModal, setVisibleSearchModal] = useState(false)
-
-  const toggleVisibleSearchModal = useCallback(() => {
-    setVisibleSearchModal(status => !status)
-  }, [])
 
   return (
     <>
@@ -28,11 +24,11 @@ const SearchAndCartBar = props => {
           <SearchIcon
             title='Search for a product'
             size={28}
-            onClick={toggleVisibleSearchModal}
+            onClick={onToggleVisibleSearchModal}
             className='global-header__icon global-header__search'
           />
         ) : (
-          <CloseIcon size={24} onClick={toggleVisibleSearchModal} />
+          <CloseIcon size={24} onClick={onToggleVisibleSearchModal} />
         )}
         <BurgerIcon
           color='#212121'
@@ -52,7 +48,7 @@ const SearchAndCartBar = props => {
       </div>
       <SearchModal
         isVisible={visibleSearchModal}
-        onWindowClick={toggleVisibleSearchModal}
+        onWindowClick={onToggleVisibleSearchModal}
       />
     </>
   )

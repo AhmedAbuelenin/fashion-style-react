@@ -1,7 +1,8 @@
+@import '../../../styles/mixins';
+
 .global-nav {
-  display: flex;
+  @include flexVCenter;
   justify-self: flex-start;
-  align-items: center;
 }
 
 .global-nav__list {
@@ -13,12 +14,16 @@
   transition: var(--transition-timing-sec);
 }
 
-.global-nav__item:hover {
+.global-nav__item-link {
+  font-size: var(--font-size-16);
+}
+
+.global-nav__item-title:hover {
   color: var(--color-gray-hover);
 }
 
-.global-nav__item-title {
-  font-size: var(--font-size-16);
+.global-nav__item-title--disabled {
+  cursor: default;
 }
 
 /* Start Responsive */
