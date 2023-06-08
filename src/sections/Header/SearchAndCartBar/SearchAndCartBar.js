@@ -1,18 +1,25 @@
-import {memo} from 'react'
+import {memo, useCallback} from 'react'
 import {BsCart2} from 'react-icons/bs'
 import {IoIosSearch} from 'react-icons/io'
 import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
+import {useDispatch} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
+import {removeCartItem} from '../../../redux/slices'
 import {CartModal} from '../index'
 import './SearchAndCartBar.css'
 
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
 
-  const {data, totals, onRemoveItem, onMenuPress} = props
+  const {data, totals, onMenuPress} = props
 
+  const dispatch = useDispatch()
   const {pathname} = useLocation()
   const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
+
+  const handleItemRemove = useCallback(id => {
+    dispatch(removeCartItem(id))
+  }, [])
 
   return (
     <div className='global-header__icons'>
@@ -36,7 +43,11 @@ const SearchAndCartBar = props => {
       </Link>
 
       {!isCartOrCheckoutPath ? (
-        <CartModal {...{data, onRemoveItem}} subtotal={totals.price} />
+        <CartModal
+          {...{data}}
+          onRemoveItem={handleItemRemove}
+          subtotal={totals.price}
+        />
       ) : null}
     </div>
   )

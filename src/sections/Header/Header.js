@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {removeCartItem, setCartTotals} from '../../redux/slices'
+import {setCartTotals} from '../../redux/slices'
 import './Header.css'
 import {GlobalNav, GlobalSideBar, SearchAndCartBar} from './index'
 
@@ -30,10 +30,6 @@ const Header = () => {
     getCartTotals()
   }, [data])
 
-  const handleItemRemove = useCallback(id => {
-    dispatch(removeCartItem(id))
-  }, [])
-
   const toggleVisibleSideBar = useCallback(() => {
     setVisibleSideBar(visible => !visible)
   }, [])
@@ -56,7 +52,6 @@ const Header = () => {
       </Link>
       <SearchAndCartBar
         {...{data, totals}}
-        onRemoveItem={handleItemRemove}
         onMenuPress={toggleVisibleSideBar}
       />
     </div>
