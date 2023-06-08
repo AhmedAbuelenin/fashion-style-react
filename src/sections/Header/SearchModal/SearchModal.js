@@ -1,46 +1,47 @@
-import {memo, useCallback, useState} from 'react'
+import {memo, useCallback} from 'react'
+import {useForm} from 'react-hook-form'
 import {GrFormClose as CloseIcon} from 'react-icons/gr'
 import {IoIosSearch as SearchIcon} from 'react-icons/io'
-import {Link} from 'react-router-dom'
 import './SearchModal.scss'
 
 const SearchModal = ({isVisible, onWindowClick}) => {
   console.log('SearchModal is rendering')
 
-  const [keywords, setKeywords] = useState('')
+  const {register, setValue, watch, handleSubmit} = useForm({
+    defaultValues: {keyword: ''}
+  })
 
   const wrapperClass = isVisible ? 'search-modal-wrapper--visible' : ''
 
-  const handleKeywordsChange = useCallback(event => {
-    setKeywords(event.target.value)
-  }, [])
-
   const resetInput = useCallback(() => {
-    setKeywords('')
+    setValue('keyword', '')
   }, [])
 
   const stopClickPropagateToChild = useCallback(event => {
     event.stopPropagation()
   }, [])
 
+  const handleSearch = useCallback(data => {
+    window.location.href = `shop/search?q=${encodeURIComponent(data.keyword)}`
+  }, [])
+
   return (
     <div
       className={`search-modal-wrapper ${wrapperClass}`}
       onClick={onWindowClick}>
-      <div
-        className='search-modal-wrapper__main'
-        onClick={stopClickPropagateToChild}>
-        <div className='search-modal'>
+      <div className='search-modal' onClick={stopClickPropagateToChild}>
+        <form
+          noValidate
+          onSubmit={handleSubmit(handleSearch)}
+          className='search-modal__form'>
           <div className='search-modal__input-container'>
             <input
-              type='text'
-              name='searchProduct'
+              {...register('keyword', {required: true})}
+              name='keyword'
               placeholder='Search products'
-              value={keywords}
-              onChange={handleKeywordsChange}
               className='search-modal__input'
             />
-            {keywords.length > 0 ? (
+            {watch('keyword').length > 0 ? (
               <CloseIcon
                 color='black'
                 size='24'
@@ -49,10 +50,12 @@ const SearchModal = ({isVisible, onWindowClick}) => {
               />
             ) : null}
           </div>
-          <Link to='#' className='global-button search-modal__search-link'>
+          <button
+            type='submit'
+            className='global-button search-modal__search-link'>
             <SearchIcon title='Search for a product' size={28} />
-          </Link>
-        </div>
+          </button>
+        </form>
       </div>
     </div>
   )
