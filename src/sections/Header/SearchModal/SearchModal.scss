@@ -28,6 +28,7 @@
 .search-modal__input {
   @include primaryInput;
   width: 100%;
+  padding-inline-end: 5rem;
 }
 
 .search-modal__input:focus {
