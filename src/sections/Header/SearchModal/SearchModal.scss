@@ -20,10 +20,15 @@
   width: 100%;
 }
 
+.search-modal__input-container {
+  position: relative;
+  flex: 1;
+  margin-inline-end: 0.8rem;
+}
+
 .search-modal__input {
   @include primaryInput;
-  flex-grow: 1;
-  margin-inline-end: 0.8rem;
+  width: 100%;
 }
 
 .search-modal__input:focus {
@@ -32,4 +37,11 @@
 
 .search-modal__search-link {
   padding: 1.3rem 1.4rem 0.8rem;
+}
+
+.search-modal__delete-icon {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
 }
