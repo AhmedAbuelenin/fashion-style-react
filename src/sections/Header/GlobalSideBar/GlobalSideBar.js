@@ -1,12 +1,16 @@
-import './GlobalSideBar.css'
-import {GlobalNav} from '../index'
-import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {memo} from 'react'
+import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
+import {GlobalNav} from '../index'
+import './GlobalSideBar.css'
 
 const GlobalSideBar = props => {
   console.log('GlobalSideBar is rendering')
 
-  const {visibleSideBar, onSideBarClick, onWindowClick, onLinkPress} = props
+  const {visibleSideBar, onWindowClick, onLinkPress} = props
+
+  const stopClicksFromChildren = event => {
+    event.stopPropagation()
+  }
 
   return (
     <div
@@ -14,7 +18,7 @@ const GlobalSideBar = props => {
         visibleSideBar ? 'global-sidebar' : 'global-sidebar--hidden'
       }`}
       onClick={onWindowClick}>
-      <div className='global-sidebar__content' onClick={onSideBarClick}>
+      <div className='global-sidebar__content' onClick={stopClicksFromChildren}>
         <div className='global-sidebar__close-container'>
           <CloseIcon
             size={24}

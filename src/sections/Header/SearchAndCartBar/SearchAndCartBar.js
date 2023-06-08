@@ -2,27 +2,20 @@ import {memo, useCallback, useState} from 'react'
 import {BsCart2} from 'react-icons/bs'
 import {IoIosSearch as SearchIcon} from 'react-icons/io'
 import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
-import {useDispatch} from 'react-redux'
+import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
+import {useSelector} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
-import {removeCartItem} from '../../../redux/slices'
 import {CartModal} from '../index'
 import './SearchAndCartBar.css'
-import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
 
-  const {data, totals, onMenuPress} = props
-
-  const dispatch = useDispatch()
+  const {totals} = useSelector(state => state.cart)
   const {pathname} = useLocation()
   const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
 
   const [visibleSearchModal, setVisibleSearchModal] = useState(false)
-
-  const handleItemRemove = useCallback(id => {
-    dispatch(removeCartItem(id))
-  }, [])
 
   const toggleVisibleSearchModal = useCallback(() => {
     setVisibleSearchModal(status => !status)
@@ -43,7 +36,7 @@ const SearchAndCartBar = props => {
       <BurgerIcon
         color='#212121'
         size={30}
-        onClick={onMenuPress}
+        onClick={props.onMenuPress}
         className='global-header__menu'
       />
       <Link
@@ -54,13 +47,7 @@ const SearchAndCartBar = props => {
         <span className='global-header__cart-count'>{totals.qty}</span>
       </Link>
 
-      {!isCartOrCheckoutPath ? (
-        <CartModal
-          {...{data}}
-          onRemoveItem={handleItemRemove}
-          subtotal={totals.price}
-        />
-      ) : null}
+      {!isCartOrCheckoutPath ? <CartModal subtotal={totals.price} /> : null}
     </div>
   )
 }
