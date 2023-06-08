@@ -1,8 +1,11 @@
+import {memo} from 'react'
 import '../../../styles/_global.scss'
 import './CartModal.css'
 import {CartModalWrapper, CartModalItems, CartModalSummary} from './index'
 
 const CartModal = props => {
+  console.log('CartModal is rendering')
+
   const {data, subtotal, onRemoveItem} = props
 
   return (
@@ -19,4 +22,4 @@ const CartModal = props => {
   )
 }
 
-export default CartModal
+export default memo(CartModal)
