@@ -11,15 +11,25 @@ const SearchModal = ({isVisible, onWindowClick}) => {
 
   const wrapperClass = isVisible ? 'search-modal-wrapper--visible' : ''
 
+  const handleKeywordsChange = useCallback(event => {
+    setKeywords(event.target.value)
+  }, [])
+
   const resetInput = useCallback(() => {
     setKeywords('')
+  }, [])
+
+  const stopClickPropagateToChild = useCallback(event => {
+    event.stopPropagation()
   }, [])
 
   return (
     <div
       className={`search-modal-wrapper ${wrapperClass}`}
       onClick={onWindowClick}>
-      <div className='search-modal-wrapper__main'>
+      <div
+        className='search-modal-wrapper__main'
+        onClick={stopClickPropagateToChild}>
         <div className='search-modal'>
           <div className='search-modal__input-container'>
             <input
@@ -27,7 +37,7 @@ const SearchModal = ({isVisible, onWindowClick}) => {
               name='searchProduct'
               placeholder='Search products'
               value={keywords}
-              onChange={event => setKeywords(event.target.value)}
+              onChange={handleKeywordsChange}
               className='search-modal__input'
             />
             {keywords.length > 0 ? (
