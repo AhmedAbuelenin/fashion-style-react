@@ -14,7 +14,7 @@ const ProductCategory = () => {
   const errRef = useRef(null)
 
   const getProductCategory = () => {
-    const categoryName = pathname.replace('/product-category/', '')
+    const categoryName = pathname.replace('/shop/product-category/', '')
     return capitalizeString(categoryName)
   }
 
