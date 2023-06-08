@@ -1,12 +1,13 @@
-import {memo, useCallback} from 'react'
+import {memo, useCallback, useState} from 'react'
 import {BsCart2} from 'react-icons/bs'
-import {IoIosSearch} from 'react-icons/io'
+import {IoIosSearch as SearchIcon} from 'react-icons/io'
 import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
 import {useDispatch} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
 import {removeCartItem} from '../../../redux/slices'
 import {CartModal} from '../index'
 import './SearchAndCartBar.css'
+import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
@@ -17,17 +18,28 @@ const SearchAndCartBar = props => {
   const {pathname} = useLocation()
   const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
 
+  const [visibleSearchModal, setVisibleSearchModal] = useState(false)
+
   const handleItemRemove = useCallback(id => {
     dispatch(removeCartItem(id))
   }, [])
 
+  const toggleVisibleSearchModal = useCallback(() => {
+    setVisibleSearchModal(status => !status)
+  }, [])
+
   return (
     <div className='global-header__icons'>
-      <IoIosSearch
-        title='Search for a product'
-        size={28}
-        className='global-header__icon global-header__search'
-      />
+      {!visibleSearchModal ? (
+        <SearchIcon
+          title='Search for a product'
+          size={28}
+          onClick={toggleVisibleSearchModal}
+          className='global-header__icon global-header__search'
+        />
+      ) : (
+        <CloseIcon size={24} onClick={toggleVisibleSearchModal} />
+      )}
       <BurgerIcon
         color='#212121'
         size={30}
