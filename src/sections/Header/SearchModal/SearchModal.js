@@ -22,7 +22,7 @@ const SearchModal = ({isVisible, onWindowClick}) => {
   }, [])
 
   const handleSearch = useCallback(data => {
-    window.location.href = `shop/search?q=${encodeURIComponent(data.keyword)}`
+    window.location.href = `/shop/search?q=${encodeURIComponent(data.keyword)}`
   }, [])
 
   return (
