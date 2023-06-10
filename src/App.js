@@ -9,7 +9,8 @@ import {
   NoPage,
   ProductDetailsPage,
   Shop,
-  ProductCategory
+  ProductCategory,
+  SearchResults
 } from './pages'
 import {Footer, Header} from './sections'
 
@@ -24,7 +25,7 @@ const App = () => {
           path='/shop/product-category/:name'
           element={<ProductCategory />}
         />
-        <Route path='/shop/search' element={<Shop />} />
+        <Route path='/shop/search' element={<SearchResults />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
