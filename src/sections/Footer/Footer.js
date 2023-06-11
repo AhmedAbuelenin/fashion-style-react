@@ -1,6 +1,7 @@
-import './Footer.css'
-import {mainPagesData, otherPagesData, socialsData} from '../../data'
 import {Link} from 'react-router-dom'
+import {Logo} from '../../components'
+import {mainPagesData, otherPagesData, socialsData} from '../../data'
+import './Footer.scss'
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
       <div className='footer__content'>
         <div className='footer__top'>
           <div className='footer__logo-container'>
-            <span>Fashion Style</span>
+            <Logo wrapperClass='footer__logo' />
             <p className='footer__slogan'>Fashion that fits your lifestyle.</p>
           </div>
           <nav className='footer__nav footer__nav-quick-links'>

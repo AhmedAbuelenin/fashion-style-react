@@ -20,8 +20,14 @@
   justify-self: flex-start;
 }
 
+.footer__logo {
+  position: relative;
+  left: 0;
+  transform: translate(0);
+}
+
 .footer__slogan {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .footer__nav {
@@ -68,6 +74,7 @@
   color: var(--color-gray-hover);
 }
 
+/*Start Responsive */
 @media (max-width: 860px) {
   .footer__nav {
     justify-self: flex-start;
@@ -83,3 +90,4 @@
     margin-top: 3rem;
   }
 }
+/*End Responsive */

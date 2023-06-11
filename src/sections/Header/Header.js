@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Logo} from '../../components'
 import './Header.css'
 import {GlobalNav, GlobalSideBar, SearchAndCartBar} from './index'
 
@@ -23,9 +23,7 @@ const Header = () => {
         onLinkPress={toggleVisibleSideBar}
         onWindowClick={toggleVisibleSideBar}
       />
-      <Link to='/' className='logo-text'>
-        Fashion Style
-      </Link>
+      <Logo wrapperClass='global-header__logo-wrapper' />
       <SearchAndCartBar
         {...{visibleSearchModal}}
         onMenuPress={toggleVisibleSideBar}

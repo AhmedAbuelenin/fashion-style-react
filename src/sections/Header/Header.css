@@ -11,10 +11,6 @@
   background-color: var(--color-light);
 }
 
-.logo-text {
-  font-size: var(--font-size-24);
-}
-
 /* Start Responsive */
 @media (max-width: 1000px) {
   .global-header {
@@ -23,11 +19,16 @@
     padding-inline: 2rem;
   }
 
-  .logo-text {
+  .global-header__logo-wrapper {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
 }
 
+@media (max-width: 500px) {
+  .global-header__logo-wrapper {
+    font-size: var(--font-size-14);
+  }
+}
 /* End Responsive */

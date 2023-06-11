@@ -1,0 +1,11 @@
+.logo-wrapper {
+  font-size: var(--font-size-20);
+  letter-spacing: 0.3rem;
+}
+
+.logo-wrapper__text {
+  color: var(--color-light);
+  background-color: var(--color-primary);
+  padding: 0.5rem 0.6rem 0.5rem 0.9rem;
+  margin-inline-end: 0.7rem;
+}
