@@ -3,10 +3,12 @@ import {useForm} from 'react-hook-form'
 import {GrFormClose as CloseIcon} from 'react-icons/gr'
 import {IoIosSearch as SearchIcon} from 'react-icons/io'
 import './SearchModal.scss'
+import {useNavigate} from 'react-router-dom'
 
 const SearchModal = ({isVisible, onWindowClick}) => {
   console.log('SearchModal is rendering')
 
+  const navigate = useNavigate()
   const {register, setValue, watch, handleSubmit} = useForm({
     defaultValues: {keyword: ''}
   })
@@ -22,7 +24,7 @@ const SearchModal = ({isVisible, onWindowClick}) => {
   }, [])
 
   const handleSearch = useCallback(data => {
-    window.location.href = `/shop/search?q=${encodeURIComponent(data.keyword)}`
+    navigate(`/shop/search?q=${encodeURIComponent(data.keyword)}`)
   }, [])
 
   return (
