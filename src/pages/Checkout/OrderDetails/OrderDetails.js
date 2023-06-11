@@ -24,7 +24,7 @@ const OrderDetails = props => {
               />
               <span className='order-totals__quantity'>{item.quantity}</span>
             </td>
-            <td>${item.price}</td>
+            <td>${item.price * item.quantity}</td>
           </tr>
         ))}
       </tbody>
