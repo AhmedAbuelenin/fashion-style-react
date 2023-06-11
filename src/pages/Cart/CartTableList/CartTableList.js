@@ -2,7 +2,7 @@ import {memo} from 'react'
 import {cartItemDetails} from '../../../data'
 import '../../../styles/_global.scss'
 import {CartTableItem} from '../index'
-import './CartTableList.css'
+import './CartTableList.scss'
 
 const CartTableList = props => {
   console.log('CartTableList is rendering')
