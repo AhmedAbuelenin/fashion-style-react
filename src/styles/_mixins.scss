@@ -30,6 +30,7 @@
 }
 
 @mixin mainContentWrapper {
+  width: 100%;
   max-width: var(--width-content);
   margin: 0 auto;
   padding: 8rem 2rem 17rem;

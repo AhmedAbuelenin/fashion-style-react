@@ -2,19 +2,4 @@
   background-color: var(--color-light-gray);
   padding: 1.8rem 1.5rem;
   margin-top: 10rem;
-  width: 114rem;
 }
-
-/* Start Responsive */
-@media (max-width: 1300px) {
-  .search-results__no-data {
-    width: 90rem;
-  }
-}
-
-@media (max-width: 1100px) {
-  .search-results__no-data {
-    width: 100%;
-  }
-}
-/* End Responsive */
