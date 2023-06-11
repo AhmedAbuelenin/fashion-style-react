@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {Loader, ProductDetails} from '../../components'
 import {getProduct} from '../../services'
@@ -11,14 +11,20 @@ const ProductDetailsPage = () => {
   const {id} = useParams()
 
   const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const errRef = useRef(null)
 
   useEffect(() => {
     const fetchDetails = async () => {
       try {
+        setLoading(true)
         const _data = await getProduct(id)
         setData(_data.product)
       } catch (error) {
+        errRef.current = error
         console.log('🚀 ~ fetchDetails ~ error:', error)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -27,13 +33,21 @@ const ProductDetailsPage = () => {
     }
   }, [id])
 
-  return data ? (
+  return (
     <div className='product-details-page'>
-      <ProductDetails item={data} />
-    </div>
-  ) : (
-    <div className='centered-container full-height'>
-      <Loader />
+      {data ? (
+        <ProductDetails item={data} />
+      ) : loading ? (
+        <div className='centered-container'>
+          <Loader />
+        </div>
+      ) : errRef.current ? (
+        <div className='centered-container'>
+          <span className='global-general-err-msg'>
+            {errRef.current.message.toUpperCase()}
+          </span>
+        </div>
+      ) : null}
     </div>
   )
 }
