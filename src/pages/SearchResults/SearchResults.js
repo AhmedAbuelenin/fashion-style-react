@@ -11,11 +11,12 @@ const SearchResults = () => {
 
   const [matchedProducts, setMatchedProducts] = useState([])
   const [loading, setLoading] = useState(false)
+  const originalProducts = useRef([])
   const errRef = useRef(null)
 
   useEffect(() => {
-    const filterOriginalProducts = data => {
-      const products = data.filter(product =>
+    const filterOriginalProducts = () => {
+      const products = originalProducts.current.filter(product =>
         product.name.toLowerCase().includes(keyword.toLowerCase())
       )
       setMatchedProducts(products)
@@ -25,7 +26,9 @@ const SearchResults = () => {
       try {
         setLoading(true)
         const data = await getShopProducts()
-        filterOriginalProducts(data.results)
+        const _data = data.results
+        originalProducts.current = _data
+        filterOriginalProducts()
       } catch (error) {
         errRef.current = error
         console.log('🚀 ~ fetchShopProducts ~ error:', error)
@@ -34,8 +37,12 @@ const SearchResults = () => {
       }
     }
 
-    fetchShopProducts()
-  }, [])
+    if (originalProducts.current.length === 0) {
+      fetchShopProducts()
+    } else {
+      filterOriginalProducts()
+    }
+  }, [keyword])
 
   return (
     <ContentWrapper
