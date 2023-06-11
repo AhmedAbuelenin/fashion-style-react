@@ -1,21 +1,43 @@
-import {memo} from 'react'
+import {memo, useEffect} from 'react'
 import {BsCart2} from 'react-icons/bs'
 import {IoIosSearch as SearchIcon} from 'react-icons/io'
 import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
 import {CartModal, SearchModal} from '../index'
 import './SearchAndCartBar.css'
+import {setCartTotals} from '../../../redux/slices'
 
 const SearchAndCartBar = props => {
   console.log('SearchAndCartBar is rendering')
 
   const {visibleSearchModal, onToggleVisibleSearchModal} = props
 
-  const {totals} = useSelector(state => state.cart)
+  const dispatch = useDispatch()
+  const {data, totals} = useSelector(state => state.cart)
   const {pathname} = useLocation()
   const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
+
+  useEffect(() => {
+    const calcCartTotals = products => {
+      let qtySum = 0
+      let priceSum = 0
+
+      products.forEach(product => {
+        qtySum += product.quantity
+        priceSum += product.quantity * product.price
+      })
+
+      return {qty: qtySum, price: priceSum}
+    }
+
+    const getCartTotals = () => {
+      dispatch(setCartTotals(calcCartTotals(data)))
+    }
+
+    getCartTotals()
+  }, [data])
 
   return (
     <>
@@ -44,7 +66,9 @@ const SearchAndCartBar = props => {
           <span className='global-header__cart-count'>{totals.qty}</span>
         </Link>
 
-        {!isCartOrCheckoutPath ? <CartModal subtotal={totals.price} /> : null}
+        {!isCartOrCheckoutPath ? (
+          <CartModal {...{data}} subtotal={totals.price} />
+        ) : null}
       </div>
       <SearchModal
         isVisible={visibleSearchModal}

@@ -35,17 +35,17 @@ const cartSlice = createSlice({
       state.data = state.data.filter(item => item.code !== action.payload)
     },
     updateCartItems: (state, action) => {
-      const obj = convertArrayToObject(state.data)
+      const oldDataObj = convertArrayToObject(state.data)
 
       action.payload.forEach(item => {
-        if (obj[item.code]) {
-          obj[item.code].quantity = item.quantity
+        if (oldDataObj[item.code]) {
+          oldDataObj[item.code].quantity = item.quantity
         }
       })
 
-      const updatedArr = convertObjToArray(obj)
+      const updatedDataArr = convertObjToArray(oldDataObj)
 
-      state.data = updatedArr
+      state.data = updatedDataArr
     },
     setCoupon: (state, action) => {
       state.coupon = action.payload
