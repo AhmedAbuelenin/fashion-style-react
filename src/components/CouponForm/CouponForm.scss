@@ -2,6 +2,7 @@
 
 .coupon-form {
   display: flex;
+  align-items: flex-start;
 }
 
 .coupon-form__loader-container {
@@ -30,8 +31,8 @@
 }
 
 .coupon-form__button {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .coupon-form__validation-err {
@@ -39,9 +40,13 @@
 }
 
 /* Start Responsive */
-@media (max-width: 750px) {
+@media (max-width: 650px) {
   .coupon-form-container {
-    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .coupon-form__input-container {
+    flex-grow: 1;
   }
 
   .coupon-form__input {

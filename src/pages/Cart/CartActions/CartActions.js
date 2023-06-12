@@ -1,6 +1,6 @@
 import {memo} from 'react'
 import {CouponForm} from '../../../components'
-import './CartActions.css'
+import './CartActions.scss'
 
 const CartActions = props => {
   console.log('CartActions is rendering')

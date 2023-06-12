@@ -1,14 +1,14 @@
 import {memo, useCallback, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
+import {useSelector} from 'react-redux'
 import '../../styles/_global.scss'
 import Loader from '../Loader/Loader'
 import './CouponForm.scss'
-import {useSelector} from 'react-redux'
 
 const CouponForm = props => {
   console.log('CouponForm is rendering')
 
-  const {formClass, onApplyCoupon} = props
+  const {formClass = '', onApplyCoupon} = props
 
   const {coupon} = useSelector(state => state.cart)
 
@@ -85,27 +85,29 @@ const CouponForm = props => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={`coupon-form ${formClass}`}>
-        <input
-          {...register('coupon')}
-          name='coupon'
-          placeholder='Coupon code'
-          className={`coupon-form__input ${checkClass}`}
-        />
+        <div className='coupon-form__input-container'>
+          <input
+            {...register('coupon')}
+            name='coupon'
+            placeholder='Coupon code'
+            className={`coupon-form__input ${checkClass}`}
+          />
+          {watch('loading') ? (
+            <div className='coupon-form__loader-container'>
+              <Loader className='coupon-form__loader' />
+            </div>
+          ) : errors.coupon ? (
+            <span className='coupon-form__validation-err'>
+              {errors.coupon.message}
+            </span>
+          ) : null}
+        </div>
         <input
           type='submit'
           value='APPLY COUPON'
           className='global-button coupon-form__button'
         />
       </form>
-      {watch('loading') ? (
-        <div className='coupon-form__loader-container'>
-          <Loader className='coupon-form__loader' />
-        </div>
-      ) : errors.coupon ? (
-        <span className='coupon-form__validation-err'>
-          {errors.coupon.message}
-        </span>
-      ) : null}
     </div>
   )
 }

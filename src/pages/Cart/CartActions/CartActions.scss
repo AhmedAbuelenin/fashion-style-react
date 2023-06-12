@@ -1,0 +1,29 @@
+@import '../../../styles/mixins';
+
+.cart__actions-container {
+  @include flexJustifyBetween;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 3rem 0 12rem;
+}
+
+.cart__button {
+  padding-top: 1.9rem;
+  padding-bottom: 2rem;
+}
+
+/* Start Responsive */
+@media (max-width: 1000px) {
+  .cart__actions-container {
+    margin: 3rem 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .cart__button {
+    order: -1;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+/* End Responsive */
