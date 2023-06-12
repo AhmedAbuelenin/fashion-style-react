@@ -13,13 +13,13 @@
 /*Start Responsive */
 @media (max-width: 1000px) {
   .content-wrapper__heading {
-    font-size: 4.2rem;
+    font-size: var(--font-size-42);
   }
 }
 
 @media (max-width: 500px) {
   .content-wrapper__heading {
-    font-size: 3.2rem;
+    font-size: var(--font-size-32);
   }
 }
 /*End Responsive */

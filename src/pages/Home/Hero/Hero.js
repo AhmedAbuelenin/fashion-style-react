@@ -1,21 +1,26 @@
+import {memo} from 'react'
 import {Link} from 'react-router-dom'
 import '../../../styles/_global.scss'
-import './Hero.css'
-import {memo} from 'react'
+import './Hero.scss'
 
 const Hero = () => {
   console.log('Hero is rendering')
 
   return (
-    <div className='hero-wrapper'>
-      <div className='hero-wrapper__content'>
-        <h2 className='hero-wrapper__title'>
-          Find Your Fit: <br /> Wide Range of Fashion
+    <div className='hero'>
+      <div className='hero__heading-link-container'>
+        <h2 className='hero__heading'>
+          Find Your Fit <br /> Wide Range of Fashion
         </h2>
         <Link to='/shop' className='global-button'>
           SHOP NOW
         </Link>
       </div>
+      <img
+        src={require('../../../assets/images/hero-img.png')}
+        alt='hero img'
+        className='hero__img'
+      />
     </div>
   )
 }
