@@ -7,7 +7,7 @@ const CheckoutCouponForm = ({coupon, onApplyCoupon}) => {
   const [isFormVisible, setIsFormVisible] = useState(false)
 
   const formContainerClass = isFormVisible
-    ? 'checkout-coupon-form__description-form--visible'
+    ? 'checkout-coupon__description-form-container--visible'
     : ''
 
   const toggleFormVisibility = () => {
@@ -15,22 +15,25 @@ const CheckoutCouponForm = ({coupon, onApplyCoupon}) => {
   }
 
   return (
-    <div className='checkout-coupon-form'>
-      <div className='checkout-coupon-form__title'>
+    <div className='checkout-coupon'>
+      <div className='checkout-coupon__title'>
         <span>Have a coupon?</span>
         <Link
           to='#'
           onClick={toggleFormVisibility}
-          className='checkout-coupon-form__link'>
+          className='checkout-coupon__link'>
           Click here to enter your code
         </Link>
       </div>
       <div
-        className={`checkout-coupon-form__description-form ${formContainerClass}`}>
-        <p className='checkout-coupon-form__description'>
+        className={`checkout-coupon__description-form-container ${formContainerClass}`}>
+        <p className='checkout-coupon__description'>
           If you have a coupon code, please apply it below.
         </p>
-        <CouponForm {...{coupon, onApplyCoupon}} />
+        <CouponForm
+          {...{coupon, onApplyCoupon}}
+          formClass={'checkout-coupon__form'}
+        />
       </div>
     </div>
   )

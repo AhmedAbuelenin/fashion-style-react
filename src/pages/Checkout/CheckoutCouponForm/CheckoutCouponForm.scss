@@ -1,20 +1,22 @@
-.checkout-coupon-form {
+@import '../../../styles/mixins';
+
+.checkout-coupon {
   margin-bottom: 5rem;
 }
 
-.checkout-coupon-form__title {
+.checkout-coupon__title {
   padding: 1.9rem;
   background-color: var(--color-light-gray);
 }
 
-.checkout-coupon-form__link {
+.checkout-coupon__link {
   text-decoration: underline;
   color: var(--color-dark-gray-link);
   font-size: var(--font-size-16);
   margin-inline-start: 0.5rem;
 }
 
-.checkout-coupon-form__description-form {
+.checkout-coupon__description-form-container {
   opacity: 0;
   height: 0;
   background-color: var(--color-light-gray);
@@ -22,13 +24,23 @@
   transition: var(--transition-timing-sec);
 }
 
-.checkout-coupon-form__description-form--visible {
+.checkout-coupon__description-form-container--visible {
   opacity: 1;
   height: auto;
   padding: 1.9rem;
   transform: scaleY(1);
 }
 
-.checkout-coupon-form__description {
+.checkout-coupon__description {
   margin-bottom: 2rem;
 }
+
+/* Start Responsive */
+@media (max-width: 500px) {
+  .checkout-coupon__form {
+    @include flexCol;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
+/* End Responsive */
