@@ -18,3 +18,12 @@
   @include flexVCenter;
   gap: 2rem;
 }
+
+/* Start Responsive */
+@media (max-width: 500px) {
+  .contact-form__inputs-container {
+    @include flexCol;
+    gap: 0;
+  }
+}
+/* End Responsive */
