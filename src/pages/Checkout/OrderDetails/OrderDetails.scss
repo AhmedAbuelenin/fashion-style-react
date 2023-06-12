@@ -29,6 +29,7 @@
 
 .order-totals__name-quantity-container {
   @include flexVCenter;
+  flex-wrap: wrap;
 }
 
 .order-totals__quantity {
