@@ -6,9 +6,9 @@ import './GlobalNav.scss'
 const GlobalNav = props => {
   console.log('GlobalNav is rendering')
 
-  const {visibleSideBar, visibleSearchModal, onLinkPress} = props
+  const {isOpenedSideBar, visibleSearchModal, onLinkPress} = props
 
-  const wrapperClass = visibleSideBar ? 'global-nav--shown' : ''
+  const wrapperClass = isOpenedSideBar ? 'global-nav--shown' : ''
   const linkClass = !visibleSearchModal
     ? 'global-nav__item-title'
     : 'global-nav__item-title--disabled'

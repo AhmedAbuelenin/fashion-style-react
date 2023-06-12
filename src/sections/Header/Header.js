@@ -4,11 +4,11 @@ import './Header.css'
 import {GlobalNav, GlobalSideBar, SearchAndCartBar} from './index'
 
 const Header = () => {
-  const [visibleSideBar, setVisibleSideBar] = useState(false)
+  const [isOpenedSideBar, setIsOpenedSideBar] = useState(false)
   const [visibleSearchModal, setVisibleSearchModal] = useState(false)
 
-  const toggleVisibleSideBar = useCallback(() => {
-    setVisibleSideBar(visible => !visible)
+  const toggleOpenSideBar = useCallback(() => {
+    setIsOpenedSideBar(status => !status)
   }, [])
 
   const toggleVisibleSearchModal = useCallback(() => {
@@ -19,14 +19,14 @@ const Header = () => {
     <div className='global-header'>
       <GlobalNav {...{visibleSearchModal}} />
       <GlobalSideBar
-        {...{visibleSideBar}}
-        onLinkPress={toggleVisibleSideBar}
-        onWindowClick={toggleVisibleSideBar}
+        {...{isOpenedSideBar}}
+        onLinkPress={toggleOpenSideBar}
+        onWindowClick={toggleOpenSideBar}
       />
       <Logo wrapperClass='global-header__logo-wrapper' />
       <SearchAndCartBar
         {...{visibleSearchModal}}
-        onMenuPress={toggleVisibleSideBar}
+        onMenuPress={toggleOpenSideBar}
         onToggleVisibleSearchModal={toggleVisibleSearchModal}
       />
     </div>

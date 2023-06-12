@@ -1,23 +1,34 @@
 .global-sidebar {
+  display: none;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
+  background-color: var(--color-dark-sidebar-shadow);
   transition: var(--transition-timing-sec);
 }
 
-.global-sidebar--hidden {
-  display: none;
+.global-sidebar--opened {
+  display: block;
 }
 
 .global-sidebar__content {
-  width: 30%;
+  width: 80%;
+  max-width: 25rem;
   height: 100%;
   padding: 3rem;
   background-color: var(--color-light);
   box-shadow: 0 0.5rem 1.5rem 0.3rem var(--color-dark-sidebar-shadow);
+}
+
+.global-sidebar__content--visible {
+  display: block;
+}
+
+.global-sidebar__content--hidden {
+  display: none;
 }
 
 .global-sidebar__close-container {

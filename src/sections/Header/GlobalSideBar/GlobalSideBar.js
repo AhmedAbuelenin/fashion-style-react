@@ -1,24 +1,44 @@
-import {memo} from 'react'
+import {memo, useCallback, useEffect, useState} from 'react'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {GlobalNav} from '../index'
-import './GlobalSideBar.css'
+import './GlobalSideBar.scss'
 
 const GlobalSideBar = props => {
   console.log('GlobalSideBar is rendering')
 
-  const {visibleSideBar, onWindowClick, onLinkPress} = props
+  const {isOpenedSideBar, onWindowClick, onLinkPress} = props
 
-  const stopClicksFromChildren = event => {
-    event.stopPropagation()
+  const [isVisible, setIsVisible] = useState(true)
+
+  const wrapperClass = isOpenedSideBar ? 'global-sidebar--opened' : ''
+  const contentClass = isVisible
+    ? 'global-sidebar__content--visible'
+    : 'global-sidebar__content--hidden'
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  const handleResize = () => {
+    if (window.innerWidth <= 1000) {
+      setIsVisible(true)
+      return
+    }
+    setIsVisible(false)
   }
 
+  const stopClicksFromChildren = useCallback(event => {
+    event.stopPropagation()
+  }, [])
+
   return (
-    <div
-      className={`${
-        visibleSideBar ? 'global-sidebar' : 'global-sidebar--hidden'
-      }`}
-      onClick={onWindowClick}>
-      <div className='global-sidebar__content' onClick={stopClicksFromChildren}>
+    <div className={`global-sidebar ${wrapperClass}`} onClick={onWindowClick}>
+      <div
+        className={`global-sidebar__content ${contentClass}`}
+        onClick={stopClicksFromChildren}>
         <div className='global-sidebar__close-container'>
           <CloseIcon
             size={24}
@@ -26,7 +46,7 @@ const GlobalSideBar = props => {
             onClick={onWindowClick}
           />
         </div>
-        <GlobalNav {...{visibleSideBar, onLinkPress}} />
+        <GlobalNav {...{isOpenedSideBar, onLinkPress}} />
       </div>
     </div>
   )
