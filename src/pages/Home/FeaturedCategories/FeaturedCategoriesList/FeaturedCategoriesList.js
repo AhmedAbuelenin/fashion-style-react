@@ -8,6 +8,7 @@ const FeaturedCategoriesList = ({data}) => {
         <li key={item.catName} className='featured-categories__item'>
           <Link to={`/shop/product-category/${item.categoryValue}`}>
             <img
+              loading='lazy'
               src={item.catImgUrl}
               alt='category img'
               className='featured-categories__img'

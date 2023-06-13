@@ -23,6 +23,7 @@ const ProductGallery = ({item}) => {
       <div className='product-gallery__img-container'>
         <Link to={`/productDetailsPage/${generateItemIDFromCode(item.code)}`}>
           <img
+            loading='lazy'
             src={item.images[0].baseUrl}
             alt='item img'
             className='product-gallery__img'
