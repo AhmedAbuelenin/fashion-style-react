@@ -2,8 +2,8 @@ import {memo, useCallback} from 'react'
 import {useForm} from 'react-hook-form'
 import {GrFormClose as CloseIcon} from 'react-icons/gr'
 import {IoIosSearch as SearchIcon} from 'react-icons/io'
-import './SearchModal.scss'
 import {useNavigate} from 'react-router-dom'
+import './SearchModal.scss'
 
 const SearchModal = ({isVisible, onWindowClick}) => {
   const navigate = useNavigate()
