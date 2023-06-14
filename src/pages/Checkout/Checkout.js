@@ -1,10 +1,15 @@
 import {yupResolver} from '@hookform/resolvers/yup'
-import {useCallback} from 'react'
-import {useForm} from 'react-hook-form'
+import {useCallback, useEffect} from 'react'
+import {Controller, useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {ContentWrapper, SubmitSuccessMsg} from '../../components'
-import {emptyCart, setCoupon} from '../../redux/slices'
+import {
+  emptyCart,
+  resetBillingDetails,
+  setBillingDetails,
+  setCoupon
+} from '../../redux/slices'
 import BillingFormValidation from './BillingFormValidation'
 import './Checkout.scss'
 import {
@@ -16,42 +21,56 @@ import {
 
 const Checkout = () => {
   const dispatch = useDispatch()
+  const billingDetails = useSelector(state => state.billingDetails)
+  console.log(
+    '🚀 ~ file: Checkout.js:25 ~ Checkout ~ billingDetails:',
+    billingDetails
+  )
   const {coupon} = useSelector(state => state.cart)
-
   const {
     register,
-    formState: {errors},
+    formState: {errors, isDirty},
     handleSubmit,
     setValue,
     watch,
-    clearErrors
+    clearErrors,
+    control
   } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      companyName: '',
-      countries: [],
-      states: [],
-      country: null,
-      state: null,
-      address: '',
-      phone: '',
-      email: '',
-      orderNotes: '',
+      firstName: billingDetails.firstName,
+      lastName: billingDetails.lastName,
+      companyName: billingDetails.companyName,
+      country: billingDetails.country,
+      state: billingDetails.state,
+      address: billingDetails.address,
+      phone: billingDetails.phone,
+      email: billingDetails.email,
+      orderNotes: billingDetails.orderNotes,
       sending: false,
       isSuccessMsgShown: false
     },
     resolver: yupResolver(BillingFormValidation)
   })
 
+  useEffect(() => {
+    return () => {
+      const currentData = watch()
+      if (!currentData.isSuccessMsgShown) {
+        dispatch(setBillingDetails(currentData))
+      }
+    }
+  }, [])
+
   const handleCoupon = useCallback(_coupon => {
     dispatch(setCoupon(_coupon))
   }, [])
 
   const submitOrder = data => {
+    //You may send this data to backend in next phase
     setValue('sending', true)
     setTimeout(() => {
       dispatch(emptyCart())
+      dispatch(resetBillingDetails())
       setValue('isSuccessMsgShown', true)
     }, 2000)
   }
@@ -64,7 +83,16 @@ const Checkout = () => {
           <div className='checkout__main'>
             <div>
               <BillingDetails
-                {...{register, setValue, errors, watch, clearErrors}}
+                {...{
+                  register,
+                  Controller,
+                  control,
+                  setValue,
+                  errors,
+                  isDirty,
+                  watch,
+                  clearErrors
+                }}
               />
               <AdditionalInfo {...{register, errors}} />
             </div>

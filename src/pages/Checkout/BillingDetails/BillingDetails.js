@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {InputField, SectionWrapper} from '../../../components'
 import {
   getCountries,
@@ -10,7 +10,19 @@ import {LocationSelector} from '../index'
 import './BillingDetails.scss'
 
 const BillingDetails = props => {
-  const {register, setValue, errors, clearErrors, watch} = props
+  const {
+    register,
+    Controller,
+    control,
+    setValue,
+    errors,
+    isDirty,
+    clearErrors,
+    watch
+  } = props
+
+  const [countries, setCountries] = useState([])
+  const [states, setStates] = useState([])
 
   const universalApiAuthToken = useRef('')
   const _country = watch('country')
@@ -18,42 +30,58 @@ const BillingDetails = props => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const {auth_token} = await getUniversalApiAuthToken()
-        universalApiAuthToken.current = auth_token
-        const data = await getCountries(auth_token)
+        const authToken = await getAuthToken()
+        const data = await getCountries(authToken)
         const formattedData = formatOptions('country', data)
-        setValue('countries', formattedData)
+        setCountries(formattedData)
       } catch (error) {
         console.log('🚀 ~ fetchCountries ~ error', error)
       }
     }
 
-    fetchCountries()
+    if (countries.length === 0) {
+      fetchCountries()
+    }
   }, [])
 
   useEffect(() => {
     const resetState = () => {
-      setValue('state', null)
+      setValue('state', '')
     }
 
     const fetchStates = async () => {
       try {
-        const data = await getCountryStates(
-          universalApiAuthToken.current,
-          _country.value
-        )
+        const authToken = await getAuthToken()
+        const data = await getCountryStates(authToken, _country)
         const formattedData = formatOptions('state', data)
-        setValue('states', formattedData)
+        setStates(formattedData)
       } catch (error) {
         console.log('🚀 ~ fetchStates ~ error:', error)
       }
     }
 
     if (_country) {
-      resetState()
       fetchStates()
     }
+
+    if (_country && isDirty) {
+      resetState()
+    }
   }, [_country])
+
+  const getAuthToken = async () => {
+    try {
+      let authToken = universalApiAuthToken.current
+      if (!authToken) {
+        const {auth_token} = await getUniversalApiAuthToken()
+        universalApiAuthToken.current = auth_token
+        return auth_token
+      }
+      return authToken
+    } catch (error) {
+      throw error
+    }
+  }
 
   const formatOptions = (type, data) => {
     const formattedOptions = data.map(({country_name, state_name}) => {
@@ -98,9 +126,8 @@ const BillingDetails = props => {
           id='country'
           label='Country / Region'
           ariaLabel='Select a country or region'
-          {...{register, setValue, clearErrors}}
-          data={watch('countries')}
-          selected={_country}
+          {...{Controller, control, clearErrors}}
+          data={countries}
           error={getFieldErrMsg(errors, 'country')}
         />
         <LocationSelector
@@ -108,9 +135,8 @@ const BillingDetails = props => {
           id='state'
           label='State'
           ariaLabel='Select a state'
-          {...{register, setValue, clearErrors}}
-          data={watch('states')}
-          selected={watch('state')}
+          {...{Controller, control, clearErrors}}
+          data={states}
           error={getFieldErrMsg(errors, 'state')}
         />
         <InputField

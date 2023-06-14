@@ -31,8 +31,8 @@ export default yup.object({
 
     return yup.string()
   }),
-  country: yup.object().required('This field is required'),
-  state: yup.object().required('This field is required'),
+  country: yup.string().required('This field is required'),
+  state: yup.string().required('This field is required'),
   address: yup
     .string()
     .required('This field is required')
