@@ -31,7 +31,10 @@ const ScrollToTopButton = () => {
   }, [])
 
   return showButton ? (
-    <button className='scroll-to-top-btn' onClick={handleClick}>
+    <button
+      aria-label='scroll to top'
+      className='scroll-to-top-btn'
+      onClick={handleClick}>
       <ArrowIcon color='#ffffff' size={22} />
     </button>
   ) : null
