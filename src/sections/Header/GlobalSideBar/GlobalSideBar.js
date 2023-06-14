@@ -4,8 +4,6 @@ import {GlobalNav} from '../index'
 import './GlobalSideBar.scss'
 
 const GlobalSideBar = props => {
-  console.log('GlobalSideBar is rendering')
-
   const {isOpenedSideBar, onWindowClick, onLinkPress} = props
 
   const [isVisible, setIsVisible] = useState(true)

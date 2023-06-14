@@ -3,8 +3,6 @@ import {FeaturedCategoriesList, FeaturedWrapper} from '../index'
 import './FeaturedCategories.scss'
 
 const FeaturedCategories = ({data}) => {
-  console.log('FeaturedCategories is rendering')
-
   return (
     <FeaturedWrapper
       heading='Featured Categories'

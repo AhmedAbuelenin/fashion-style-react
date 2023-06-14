@@ -3,8 +3,6 @@ import {FieldWrapper, ValidationError} from '../index'
 import './TextAreaField.scss'
 
 const TextAreaField = props => {
-  console.log('TextAreaField is rendering')
-
   const {
     containerClass = '',
     textareaClass = '',

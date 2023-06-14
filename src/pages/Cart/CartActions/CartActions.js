@@ -3,8 +3,6 @@ import {CouponForm} from '../../../components'
 import './CartActions.scss'
 
 const CartActions = props => {
-  console.log('CartActions is rendering')
-
   const {isCartUpdateNeeded, onUpdateCart, onApplyCoupon} = props
 
   return (

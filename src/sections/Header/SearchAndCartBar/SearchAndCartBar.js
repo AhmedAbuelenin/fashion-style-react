@@ -10,8 +10,6 @@ import './SearchAndCartBar.css'
 import {setCartTotals} from '../../../redux/slices'
 
 const SearchAndCartBar = props => {
-  console.log('SearchAndCartBar is rendering')
-
   const {visibleSearchModal, onToggleVisibleSearchModal} = props
 
   const dispatch = useDispatch()

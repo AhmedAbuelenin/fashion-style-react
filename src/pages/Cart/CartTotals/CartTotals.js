@@ -7,8 +7,6 @@ import {CartTotalsItem} from '../index'
 import './CartTotals.css'
 
 const CartTotals = ({data}) => {
-  console.log('CartTotals is rendering')
-
   const {
     coupon,
     totals: {price: totalPrice}

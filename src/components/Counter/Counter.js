@@ -2,8 +2,6 @@ import {memo, useCallback, useState} from 'react'
 import './Counter.css'
 
 const Counter = props => {
-  console.log('Counter is rendering')
-
   const {count, onChangeCount, containerClass, countClass, operatorClass} =
     props
   const [qty, setQty] = useState(count || 1)

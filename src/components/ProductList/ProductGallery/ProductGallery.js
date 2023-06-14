@@ -6,8 +6,6 @@ import {ProductModal} from '../index'
 import './ProductGallery.scss'
 
 const ProductGallery = ({item}) => {
-  console.log('ProductGallery is rendering')
-
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const disableClickOnModal = useCallback(event => {

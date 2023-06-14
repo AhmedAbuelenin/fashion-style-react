@@ -4,8 +4,6 @@ import './ProductDetails.css'
 import ProductDetailsAction from './ProductDetailsAction/ProductDetailsAction'
 
 const ProductDetails = ({item}) => {
-  console.log('ProductDetails is rendering')
-
   const formattedItem = formatProductData(item)
 
   const {name, price, description, image, categoryName} = formattedItem

@@ -4,8 +4,6 @@ import './CartModal.scss'
 import {CartModalList, CartModalSummary, CartModalWrapper} from './index'
 
 const CartModal = ({data, subtotal}) => {
-  console.log('CartModal is rendering')
-
   return (
     <CartModalWrapper>
       {data.length > 0 ? (

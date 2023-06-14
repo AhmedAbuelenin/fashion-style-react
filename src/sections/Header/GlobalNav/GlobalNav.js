@@ -4,8 +4,6 @@ import {mainPagesData} from '../../../data'
 import './GlobalNav.scss'
 
 const GlobalNav = props => {
-  console.log('GlobalNav is rendering')
-
   const {isOpenedSideBar, visibleSearchModal, onLinkPress} = props
 
   const wrapperClass = isOpenedSideBar ? 'global-nav--shown' : ''

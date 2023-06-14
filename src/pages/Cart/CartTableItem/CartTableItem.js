@@ -8,8 +8,6 @@ import {generateItemIDFromCode} from '../../../utils'
 import './CartTableItem.css'
 
 const CartTableItem = props => {
-  console.log('CartTableItem is rendering')
-
   const {item, onChangeCount} = props
   const {code, name, price, quantity, image} = item
 

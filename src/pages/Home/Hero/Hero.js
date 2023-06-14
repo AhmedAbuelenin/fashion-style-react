@@ -4,8 +4,6 @@ import '../../../styles/_global.scss'
 import './Hero.scss'
 
 const Hero = () => {
-  console.log('Hero is rendering')
-
   return (
     <div className='hero'>
       <div className='hero__heading-link-container'>

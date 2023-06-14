@@ -9,8 +9,6 @@ import './Cart.css'
 import {CartActions, CartTableList, CartTotals} from './index'
 
 const Cart = () => {
-  console.log('Cart is rendering')
-
   const dispatch = useDispatch()
   const {data} = useSelector(state => state.cart)
   const itemsObjRef = useRef({})

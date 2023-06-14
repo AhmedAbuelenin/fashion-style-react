@@ -3,8 +3,6 @@ import {FieldWrapper, ValidationError} from '../index'
 import './InputField.scss'
 
 const InputField = props => {
-  console.log('InputField is rendering')
-
   const {
     containerClass = '',
     required = false,

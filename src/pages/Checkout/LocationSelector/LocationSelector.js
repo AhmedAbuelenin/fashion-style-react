@@ -5,8 +5,6 @@ import {FieldWrapper, ValidationError} from '../../../components'
 import './LocationSelector.scss'
 
 const LocationSelector = props => {
-  console.log('LocationSelector is rendering')
-
   const {
     required,
     id,

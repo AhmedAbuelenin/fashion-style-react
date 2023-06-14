@@ -5,8 +5,6 @@ import {CartTableItem} from '../index'
 import './CartTableList.scss'
 
 const CartTableList = props => {
-  console.log('CartTableList is rendering')
-
   const {data, onChangeCount} = props
 
   return (

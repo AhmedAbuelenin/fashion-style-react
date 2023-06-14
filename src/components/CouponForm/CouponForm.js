@@ -6,8 +6,6 @@ import Loader from '../Loader/Loader'
 import './CouponForm.scss'
 
 const CouponForm = props => {
-  console.log('CouponForm is rendering')
-
   const {formClass = '', onApplyCoupon} = props
 
   const {coupon} = useSelector(state => state.cart)

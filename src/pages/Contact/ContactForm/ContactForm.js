@@ -12,8 +12,6 @@ import './ContactForm.scss'
 import ContactFormValidation from './ContactFormValidation'
 
 const ContactForm = () => {
-  console.log('ContactForm is rendering')
-
   const {
     register,
     handleSubmit,
