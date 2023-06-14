@@ -9,6 +9,7 @@ const CouponForm = props => {
   const {formClass = '', onApplyCoupon} = props
 
   const {coupon} = useSelector(state => state.cart)
+  const couponStatus = coupon.status
 
   const {
     register,
@@ -19,8 +20,8 @@ const CouponForm = props => {
     watch
   } = useForm({
     defaultValues: {
-      coupon: coupon?.value,
-      isValid: coupon?.status,
+      coupon: couponStatus ? coupon.value : '',
+      isValid: couponStatus,
       loading: false
     }
   })
