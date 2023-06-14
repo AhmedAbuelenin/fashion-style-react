@@ -1,13 +1,12 @@
 @import '../../../../styles/mixins';
 
 .featured-categories__list {
-  @include gridColsAutoFit;
+  @include gridColsAutoFit($minWidth: 20rem);
   gap: 3rem;
 }
 
 .featured-categories__img {
   width: 100%;
-  aspect-ratio: 1/1;
 }
 
 .featured-categories__name {
