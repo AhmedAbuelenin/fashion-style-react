@@ -1,6 +1,6 @@
 import '../../styles/_global.scss'
 import {formatProductData} from '../../utils'
-import './ProductDetails.css'
+import './ProductDetails.scss'
 import ProductDetailsAction from './ProductDetailsAction/ProductDetailsAction'
 
 const ProductDetails = ({item}) => {

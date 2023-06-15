@@ -26,3 +26,12 @@
 .product-gallery__img-container:hover .product-gallery__quick-view {
   opacity: 1;
 }
+
+/* Start Responsive */
+@media (max-device-width: 500px) {
+  .product-gallery__quick-view {
+    display: none;
+  }
+}
+
+/* End Responsive */

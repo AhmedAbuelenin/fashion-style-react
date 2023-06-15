@@ -1,5 +1,5 @@
 import {memo, useCallback, useState} from 'react'
-import './Counter.css'
+import './Counter.scss'
 
 const Counter = props => {
   const {count, onChangeCount, containerClass, countClass, operatorClass} =

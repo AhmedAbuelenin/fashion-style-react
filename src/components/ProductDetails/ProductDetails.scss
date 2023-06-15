@@ -1,28 +1,16 @@
+@import '../../styles/mixins';
+
 .product-details {
-  max-width: var(--width-content);
-  margin: 0 auto;
-  padding: 3.5rem;
-  display: flex;
+  padding: 2.5rem;
+  @include gridColsAutoFit($minWidth: 20rem);
   gap: 3rem;
-  flex-wrap: wrap;
   background-color: var(--color-light-gray-bg);
 }
 
-.product-details__close {
-  position: absolute;
-  top: -6%;
-  right: -0.3%;
-  color: var(--color-light);
-}
-
 .product-details__img {
-  height: 60rem;
+  width: 100%;
+  height: 50rem;
   object-fit: cover;
-  transition: var(--transition-timing-sec);
-}
-
-.product-details__content {
-  flex: 1;
 }
 
 .product-details__name {
@@ -68,7 +56,7 @@
 /* Start Responsive */
 @media (max-width: 900px) {
   .product-details__img {
-    height: 45rem;
+    height: 40rem;
   }
 
   .product-details__name {
@@ -79,5 +67,4 @@
     font-size: var(--font-size-20);
   }
 }
-
 /* End Responsive */

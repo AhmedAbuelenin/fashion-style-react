@@ -8,6 +8,7 @@
 }
 
 .product-modal__content {
+  width: var(--width-content);
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -17,17 +18,4 @@
   align-self: flex-end;
   margin-bottom: 0.7rem;
   color: var(--color-light);
-}
-
-@media (max-width: 1000px) {
-  .product-modal__close {
-    position: absolute;
-    top: 1.4rem;
-    right: 1.8rem;
-  }
-
-  .product-modal__content {
-    height: 90%;
-    overflow-y: scroll;
-  }
 }

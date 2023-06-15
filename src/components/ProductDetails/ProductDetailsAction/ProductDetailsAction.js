@@ -1,10 +1,10 @@
-import {Link} from 'react-router-dom'
-import Counter from '../../Counter/Counter'
-import './ProductDetailsAction.css'
-import {useDispatch} from 'react-redux'
 import {useCallback, useRef} from 'react'
+import {useDispatch} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {setCartItem} from '../../../redux/slices'
 import {generateItemIDFromCode} from '../../../utils'
+import Counter from '../../Counter/Counter'
+import './ProductDetailsAction.scss'
 
 const ProductDetailsAction = ({item}) => {
   const dispatch = useDispatch()
