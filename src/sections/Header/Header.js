@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react'
 import {Logo} from '../../components'
-import './Header.css'
+import './Header.scss'
 import {GlobalNav, GlobalSideBar, SearchAndCartBar} from './index'
 
 const Header = () => {

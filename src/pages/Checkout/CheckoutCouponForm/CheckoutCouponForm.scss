@@ -36,7 +36,7 @@
 }
 
 /* Start Responsive */
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .checkout-coupon__form {
     @include flexCol;
     gap: 1rem;

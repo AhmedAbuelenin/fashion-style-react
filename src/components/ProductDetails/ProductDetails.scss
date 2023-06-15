@@ -54,7 +54,7 @@
 }
 
 /* Start Responsive */
-@media (max-width: 900px) {
+@media only screen and (max-width: 900px) {
   .product-details__img {
     height: 40rem;
   }

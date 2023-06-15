@@ -9,7 +9,7 @@
 }
 
 /* Start Responsive */
-@media (max-width: 985px) {
+@media only screen and (max-width: 985px) {
   .product-list {
     justify-content: center;
   }

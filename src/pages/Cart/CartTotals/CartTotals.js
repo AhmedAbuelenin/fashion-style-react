@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {cartSubtitles} from '../../../data'
 import '../../../styles/_global.scss'
 import {CartTotalsItem} from '../index'
-import './CartTotals.css'
+import './CartTotals.scss'
 
 const CartTotals = ({data}) => {
   const {

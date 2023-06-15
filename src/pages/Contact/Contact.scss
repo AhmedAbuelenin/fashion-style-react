@@ -16,7 +16,7 @@
   max-width: 35%;
 }
 
-@media (max-width: 950px) {
+@media only screen and (max-width: 950px) {
   .contact__details-hours {
     max-width: 100%;
   }

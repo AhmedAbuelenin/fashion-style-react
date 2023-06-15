@@ -6,7 +6,7 @@ import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
 import {CartModal, SearchModal} from '../index'
-import './SearchAndCartBar.css'
+import './SearchAndCartBar.scss'
 import {setCartTotals} from '../../../redux/slices'
 
 const SearchAndCartBar = props => {

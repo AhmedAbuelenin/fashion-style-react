@@ -21,19 +21,19 @@
 }
 
 /*Start Responsive */
-@media (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .hero__heading {
     font-size: var(--font-size-42);
   }
 }
 
-@media (max-width: 750px) {
+@media only screen and (max-width: 750px) {
   .hero__heading-link-container {
     width: 45%;
   }
 }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .hero {
     height: 40rem;
   }

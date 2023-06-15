@@ -4,13 +4,13 @@
 }
 
 /*Start Responsive */
-@media (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .section__heading {
     font-size: var(--font-size-24);
   }
 }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .section__heading {
     font-size: var(--font-size-20);
   }

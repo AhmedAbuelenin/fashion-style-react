@@ -75,7 +75,7 @@
 }
 
 /*Start Responsive */
-@media (max-width: 860px) {
+@media only screen and (max-width: 860px) {
   .footer__nav {
     justify-self: flex-start;
   }
@@ -85,7 +85,7 @@
   }
 }
 
-@media (max-width: 525px) {
+@media only screen and (max-width: 525px) {
   .footer__nav {
     margin-top: 3rem;
   }

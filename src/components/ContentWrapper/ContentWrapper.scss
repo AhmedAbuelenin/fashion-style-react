@@ -11,13 +11,13 @@
 }
 
 /*Start Responsive */
-@media (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .content-wrapper__heading {
     font-size: var(--font-size-42);
   }
 }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .content-wrapper__heading {
     font-size: var(--font-size-32);
   }

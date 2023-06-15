@@ -13,13 +13,13 @@
 }
 
 /* Start Responsive */
-@media (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .cart__actions-container {
     margin: 3rem 0;
   }
 }
 
-@media (max-width: 650px) {
+@media only screen and (max-width: 650px) {
   .cart__button {
     order: -1;
     width: 100%;

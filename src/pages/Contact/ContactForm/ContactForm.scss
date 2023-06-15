@@ -20,7 +20,7 @@
 }
 
 /* Start Responsive */
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .contact-form__inputs-container {
     @include flexCol;
     gap: 0;
