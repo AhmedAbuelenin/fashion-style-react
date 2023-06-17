@@ -1,10 +1,26 @@
+import {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {Loader, ProductList} from '../../../components'
+import {getFeaturedCollection} from '../../../redux/thunk'
 import '../../../styles/_global.scss'
 import {FeaturedWrapper} from '../index'
 import './FeaturedCollection.scss'
 
-const FeaturedCollection = ({featuredResult}) => {
+const FeaturedCollection = () => {
+  const dispatch = useDispatch()
+  const featuredResult = useSelector(state => state.featuredCollection)
+
   const {data, loading, status} = featuredResult
+
+  useEffect(() => {
+    const fetchProducts = () => {
+      dispatch(getFeaturedCollection())
+    }
+
+    if (data.length === 0) {
+      fetchProducts()
+    }
+  }, [])
 
   return (
     <FeaturedWrapper

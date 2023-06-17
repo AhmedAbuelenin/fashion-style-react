@@ -1,15 +1,15 @@
-import {memo} from 'react'
+import {featuredCategories} from '../../../data'
 import {FeaturedCategoriesList, FeaturedWrapper} from '../index'
 import './FeaturedCategories.scss'
 
-const FeaturedCategories = ({data}) => {
+const FeaturedCategories = () => {
   return (
     <FeaturedWrapper
       heading='Featured Categories'
       description='Step Up Your Style Game with Our Featured Fashion Categories'>
-      <FeaturedCategoriesList {...{data}} />
+      <FeaturedCategoriesList data={featuredCategories} />
     </FeaturedWrapper>
   )
 }
 
-export default memo(FeaturedCategories)
+export default FeaturedCategories
