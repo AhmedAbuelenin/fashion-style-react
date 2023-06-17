@@ -16,7 +16,7 @@ import {Footer, Header} from './sections'
 
 const App = () => {
   return (
-    <Router>
+    <Router basename='/fashion-style-react'>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
