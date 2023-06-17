@@ -1,0 +1,38 @@
+.footer__quick-links-container {
+  justify-self: flex-end;
+}
+
+.footer__quick-links,
+.footer__about {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer__page-link {
+  margin-bottom: 0.7rem;
+  transition: var(--transition-timing-sec);
+}
+
+.footer__page-link:hover {
+  color: var(--color-gray-hover);
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*Start Responsive */
+@media only screen and (max-width: 860px) {
+  .footer__nav {
+    justify-self: flex-start;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .footer__nav {
+    margin-top: 3rem;
+  }
+}
+/*End Responsive */

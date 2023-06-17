@@ -1,0 +1,20 @@
+.footer__social-links {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer__external-link {
+  transition: var(--transition-timing-sec);
+}
+
+.footer__external-link:hover {
+  color: var(--color-gray-hover);
+}
+
+/*Start Responsive */
+@media only screen and (max-width: 860px) {
+  .footer__social-links {
+    margin: 3rem 0;
+  }
+}
+/*End Responsive */

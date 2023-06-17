@@ -1,93 +1,11 @@
+@import '../../styles/mixins';
+
 .footer {
   padding: 4rem 2rem 2rem;
   background-color: var(--color-light-gray);
 }
 
-.footer__content {
+.footer__main {
   max-width: var(--width-content);
   margin: 3rem auto 1rem;
 }
-
-.footer__top {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-  column-gap: 3rem;
-  justify-items: center;
-  margin-bottom: 8rem;
-}
-
-.footer__logo-container {
-  justify-self: flex-start;
-}
-
-.footer__logo {
-  position: relative;
-  left: 0;
-  transform: translate(0);
-}
-
-.footer__slogan {
-  margin-top: 1.5rem;
-}
-
-.footer__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.footer__nav-quick-links {
-  justify-self: flex-end;
-}
-
-.footer__quick-links,
-.footer__about {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.footer__internal-link {
-  margin-bottom: 0.7rem;
-  transition: var(--transition-timing-sec);
-}
-
-.footer__internal-link:hover {
-  color: var(--color-gray-hover);
-}
-
-.footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer__social-links {
-  display: flex;
-  gap: 4rem;
-}
-
-.footer__external-link {
-  transition: var(--transition-timing-sec);
-}
-
-.footer__external-link:hover {
-  color: var(--color-gray-hover);
-}
-
-/*Start Responsive */
-@media only screen and (max-width: 860px) {
-  .footer__nav {
-    justify-self: flex-start;
-  }
-
-  .footer__social-links {
-    margin: 3rem 0;
-  }
-}
-
-@media only screen and (max-width: 525px) {
-  .footer__nav {
-    margin-top: 3rem;
-  }
-}
-/*End Responsive */

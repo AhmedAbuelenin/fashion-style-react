@@ -1,0 +1,8 @@
+@import '../../../styles/mixins';
+
+.footer__branding-wrapper {
+  @include gridColsAutoFit($minWidth: 22rem);
+  column-gap: 3rem;
+  justify-items: center;
+  margin-bottom: 8rem;
+}
