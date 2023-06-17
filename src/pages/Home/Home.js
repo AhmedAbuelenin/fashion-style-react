@@ -1,5 +1,6 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {Page} from '../../components'
 import {featuredCategories} from '../../data'
 import {getFeaturedCollection} from '../../redux/thunk'
 import './Home.scss'
@@ -22,13 +23,13 @@ const Home = () => {
   }, [])
 
   return (
-    <>
+    <Page>
       <Hero />
       <div className='home-wrapper'>
         <FeaturedCollection {...{featuredResult}} />
         <FeaturedCategories data={featuredCategories} />
       </div>
-    </>
+    </Page>
   )
 }
 

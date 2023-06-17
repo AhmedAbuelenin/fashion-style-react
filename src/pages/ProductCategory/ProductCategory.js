@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react'
 import {useLocation} from 'react-router-dom'
-import {ContentWrapper, Loader, ProductList} from '../../components'
+import {ContentWrapper, Loader, Page, ProductList} from '../../components'
 import {getProductsByCategory} from '../../services'
 import {capitalizeString} from '../../utils'
 import './../../styles/_global.scss'
@@ -36,22 +36,24 @@ const ProductCategory = () => {
   }, [])
 
   return (
-    <ContentWrapper
-      heading={getProductCategory()}
-      headingClass='product-category__heading'
-      wrapperClass='product-category'>
-      {loading ? (
-        <div className='centered-container'>
-          <Loader />
-        </div>
-      ) : errRef.current ? (
-        <span className='global-general-err-msg'>
-          {errRef.current.message.toUpperCase()}
-        </span>
-      ) : (
-        <ProductList {...{data}} />
-      )}
-    </ContentWrapper>
+    <Page title={getProductCategory()}>
+      <ContentWrapper
+        heading={getProductCategory()}
+        headingClass='product-category__heading'
+        wrapperClass='product-category'>
+        {loading ? (
+          <div className='centered-container'>
+            <Loader />
+          </div>
+        ) : errRef.current ? (
+          <span className='global-general-err-msg'>
+            {errRef.current.message.toUpperCase()}
+          </span>
+        ) : (
+          <ProductList {...{data}} />
+        )}
+      </ContentWrapper>
+    </Page>
   )
 }
 

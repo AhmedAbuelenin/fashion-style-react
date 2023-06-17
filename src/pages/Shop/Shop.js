@@ -1,10 +1,10 @@
 import {useEffect, useRef, useState} from 'react'
-import {ContentWrapper, Loader, ProductList} from '../../components'
+import {ContentWrapper, Loader, Page, ProductList} from '../../components'
 import {getShopProducts} from '../../services'
 import './../../styles/_global.scss'
 import './Shop.scss'
 
-const ProductCategory = () => {
+const Shop = () => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const errRef = useRef(null)
@@ -27,20 +27,22 @@ const ProductCategory = () => {
   }, [])
 
   return (
-    <ContentWrapper heading={'Shop'} headingClass='shop__heading'>
-      {loading ? (
-        <div className='centered-container'>
-          <Loader />
-        </div>
-      ) : errRef.current ? (
-        <span className='global-general-err-msg'>
-          {errRef.current.message.toUpperCase()}
-        </span>
-      ) : (
-        <ProductList {...{data}} />
-      )}
-    </ContentWrapper>
+    <Page title='Shop'>
+      <ContentWrapper heading={'Shop'} headingClass='shop__heading'>
+        {loading ? (
+          <div className='centered-container'>
+            <Loader />
+          </div>
+        ) : errRef.current ? (
+          <span className='global-general-err-msg'>
+            {errRef.current.message.toUpperCase()}
+          </span>
+        ) : (
+          <ProductList {...{data}} />
+        )}
+      </ContentWrapper>
+    </Page>
   )
 }
 
-export default ProductCategory
+export default Shop

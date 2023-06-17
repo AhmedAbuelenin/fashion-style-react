@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react'
 import {useLocation} from 'react-router-dom'
-import {ContentWrapper} from '../../components'
+import {ContentWrapper, Page} from '../../components'
 import {getShopProducts} from '../../services'
 import './SearchResults.scss'
 import SearchResultsList from './SearchResultsList/SearchResultsList'
@@ -45,18 +45,20 @@ const SearchResults = () => {
   }, [keyword])
 
   return (
-    <ContentWrapper
-      heading={`Search results: “${keyword}”`}
-      headingClass='search-results__heading'
-      wrapperClass='search-results'>
-      {errRef.current ? (
-        <span className='global-general-err-msg'>
-          {errRef.current.message.toUpperCase()}
-        </span>
-      ) : (
-        <SearchResultsList {...{loading}} data={matchedProducts} />
-      )}
-    </ContentWrapper>
+    <Page title={`Search Results for “${keyword}”`}>
+      <ContentWrapper
+        heading={`Search results: “${keyword}”`}
+        headingClass='search-results__heading'
+        wrapperClass='search-results'>
+        {errRef.current ? (
+          <span className='global-general-err-msg'>
+            {errRef.current.message.toUpperCase()}
+          </span>
+        ) : (
+          <SearchResultsList {...{loading}} data={matchedProducts} />
+        )}
+      </ContentWrapper>
+    </Page>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, {useCallback, useRef, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {ContentWrapper} from '../../components'
+import {ContentWrapper, Page} from '../../components'
 import {setCoupon, updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
@@ -35,28 +35,30 @@ const Cart = () => {
   }, [])
 
   return (
-    <ContentWrapper wrapperClass='cart' heading='Cart'>
-      {data.length > 0 ? (
-        <>
-          <CartTableList {...{data}} onChangeCount={handleQtyChange} />
-          <CartActions
-            {...{isCartUpdateNeeded}}
-            onApplyCoupon={handleCoupon}
-            onUpdateCart={handleCartUpdate}
-          />
-          <CartTotals {...{data}} />
-        </>
-      ) : (
-        <>
-          <span className='cart__no-products'>
-            Your cart is currently empty.
-          </span>
-          <Link to='/shop' className='global-button cart__return-shop-button'>
-            RETURN TO SHOP
-          </Link>
-        </>
-      )}
-    </ContentWrapper>
+    <Page title='Cart'>
+      <ContentWrapper wrapperClass='cart' heading='Cart'>
+        {data.length > 0 ? (
+          <>
+            <CartTableList {...{data}} onChangeCount={handleQtyChange} />
+            <CartActions
+              {...{isCartUpdateNeeded}}
+              onApplyCoupon={handleCoupon}
+              onUpdateCart={handleCartUpdate}
+            />
+            <CartTotals {...{data}} />
+          </>
+        ) : (
+          <>
+            <span className='cart__no-products'>
+              Your cart is currently empty.
+            </span>
+            <Link to='/shop' className='global-button cart__return-shop-button'>
+              RETURN TO SHOP
+            </Link>
+          </>
+        )}
+      </ContentWrapper>
+    </Page>
   )
 }
 
