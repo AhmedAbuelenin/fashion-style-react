@@ -37,7 +37,7 @@ const ProductGallery = ({item}) => {
         <ProductModal
           onModalPress={disableClickOnModal}
           onClose={toggleVisibleModal}>
-          <ProductDetails {...{item}} />
+          <ProductDetails {...{item}} imgClass={'product-gallery__modal-img'} />
         </ProductModal>
       ) : null}
     </>

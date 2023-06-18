@@ -3,14 +3,18 @@ import {formatProductData} from '../../utils'
 import './ProductDetails.scss'
 import ProductDetailsAction from './ProductDetailsAction/ProductDetailsAction'
 
-const ProductDetails = ({item}) => {
+const ProductDetails = ({imgClass, item}) => {
   const formattedItem = formatProductData(item)
 
   const {name, price, description, image, categoryName} = formattedItem
 
   return (
     <div className='product-details'>
-      <img src={image} alt='product img' className='product-details__img' />
+      <img
+        src={image}
+        alt='product img'
+        className={`product-details__img ${imgClass}`}
+      />
       <div className='product-details__content'>
         <span className='product-details__name'>{name}</span>
         <span className='product-details__price'>${price}</span>

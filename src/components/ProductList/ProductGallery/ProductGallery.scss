@@ -9,6 +9,10 @@
   transition: var(--transition-timing-sec);
 }
 
+.product-gallery__modal-img {
+  height: 45rem;
+}
+
 .product-gallery__quick-view {
   opacity: 0;
   position: absolute;
