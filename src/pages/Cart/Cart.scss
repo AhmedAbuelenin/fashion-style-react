@@ -1,17 +1,17 @@
+@import '../../styles/mixins';
+
 .cart {
-  display: flex;
-  flex-direction: column;
+  @include flexCol;
 }
 
 .cart__no-products {
-  display: block;
   background-color: var(--color-light-gray);
   padding: 2rem 1.5rem;
-  margin-bottom: 4rem;
 }
 
 .cart__return-shop-button {
   align-self: flex-start;
   padding-top: 1.7rem;
   padding-bottom: 1.7rem;
+  margin-top: 4rem;
 }

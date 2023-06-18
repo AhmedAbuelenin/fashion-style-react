@@ -2,7 +2,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {useCallback, useEffect} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {ContentWrapper, Page, SubmitSuccessMsg} from '../../components'
 import {
   emptyCart,
@@ -20,9 +20,10 @@ import {
 } from './index'
 
 const Checkout = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const billingDetails = useSelector(state => state.billingDetails)
-  const {coupon} = useSelector(state => state.cart)
+  const {coupon, data: cartItems} = useSelector(state => state.cart)
   const {
     register,
     formState: {errors, isDirty},
@@ -49,6 +50,15 @@ const Checkout = () => {
   })
 
   useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate('/cart', {
+        state: {
+          checkoutMessage:
+            'Checkout is not available whilst your cart is empty.'
+        }
+      })
+    }
+
     return () => {
       const currentData = watch()
       if (!currentData.isSuccessMsgShown) {

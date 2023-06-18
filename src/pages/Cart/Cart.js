@@ -1,15 +1,17 @@
 import React, {useCallback, useRef, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import {ContentWrapper, Page} from '../../components'
 import {setCoupon, updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
-import './Cart.css'
+import './Cart.scss'
 import {CartActions, CartTableList, CartTotals} from './index'
 
 const Cart = () => {
   const dispatch = useDispatch()
+  const location = useLocation()
+  const _checkoutMessage = location.state?.checkoutMessage
   const {data} = useSelector(state => state.cart)
   const itemsObjRef = useRef({})
 
@@ -49,9 +51,10 @@ const Cart = () => {
           </>
         ) : (
           <>
-            <span className='cart__no-products'>
-              Your cart is currently empty.
-            </span>
+            {_checkoutMessage ? (
+              <p className='cart__no-products'>{_checkoutMessage}</p>
+            ) : null}
+            <p className='cart__no-products'>Your cart is currently empty.</p>
             <Link to='/shop' className='global-button cart__return-shop-button'>
               RETURN TO SHOP
             </Link>
