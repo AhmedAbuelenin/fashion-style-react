@@ -1,12 +1,7 @@
-import {useEffect} from 'react'
 import './ContentWrapper.scss'
 
 const ContentWrapper = props => {
-  const {wrapperClass = '', headingClass = '', title, heading, children} = props
-
-  useEffect(() => {
-    document.title = title
-  }, [])
+  const {wrapperClass = '', headingClass = '', heading, children} = props
 
   return (
     <div className={`content-wrapper ${wrapperClass}`}>

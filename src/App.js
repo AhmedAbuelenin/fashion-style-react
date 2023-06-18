@@ -1,4 +1,9 @@
-import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes
+} from 'react-router-dom'
 import './App.css'
 import {ScrollToTopButton} from './components'
 import {
@@ -6,7 +11,6 @@ import {
   Checkout,
   Contact,
   Home,
-  NoPage,
   ProductDetailsPage,
   Shop,
   ProductCategory,
@@ -33,7 +37,7 @@ const App = () => {
           path='/productDetailsPage/:id'
           element={<ProductDetailsPage />}
         />
-        <Route path='*' element={<NoPage />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
       <Footer />
       <ScrollToTopButton />
