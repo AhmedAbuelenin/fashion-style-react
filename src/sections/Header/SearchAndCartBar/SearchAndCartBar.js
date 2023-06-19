@@ -16,6 +16,7 @@ const SearchAndCartBar = props => {
   const {data, totals} = useSelector(state => state.cart)
   const {pathname} = useLocation()
   const isCartOrCheckoutPath = RegExp(/cart|checkout/).test(pathname)
+  const iconClass = visibleSearchModal ? 'global-header__icon--disabled' : ''
 
   useEffect(() => {
     const calcCartTotals = products => {
@@ -46,15 +47,20 @@ const SearchAndCartBar = props => {
               title='Search for a product'
               size={28}
               onClick={onToggleVisibleSearchModal}
-              className='global-header__icon global-header__search'
+              className={`global-header__icon ${iconClass} global-header__search`}
             />
           ) : (
-            <CloseIcon size={24} onClick={onToggleVisibleSearchModal} />
+            <CloseIcon
+              title='Close the search'
+              size={24}
+              onClick={onToggleVisibleSearchModal}
+              className='global-header__icon'
+            />
           )}
           <Link
             title='View your shopping cart'
-            to='/cart'
-            className={`global-header__icon global-header__cart`}>
+            to={!visibleSearchModal ? '/cart' : '#'}
+            className={`global-header__icon ${iconClass} global-header__cart`}>
             <BsCart2 size={24} />
             <span className='global-header__cart-count'>{totals.qty}</span>
           </Link>
@@ -62,8 +68,8 @@ const SearchAndCartBar = props => {
         <BurgerIcon
           color='#212121'
           size={30}
-          onClick={props.onMenuPress}
-          className='global-header__menu'
+          onClick={!visibleSearchModal ? props.onMenuPress : undefined}
+          className={`global-header__icon ${iconClass} global-header__menu`}
         />
         {!isCartOrCheckoutPath ? (
           <CartModal {...{data}} subtotal={totals.price} />

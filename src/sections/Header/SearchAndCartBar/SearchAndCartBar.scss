@@ -7,18 +7,17 @@
   justify-self: flex-end;
 }
 
-.global-header__icon:active {
-  border: 0.1rem dashed var(--color-gray-hover);
-  padding: 0.3rem;
+.global-header__icon {
+  cursor: pointer;
+}
+
+.global-header__icon--disabled {
+  cursor: default;
 }
 
 .global-header__search-cart-container {
   @include flexVCenter;
   gap: 1.4rem;
-}
-
-.global-header__search:hover {
-  cursor: pointer;
 }
 
 .global-header__cart:hover + .cart-modal {
@@ -56,7 +55,6 @@
 
   .global-header__menu {
     display: inline;
-    cursor: pointer;
   }
 }
 
