@@ -28,7 +28,13 @@
 
 @media only screen and (max-width: 500px) {
   .global-header__logo-wrapper {
-    font-size: var(--font-size-14);
+    font-size: var(--font-size-12);
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .global-header__logo-wrapper {
+    left: 55%;
   }
 }
 /* End Responsive */
