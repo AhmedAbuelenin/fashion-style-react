@@ -2,7 +2,7 @@
   display: none;
   position: absolute;
   top: 3rem;
-  right: 0rem;
+  right: 0;
   z-index: 1;
   width: 38rem;
   padding-top: 2.5rem;
@@ -21,3 +21,12 @@
   padding: 2rem 0;
   margin-inline: 3rem;
 }
+
+/* Start Responsive */
+@media only screen and (max-width: 1000px) {
+  .cart-modal {
+    right: auto;
+    left: 4.2rem;
+  }
+}
+/* End Responsive */

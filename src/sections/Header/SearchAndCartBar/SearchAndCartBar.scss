@@ -59,12 +59,16 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .global-header__search-cart-container {
+    gap: 0.5rem;
+  }
+
   .global-header__cart-count {
     left: 4.6rem;
   }
 
-  .global-header__search-cart-container {
-    gap: 0.5rem;
+  .global-header__cart:hover + .cart-modal {
+    display: none;
   }
 }
 
