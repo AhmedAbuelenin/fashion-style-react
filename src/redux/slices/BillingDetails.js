@@ -13,7 +13,7 @@ const initialState = {
 }
 
 const billingDetailsSlice = createSlice({
-  name: 'checkout',
+  name: 'billingDetails',
   initialState,
   reducers: {
     setBillingDetails: (_, action) => ({
