@@ -5,9 +5,9 @@ import {RxHamburgerMenu as BurgerIcon} from 'react-icons/rx'
 import {VscChromeClose as CloseIcon} from 'react-icons/vsc'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
-import {CartModal, SearchModal} from '../index'
-import './SearchAndCartBar.scss'
 import {setCartTotals} from '../../../redux/slices'
+import {CartModal} from '../index'
+import './SearchAndCartBar.scss'
 
 const SearchAndCartBar = props => {
   const {visibleSearchModal, onToggleVisibleSearchModal} = props
@@ -38,48 +38,49 @@ const SearchAndCartBar = props => {
     getCartTotals()
   }, [data])
 
+  const handleCartPress = event => {
+    if (visibleSearchModal) {
+      event.preventDefault()
+    }
+  }
+
   return (
-    <>
-      <div className='global-header__icons'>
-        <div className='global-header__search-cart-container'>
-          {!visibleSearchModal ? (
-            <SearchIcon
-              title='Search for a product'
-              size={28}
-              onClick={onToggleVisibleSearchModal}
-              className={`global-header__icon ${iconClass} global-header__search`}
-            />
-          ) : (
-            <CloseIcon
-              title='Close the search'
-              size={24}
-              onClick={onToggleVisibleSearchModal}
-              className='global-header__icon'
-            />
-          )}
-          <Link
-            title='View your shopping cart'
-            to={!visibleSearchModal ? '/cart' : '#'}
-            className={`global-header__icon ${iconClass} global-header__cart`}>
-            <BsCart2 size={24} />
-            <span className='global-header__cart-count'>{totals.qty}</span>
-          </Link>
-          {!isCartOrCheckoutPath && !visibleSearchModal ? (
-            <CartModal {...{data}} subtotal={totals.price} />
-          ) : null}
-        </div>
-        <BurgerIcon
-          color='#212121'
-          size={30}
-          onClick={!visibleSearchModal ? props.onMenuPress : undefined}
-          className={`global-header__icon ${iconClass} global-header__menu`}
-        />
+    <div className='global-header__icons'>
+      <div className='global-header__search-cart-container'>
+        {!visibleSearchModal ? (
+          <SearchIcon
+            title='Search for a product'
+            size={28}
+            onClick={onToggleVisibleSearchModal}
+            className={`global-header__icon ${iconClass} global-header__search`}
+          />
+        ) : (
+          <CloseIcon
+            title='Close the search'
+            size={24}
+            onClick={onToggleVisibleSearchModal}
+            className='global-header__icon'
+          />
+        )}
+        <Link
+          title='View your shopping cart'
+          to='/cart'
+          onClick={handleCartPress}
+          className={`global-header__icon ${iconClass} global-header__cart`}>
+          <BsCart2 size={24} />
+          <span className='global-header__cart-count'>{totals.qty}</span>
+        </Link>
+        {!isCartOrCheckoutPath && !visibleSearchModal ? (
+          <CartModal {...{data}} subtotal={totals.price} />
+        ) : null}
       </div>
-      <SearchModal
-        isVisible={visibleSearchModal}
-        onWindowClick={onToggleVisibleSearchModal}
+      <BurgerIcon
+        color='#212121'
+        size={30}
+        onClick={!visibleSearchModal ? props.onMenuPress : undefined}
+        className={`global-header__icon ${iconClass} global-header__menu`}
       />
-    </>
+    </div>
   )
 }
 

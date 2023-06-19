@@ -11,15 +11,23 @@ const GlobalNav = props => {
     ? 'global-nav__item-title'
     : 'global-nav__item-title--disabled'
 
+  const handleLinkClick = event => {
+    if (visibleSearchModal) {
+      event.preventDefault()
+      return
+    }
+    if (onLinkPress) onLinkPress()
+  }
+
   return (
     <nav className={`global-nav ${wrapperClass}`}>
       <ul className='global-nav__list'>
         {mainPagesData.map(page => (
           <li key={page.id} className='global-nav__item'>
             <Link
-              to={visibleSearchModal ? '#' : page.path}
+              to={page.path}
               className={`global-nav__item-link ${linkClass}`}
-              onClick={onLinkPress}>
+              onClick={handleLinkClick}>
               {page.name}
             </Link>
           </li>
