@@ -64,6 +64,9 @@ const SearchAndCartBar = props => {
             <BsCart2 size={24} />
             <span className='global-header__cart-count'>{totals.qty}</span>
           </Link>
+          {!isCartOrCheckoutPath && !visibleSearchModal ? (
+            <CartModal {...{data}} subtotal={totals.price} />
+          ) : null}
         </div>
         <BurgerIcon
           color='#212121'
@@ -71,9 +74,6 @@ const SearchAndCartBar = props => {
           onClick={!visibleSearchModal ? props.onMenuPress : undefined}
           className={`global-header__icon ${iconClass} global-header__menu`}
         />
-        {!isCartOrCheckoutPath ? (
-          <CartModal {...{data}} subtotal={totals.price} />
-        ) : null}
       </div>
       <SearchModal
         isVisible={visibleSearchModal}
