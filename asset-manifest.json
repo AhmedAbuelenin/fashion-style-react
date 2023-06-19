@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/fashion-style-react/static/css/main.d76d026e.css",
-    "main.js": "/fashion-style-react/static/js/main.0183fa21.js",
+    "main.js": "/fashion-style-react/static/js/main.355edb08.js",
     "static/media/map-location.png": "/fashion-style-react/static/media/map-location.0841575f2a5feb45ab36.png",
     "static/media/hero-img.png": "/fashion-style-react/static/media/hero-img.0288d5c92f76e1345a17.png",
     "index.html": "/fashion-style-react/index.html",
     "main.d76d026e.css.map": "/fashion-style-react/static/css/main.d76d026e.css.map",
-    "main.0183fa21.js.map": "/fashion-style-react/static/js/main.0183fa21.js.map"
+    "main.355edb08.js.map": "/fashion-style-react/static/js/main.355edb08.js.map"
   },
   "entrypoints": [
     "static/css/main.d76d026e.css",
-    "static/js/main.0183fa21.js"
+    "static/js/main.355edb08.js"
   ]
 }
