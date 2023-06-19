@@ -40,30 +40,31 @@ const SearchAndCartBar = props => {
   return (
     <>
       <div className='global-header__icons'>
-        {!visibleSearchModal ? (
-          <SearchIcon
-            title='Search for a product'
-            size={28}
-            onClick={onToggleVisibleSearchModal}
-            className='global-header__icon global-header__search'
-          />
-        ) : (
-          <CloseIcon size={24} onClick={onToggleVisibleSearchModal} />
-        )}
+        <div className='global-header__search-cart-container'>
+          {!visibleSearchModal ? (
+            <SearchIcon
+              title='Search for a product'
+              size={28}
+              onClick={onToggleVisibleSearchModal}
+              className='global-header__icon global-header__search'
+            />
+          ) : (
+            <CloseIcon size={24} onClick={onToggleVisibleSearchModal} />
+          )}
+          <Link
+            title='View your shopping cart'
+            to='/cart'
+            className={`global-header__icon global-header__cart`}>
+            <BsCart2 size={24} />
+            <span className='global-header__cart-count'>{totals.qty}</span>
+          </Link>
+        </div>
         <BurgerIcon
           color='#212121'
           size={30}
           onClick={props.onMenuPress}
           className='global-header__menu'
         />
-        <Link
-          title='View your shopping cart'
-          to='/cart'
-          className={`global-header__icon global-header__cart`}>
-          <BsCart2 size={24} />
-          <span className='global-header__cart-count'>{totals.qty}</span>
-        </Link>
-
         {!isCartOrCheckoutPath ? (
           <CartModal {...{data}} subtotal={totals.price} />
         ) : null}

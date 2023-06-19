@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 .global-header__icons {
   position: relative;
   display: flex;
@@ -5,21 +7,29 @@
   justify-self: flex-end;
 }
 
-.global-header__menu {
-  display: none;
+.global-header__icon:active {
+  border: 0.1rem dashed var(--color-gray-hover);
+  padding: 0.3rem;
+}
+
+.global-header__search-cart-container {
+  @include flexVCenter;
+  gap: 1.4rem;
 }
 
 .global-header__search:hover {
   cursor: pointer;
 }
 
+.global-header__cart:hover + .cart-modal {
+  display: block;
+}
+
 .global-header__cart-count {
   position: absolute;
   top: -0.7rem;
   right: -0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   color: var(--color-light);
   font-size: var(--font-size-10);
   min-height: 1.8rem;
@@ -28,13 +38,8 @@
   background-color: var(--color-dark-red);
 }
 
-.global-header__cart:hover + .cart-modal {
-  display: block;
-}
-
-.global-header__icon:active {
-  border: 0.1rem dashed var(--color-gray-hover);
-  padding: 0.3rem;
+.global-header__menu {
+  display: none;
 }
 
 /* Start Responsive */
@@ -44,8 +49,9 @@
     justify-content: space-between;
   }
 
-  .global-header__cart {
-    display: none;
+  .global-header__cart-count {
+    right: auto;
+    left: 5.5rem;
   }
 
   .global-header__menu {
