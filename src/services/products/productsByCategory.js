@@ -11,7 +11,7 @@ export const getProductsByCategory = async (
         categories
       }
     })
-    return res.data
+    return res.data.results
   } catch (error) {
     throw error
   }

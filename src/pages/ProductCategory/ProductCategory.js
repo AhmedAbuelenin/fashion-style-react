@@ -1,56 +1,39 @@
-import {useEffect, useRef, useState} from 'react'
+import {useMemo, useRef} from 'react'
 import {useLocation} from 'react-router-dom'
-import {ContentWrapper, Loader, Page, ProductList} from '../../components'
-import {getProductsByCategory} from '../../services'
+import {ContentWrapper, Page, ProductList} from '../../components'
+import {useProductCategory} from '../../hooks'
 import {capitalizeString} from '../../utils'
 import './../../styles/_global.scss'
 import './ProductCategory.scss'
 
 const ProductCategory = () => {
   const {pathname} = useLocation()
-
-  const [loading, setLoading] = useState(false)
-  const [data, setData] = useState([])
-  const errRef = useRef(null)
+  const categoryNameRef = useRef('')
+  const _categoryName = categoryNameRef.current
 
   const getProductCategory = () => {
     const categoryName = pathname.replace('/shop/product-category/', '')
     return capitalizeString(categoryName)
   }
 
-  useEffect(() => {
-    const fetchProductsByCategory = async () => {
-      try {
-        setLoading(true)
-        const _data = await getProductsByCategory(getProductCategory())
-        setData(_data.results)
-      } catch (error) {
-        errRef.current = error
-        console.log('🚀 ~ fetchProductsByCategory ~ error:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchProductsByCategory()
+  useMemo(() => {
+    categoryNameRef.current = getProductCategory()
   }, [])
 
+  const {loading, data, error} = useProductCategory(categoryNameRef.current)
+
   return (
-    <Page title={getProductCategory()}>
+    <Page title={_categoryName}>
       <ContentWrapper
-        heading={getProductCategory()}
+        heading={_categoryName}
         headingClass='product-category__heading'
         wrapperClass='product-category'>
-        {loading ? (
-          <div className='centered-container'>
-            <Loader />
-          </div>
-        ) : errRef.current ? (
-          <span className='global-general-err-msg'>
-            {errRef.current.message.toUpperCase()}
-          </span>
+        {!error ? (
+          <ProductList {...{loading, data}} />
         ) : (
-          <ProductList {...{data}} />
+          <span className='global-general-err-msg'>
+            {error.message.toUpperCase()}
+          </span>
         )}
       </ContentWrapper>
     </Page>
