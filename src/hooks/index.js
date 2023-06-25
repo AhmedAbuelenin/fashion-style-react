@@ -1,0 +1,1 @@
+export {useFeaturedCollection} from './useFeaturedCollection'

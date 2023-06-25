@@ -1,40 +1,23 @@
-import {useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Loader, ProductList} from '../../../components'
-import {getFeaturedCollection} from '../../../redux/thunk'
+import {ProductList} from '../../../components'
+import {useFeaturedCollection} from '../../../hooks'
 import '../../../styles/_global.scss'
 import {FeaturedWrapper} from '../index'
 import './FeaturedCollection.scss'
 
 const FeaturedCollection = () => {
-  const dispatch = useDispatch()
-  const featuredResult = useSelector(state => state.featuredCollection)
+  const {data, loading, status} = useFeaturedCollection()
 
-  const {data, loading, status} = featuredResult
-
-  useEffect(() => {
-    const fetchProducts = () => {
-      dispatch(getFeaturedCollection())
-    }
-
-    if (data.length === 0) {
-      fetchProducts()
-    }
-  }, [])
+  const isStatusOk = status === 'ok'
 
   return (
     <FeaturedWrapper
       heading='Featured Collection'
       description='Unleash Your Style with Our Trendsetting Collection of Fashion and Gift
       Products'>
-      {loading ? (
-        <div className='centered-container'>
-          <Loader />
-        </div>
-      ) : status !== 'ok' ? (
-        <span className='global-general-err-msg'>{status.toUpperCase()}</span>
+      {isStatusOk ? (
+        <ProductList {...{loading, data}} />
       ) : (
-        <ProductList {...{data}} />
+        <span className='global-general-err-msg'>{status.toUpperCase()}</span>
       )}
     </FeaturedWrapper>
   )
