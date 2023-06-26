@@ -1,18 +1,15 @@
-import {Loader, ProductList} from '../../../components'
-import './SearchResultsList.scss'
+import {ProductList} from '../../../components'
 import '../../../styles/_global.scss'
+import './SearchResultsList.scss'
 
 const SearchResultsList = ({loading, data}) => {
-  return loading ? (
-    <div className='centered-container'>
-      <Loader />
-    </div>
-  ) : data.length > 0 ? (
-    <ProductList {...{data}} />
-  ) : (
-    <p className='search-results__no-data'>
-      No products were found matching your selection.
-    </p>
+  return (
+    <ProductList
+      loading={loading}
+      data={data}
+      emptyTitle='No products were found matching your selection.'
+      emptyTitleClass='search-results__no-data'
+    />
   )
 }
 

@@ -17,7 +17,7 @@ const SearchResults = () => {
         headingClass='search-results__heading'
         wrapperClass='search-results'>
         {!error ? (
-          <SearchResultsList {...{loading}} data={matchedProducts} />
+          <SearchResultsList loading={loading} data={matchedProducts} />
         ) : (
           <span className='global-general-err-msg'>
             {error.message.toUpperCase()}

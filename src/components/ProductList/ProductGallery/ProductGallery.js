@@ -1,19 +1,16 @@
-import {memo, useCallback, useState} from 'react'
+import {memo, useCallback} from 'react'
 import {Link} from 'react-router-dom'
+import {useVisibleModal} from '../../../hooks'
 import {generateItemIDFromCode} from '../../../utils'
 import {ProductDetails} from '../../index'
 import {ProductModal} from '../index'
 import './ProductGallery.scss'
 
 const ProductGallery = ({item}) => {
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  const {isModalVisible, toggleVisibleModal} = useVisibleModal()
 
   const disableClickOnModal = useCallback(event => {
     event.stopPropagation()
-  }, [])
-
-  const toggleVisibleModal = useCallback(() => {
-    setIsModalVisible(visible => !visible)
   }, [])
 
   return (
@@ -37,7 +34,7 @@ const ProductGallery = ({item}) => {
         <ProductModal
           onModalPress={disableClickOnModal}
           onClose={toggleVisibleModal}>
-          <ProductDetails {...{item}} imgClass={'product-gallery__modal-img'} />
+          <ProductDetails item={item} imgClass={'product-gallery__modal-img'} />
         </ProductModal>
       ) : null}
     </>
@@ -47,4 +44,5 @@ const ProductGallery = ({item}) => {
 function areEquals(prevProps, nextProps) {
   return prevProps.item.code === nextProps.item.code
 }
+
 export default memo(ProductGallery, areEquals)
