@@ -6,8 +6,7 @@ export const getCountries = async authToken => {
     const res = await axios.get(`${universalApiBaseUrl}/countries`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
-        Accept: 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        Accept: 'application/json'
       }
     })
     return res.data

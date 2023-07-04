@@ -8,8 +8,7 @@ export const getUniversalApiAuthToken = async () => {
         'api-token':
           'C-KJoG09be8tfhqYuO6ce3CkLc-vGRLoXHGgYyH-odu2jyWm7eNUTgjvemt3KAsrJ5U',
         Accept: 'application/json',
-        'user-email': 'eng.ahmedabdelmonem05@gmail.com',
-        'Access-Control-Allow-Origin': '*'
+        'user-email': 'eng.ahmedabdelmonem05@gmail.com'
       }
     })
     return res.data
