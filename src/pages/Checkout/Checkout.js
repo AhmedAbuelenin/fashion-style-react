@@ -34,15 +34,15 @@ const Checkout = () => {
     control
   } = useForm({
     defaultValues: {
-      firstName: billingDetails.firstName,
-      lastName: billingDetails.lastName,
-      companyName: billingDetails.companyName,
-      country: billingDetails.country,
-      state: billingDetails.state,
-      address: billingDetails.address,
-      phone: billingDetails.phone,
-      email: billingDetails.email,
-      orderNotes: billingDetails.orderNotes,
+      firstName: billingDetails?.firstName,
+      lastName: billingDetails?.lastName,
+      companyName: billingDetails?.companyName,
+      country: billingDetails?.country,
+      state: billingDetails?.state,
+      address: billingDetails?.address,
+      phone: billingDetails?.phone,
+      email: billingDetails?.email,
+      orderNotes: billingDetails?.orderNotes,
       sending: false,
       isSuccessMsgShown: false
     },
