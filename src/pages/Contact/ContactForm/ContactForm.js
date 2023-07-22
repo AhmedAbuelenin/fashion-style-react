@@ -1,12 +1,7 @@
 import {yupResolver} from '@hookform/resolvers/yup'
 import {memo} from 'react'
 import {useForm} from 'react-hook-form'
-import {
-  InputField,
-  Loader,
-  SectionWrapper,
-  TextAreaField
-} from '../../../components'
+import {InputField, Loader, TextAreaField} from '../../../components'
 import {getFieldErrMsg} from '../../../utils'
 import './ContactForm.scss'
 import ContactFormValidation from './ContactFormValidation'
@@ -33,6 +28,7 @@ const ContactForm = ({onSuccessfulSubmit}) => {
 
   const onSubmit = data => {
     //You can later call a backend service here instead
+
     setValue('sending', true)
     setTimeout(() => {
       setValue('sending', false)
@@ -75,7 +71,6 @@ const ContactForm = ({onSuccessfulSubmit}) => {
       />
       <div className='contact-form__submit-loader'>
         <input
-          data-testid='contact-submit-button'
           disabled={_sending}
           type='submit'
           value='SEND MESSAGE'

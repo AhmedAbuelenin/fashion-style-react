@@ -11,7 +11,6 @@ export const getCountries = async authToken => {
     })
     return res.data
   } catch (error) {
-    console.log('🚀 ~ file: countries.js:15 ~ getCountries ~ error:', error)
     throw error.response
   }
 }
