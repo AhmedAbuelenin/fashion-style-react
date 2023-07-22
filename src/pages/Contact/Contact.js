@@ -1,7 +1,7 @@
 import {ContentWrapper, Page} from '../../components'
 import '../../styles/_global.scss'
 import './Contact.scss'
-import {ContactDetails, ContactForm, ContactHours} from './index'
+import {ContactDetails, ContactFormWithFeedback, ContactHours} from './index'
 
 const Contact = () => {
   return (
@@ -13,7 +13,7 @@ const Contact = () => {
           className='contact__img'
         />
         <div className='contact__main'>
-          <ContactForm />
+          <ContactFormWithFeedback />
           <div className='contact__details-hours'>
             <ContactDetails />
             <ContactHours />
