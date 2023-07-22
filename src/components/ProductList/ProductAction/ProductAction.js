@@ -2,9 +2,9 @@ import {useCallback, useEffect} from 'react'
 import {IoMdCheckmark as CheckIcon} from 'react-icons/io'
 import {RxReload as LoadingIcon} from 'react-icons/rx'
 import {useDispatch} from 'react-redux'
-import {useLoader} from '../../../../hooks'
-import {setCartItem} from '../../../../redux/slices'
-import {formatProductData} from '../../../../utils'
+import {useLoader} from '../../../hooks'
+import {setCartItem} from '../../../redux/slices'
+import {formatProductData} from '../../../utils'
 import './ProductAction.scss'
 
 const ProductAction = props => {
@@ -34,9 +34,13 @@ const ProductAction = props => {
       onClick={addProductToCart}>
       ADD TO CART
       {loading ? (
-        <LoadingIcon className='product-info__button-icon product-info__loading-icon' />
+        <LoadingIcon
+          data-testid={'loading-icon'}
+          className='product-info__button-icon product-info__loading-icon'
+        />
       ) : isAdded ? (
         <CheckIcon
+          data-testid='check-icon'
           color='#ffffff'
           size={20}
           className='product-info__button-icon product-info__check-icon'

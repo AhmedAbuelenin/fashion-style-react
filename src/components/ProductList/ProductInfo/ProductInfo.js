@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import {useCartItemAdded} from '../../../hooks'
-import ProductAction from './ProductAction/ProductAction'
+import ProductAction from '../ProductAction/ProductAction'
 import './ProductInfo.scss'
 
 const ProductInfo = ({item}) => {
