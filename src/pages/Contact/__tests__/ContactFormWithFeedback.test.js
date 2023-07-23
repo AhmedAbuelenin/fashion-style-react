@@ -1,5 +1,7 @@
-import {fireEvent, render, screen} from '@testing-library/react'
+import {cleanup, fireEvent, render, screen} from '@testing-library/react'
 import ContactFormWithFeedback from '../ContactFormWithFeedback/ContactFormWithFeedback'
+
+afterEach(cleanup)
 
 describe('ContactFormWithFeedback', () => {
   it('should display a success msg if all submitted inputs are valid', async () => {

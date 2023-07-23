@@ -1,6 +1,8 @@
-import {fireEvent, screen, waitFor} from '@testing-library/react'
+import {cleanup, fireEvent, screen, waitFor} from '@testing-library/react'
 import {renderWithProviders} from '../../../utils/utils-for-tests'
 import ProductAction from '../ProductAction/ProductAction'
+
+afterEach(cleanup)
 
 describe('ProductAction', () => {
   it('should display a loader when user click on add to cart to add an item to the cart then it disappears after a second', async () => {
