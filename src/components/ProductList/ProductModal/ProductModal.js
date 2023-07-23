@@ -6,9 +6,16 @@ const ProductModal = props => {
   const {children, onModalPress, onClose} = props
 
   return (
-    <div className='product-modal' onClick={onClose}>
-      <div className='product-modal__content' onClick={onModalPress}>
+    <div
+      data-testid='product-modal'
+      className='product-modal'
+      onClick={onClose}>
+      <div
+        data-testid='product-modal-content'
+        className='product-modal__content'
+        onClick={onModalPress}>
         <CloseIcon
+          data-testid='close-icon'
           className='product-modal__close'
           size={24}
           onClick={onClose}
