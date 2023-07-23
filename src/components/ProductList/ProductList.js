@@ -11,7 +11,7 @@ const ProductList = props => {
       <Loader />
     </div>
   ) : data.length > 0 ? (
-    <ul className='product-list'>
+    <ul data-testid='product-list' className='product-list'>
       {data.map(item => (
         <li key={item.code} className='product-list__item'>
           <ProductGallery item={item} />
@@ -20,7 +20,11 @@ const ProductList = props => {
       ))}
     </ul>
   ) : (
-    <p className={`product-list__no-data ${emptyTitleClass}`}>{emptyTitle}</p>
+    <p
+      data-testid={'empty-content'}
+      className={`product-list__no-data ${emptyTitleClass}`}>
+      {emptyTitle}
+    </p>
   )
 }
 
