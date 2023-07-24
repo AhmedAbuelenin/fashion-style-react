@@ -8,24 +8,32 @@ const CartModalItem = ({item}) => {
 
   const dispatch = useDispatch()
 
-  const handleItemRemove = id => {
-    dispatch(removeCartItem(id))
+  const handleItemRemove = () => {
+    dispatch(removeCartItem(code))
   }
 
   return (
     <>
       <div className='cart-modal__img-container'>
-        <img src={image} alt='cart item img' className='cart-modal__img' />
+        <img
+          data-testid='item-img'
+          src={image}
+          alt='cart item img'
+          className='cart-modal__img'
+        />
         <DeleteIcon
+          data-testid='item-delete-icon'
           color='#000000'
           size={20}
           className='cart-modal__delete-icon'
-          onClick={() => handleItemRemove(code)}
+          onClick={handleItemRemove}
         />
       </div>
       <div className='cart-modal__title-price-container'>
-        <span className='cart-modal__item-title'>{name}</span>
-        <span className='cart-modal__item-price'>
+        <span data-testid='item-name' className='cart-modal__item-title'>
+          {name}
+        </span>
+        <span data-testid='item-total-price' className='cart-modal__item-price'>
           {`${quantity} x $${price}`}
         </span>
       </div>
