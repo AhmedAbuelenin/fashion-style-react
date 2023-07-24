@@ -9,9 +9,7 @@ const CartModalSummary = ({subtotal}) => {
         <span className='cart-modal__total-price'>${subtotal.toFixed(2)}</span>
       </div>
       <hr className='global-divider' />
-      <Link
-        to='/checkout'
-        className='global-button cart-modal__checkout-link'>
+      <Link to='/checkout' className='global-button cart-modal__checkout-link'>
         CHECKOUT
       </Link>
       <Link to='/cart' className='cart-modal__view-cart-link'>
