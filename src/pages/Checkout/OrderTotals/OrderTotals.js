@@ -4,11 +4,10 @@ import '../../../styles/_global.scss'
 import {OrderDetails} from '../index'
 import './OrderTotals.scss'
 
-const OrderTotals = props => {
-  const {coupon, isSending, onPlaceOrder} = props
-
+const OrderTotals = ({isSending, onPlaceOrder}) => {
   const {
     data,
+    coupon,
     totals: {price: subtotal}
   } = useSelector(state => state.cart)
 

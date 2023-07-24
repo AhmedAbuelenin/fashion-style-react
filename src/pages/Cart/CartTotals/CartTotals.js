@@ -6,7 +6,7 @@ import '../../../styles/_global.scss'
 import {CartTotalsItem} from '../index'
 import './CartTotals.scss'
 
-const CartTotals = ({data}) => {
+const CartTotals = () => {
   const {
     coupon,
     totals: {price: totalPrice}

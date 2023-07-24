@@ -1,5 +1,5 @@
 import {yupResolver} from '@hookform/resolvers/yup'
-import {useCallback, useEffect} from 'react'
+import {useEffect} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
@@ -7,8 +7,7 @@ import {ContentWrapper, Page, SubmitSuccessMsg} from '../../components'
 import {
   emptyCart,
   resetBillingDetails,
-  setBillingDetails,
-  setCoupon
+  setBillingDetails
 } from '../../redux/slices'
 import BillingFormValidation from './BillingFormValidation'
 import './Checkout.scss'
@@ -23,7 +22,7 @@ const Checkout = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const billingDetails = useSelector(state => state.billingDetails)
-  const {coupon, data: cartItems} = useSelector(state => state.cart)
+  const {data: cartItems} = useSelector(state => state.cart)
   const {
     register,
     formState: {errors, isDirty},
@@ -67,10 +66,6 @@ const Checkout = () => {
     }
   }, [])
 
-  const handleCoupon = useCallback(_coupon => {
-    dispatch(setCoupon(_coupon))
-  }, [])
-
   const submitOrder = data => {
     //You may send this data to backend in next phase
     setValue('sending', true)
@@ -86,7 +81,7 @@ const Checkout = () => {
       <ContentWrapper wrapperClass='checkout' heading='Checkout'>
         {!watch('isSuccessMsgShown') ? (
           <>
-            <CheckoutCouponForm {...{coupon}} onApplyCoupon={handleCoupon} />
+            <CheckoutCouponForm />
             <div className='checkout__main'>
               <div>
                 <BillingDetails
@@ -104,7 +99,6 @@ const Checkout = () => {
                 <AdditionalInfo {...{register, errors}} />
               </div>
               <OrderTotals
-                {...{coupon}}
                 isSending={watch('sending')}
                 onPlaceOrder={handleSubmit(submitOrder)}
               />

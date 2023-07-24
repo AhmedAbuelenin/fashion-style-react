@@ -2,7 +2,7 @@ import React, {useCallback, useRef, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useLocation} from 'react-router-dom'
 import {ContentWrapper, Page} from '../../components'
-import {setCoupon, updateCartItems} from '../../redux/slices'
+import {updateCartItems} from '../../redux/slices'
 import '../../styles/_global.scss'
 import {convertObjToArray} from '../../utils/convertObjToArray'
 import './Cart.scss'
@@ -32,10 +32,6 @@ const Cart = () => {
     handleEnableStatusOfCartUpdateBtn(false)
   }, [])
 
-  const handleCoupon = useCallback(_coupon => {
-    dispatch(setCoupon(_coupon))
-  }, [])
-
   return (
     <Page title='Cart'>
       <ContentWrapper wrapperClass='cart' heading='Cart'>
@@ -44,10 +40,9 @@ const Cart = () => {
             <CartTableList {...{data}} onChangeCount={handleQtyChange} />
             <CartActions
               {...{isCartUpdateNeeded}}
-              onApplyCoupon={handleCoupon}
               onUpdateCart={handleCartUpdate}
             />
-            <CartTotals {...{data}} />
+            <CartTotals />
           </>
         ) : (
           <>

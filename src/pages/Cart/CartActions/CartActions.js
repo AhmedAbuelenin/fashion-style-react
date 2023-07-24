@@ -3,11 +3,11 @@ import {CouponForm} from '../../../components'
 import './CartActions.scss'
 
 const CartActions = props => {
-  const {isCartUpdateNeeded, onUpdateCart, onApplyCoupon} = props
+  const {isCartUpdateNeeded, onUpdateCart} = props
 
   return (
     <div className='cart__actions-container'>
-      <CouponForm {...{onApplyCoupon}} />
+      <CouponForm />
       <button
         className='global-button cart__button'
         onClick={onUpdateCart}

@@ -1,16 +1,14 @@
 import {memo, useCallback, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {setCoupon} from '../../redux/slices'
 import '../../styles/_global.scss'
 import Loader from '../Loader/Loader'
 import './CouponForm.scss'
 
-const CouponForm = props => {
-  const {formClass = '', onApplyCoupon} = props
-
-  const {coupon} = useSelector(state => state.cart)
-  const couponStatus = coupon.status
-
+const CouponForm = ({formClass = ''}) => {
+  const dispatch = useDispatch()
+  const lastSubmittedCouponValue = useSelector(state => state.cart.coupon.value)
   const {
     register,
     handleSubmit,
@@ -20,18 +18,19 @@ const CouponForm = props => {
     watch
   } = useForm({
     defaultValues: {
-      coupon: couponStatus ? coupon.value : '',
-      isValid: couponStatus,
+      coupon: lastSubmittedCouponValue,
       loading: false
     }
   })
 
   const checkClass =
-    watch('isValid') && !watch('loading') ? 'coupon-form__input-check-bg' : ''
+    lastSubmittedCouponValue && !watch('loading')
+      ? 'coupon-form__input-check-bg'
+      : ''
 
   useEffect(() => {
-    const subscription = watch(({coupon, isValid}) => {
-      if (coupon.length === 0 && isValid) {
+    const subscription = watch(({coupon}) => {
+      if (coupon.length === 0) {
         handleInvalidStatus()
       }
     })
@@ -39,14 +38,16 @@ const CouponForm = props => {
     return () => subscription.unsubscribe()
   }, [watch])
 
+  const updateCoupon = _coupon => {
+    dispatch(setCoupon(_coupon))
+  }
+
   const handleInvalidStatus = () => {
-    setValue('isValid', false)
-    onApplyCoupon({status: false, value: watch('coupon')})
+    updateCoupon({status: false, value: ''})
   }
 
   const handleValidStatus = () => {
-    setValue('isValid', true)
-    onApplyCoupon({status: true, value: watch('coupon')})
+    updateCoupon({status: true, value: watch('coupon')})
   }
 
   const showValidationErr = msg => {

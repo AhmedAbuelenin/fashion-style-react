@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {CouponForm} from '../../../components'
 import './CheckoutCouponForm.scss'
 
-const CheckoutCouponForm = ({coupon, onApplyCoupon}) => {
+const CheckoutCouponForm = ({coupon}) => {
   const [isFormVisible, setIsFormVisible] = useState(false)
 
   const formContainerClass = isFormVisible
@@ -30,10 +30,7 @@ const CheckoutCouponForm = ({coupon, onApplyCoupon}) => {
         <p className='checkout-coupon__description'>
           If you have a coupon code, please apply it below.
         </p>
-        <CouponForm
-          {...{coupon, onApplyCoupon}}
-          formClass={'checkout-coupon__form'}
-        />
+        <CouponForm formClass={'checkout-coupon__form'} />
       </div>
     </div>
   )
