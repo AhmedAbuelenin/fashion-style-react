@@ -6,7 +6,7 @@ const CartActions = props => {
   const {isCartUpdateNeeded, onUpdateCart} = props
 
   return (
-    <div className='cart__actions-container'>
+    <div data-testid='cart-actions' className='cart__actions-container'>
       <CouponForm />
       <button
         data-testid='update-cart-button'

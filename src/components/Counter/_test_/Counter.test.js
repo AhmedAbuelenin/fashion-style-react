@@ -18,13 +18,13 @@ it('decrement button decrease count by 1 with input value bigger than 1', () => 
   render(<Counter onChangeCount={jest.fn()} />)
   const countInput = screen.getByTestId('count')
   fireEvent.change(countInput, {target: {value: 2}})
-  fireEvent.click(screen.getByTestId('button-minus'))
+  fireEvent.click(screen.getByTestId('decrement-button'))
   expect(countInput).toHaveValue(1)
 })
 
 it('decrement button does not decrease count below 1', () => {
   render(<Counter onChangeCount={jest.fn()} />)
-  fireEvent.click(screen.getByTestId('button-minus'))
+  fireEvent.click(screen.getByTestId('decrement-button'))
   expect(screen.getByTestId('count')).toHaveValue(1)
 })
 

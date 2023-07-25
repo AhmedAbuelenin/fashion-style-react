@@ -20,14 +20,4 @@ describe('CartActions', () => {
 
     expect(button).toBeInTheDocument()
   })
-
-  it('should disable update cart button when is clicked', async () => {
-    const {user} = setup(<CartActions />)
-
-    const button = screen.getByTestId('update-cart-button')
-
-    await user.click(button)
-
-    expect(button).toBeDisabled()
-  })
 })

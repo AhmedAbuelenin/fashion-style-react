@@ -29,9 +29,20 @@ export function renderWithProviders(
   return {store, ...render(ui, {wrapper: Wrapper, ...renderOptions})}
 }
 
-export function setup(ui) {
+export function setup(
+  ui,
+  {
+    preloadedState = {},
+    // Automatically create a store instance if no store was passed in
+    store = configureStore({
+      reducer: {featuredCollection: FeaturedCollection, cart: Cart},
+      preloadedState
+    }),
+    ...renderOptions
+  } = {}
+) {
   return {
     user: userEvent.setup(),
-    ...renderWithProviders(ui)
+    ...renderWithProviders(ui, {preloadedState, store, ...renderOptions})
   }
 }

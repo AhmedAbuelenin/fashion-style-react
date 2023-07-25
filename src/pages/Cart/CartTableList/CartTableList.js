@@ -8,7 +8,7 @@ const CartTableList = props => {
   const {data, onChangeCount} = props
 
   return (
-    <table>
+    <table data-testid='cart-items-table'>
       <thead>
         <tr>
           <th className='global-divider cart__th-delete-icon'></th>

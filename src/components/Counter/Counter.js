@@ -46,7 +46,7 @@ const Counter = props => {
   return (
     <div data-testid='counter' className={`counter ${containerClass}`}>
       <span
-        data-testid='button-minus'
+        data-testid='decrement-button'
         onClick={handleDecrement}
         className={`counter__operator ${operatorClass}`}>
         -
@@ -59,7 +59,7 @@ const Counter = props => {
         className={`counter__input ${countClass}`}
       />
       <span
-        data-testid='button-plus'
+        data-testid='increment-button'
         onClick={handleIncrement}
         className={`counter__operator ${operatorClass}`}>
         +

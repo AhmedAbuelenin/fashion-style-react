@@ -17,19 +17,19 @@ const Cart = () => {
 
   const [isCartUpdateNeeded, setIsCartUpdateNeeded] = useState(false)
 
-  const handleEnableStatusOfCartUpdateBtn = status => {
+  const handleEnablingOfUpdateBtn = status => {
     setIsCartUpdateNeeded(status)
   }
 
   const handleQtyChange = useCallback(item => {
     itemsObjRef.current[item.code] = item
-    handleEnableStatusOfCartUpdateBtn(true)
+    handleEnablingOfUpdateBtn(true)
   }, [])
 
   const handleCartUpdate = useCallback(() => {
     const items = convertObjToArray(itemsObjRef.current)
     dispatch(updateCartItems(items))
-    handleEnableStatusOfCartUpdateBtn(false)
+    handleEnablingOfUpdateBtn(false)
   }, [])
 
   return (
@@ -49,8 +49,13 @@ const Cart = () => {
             {_checkoutMessage ? (
               <p className='cart__no-products'>{_checkoutMessage}</p>
             ) : null}
-            <p className='cart__no-products'>Your cart is currently empty.</p>
-            <Link to='/shop' className='global-button cart__return-shop-button'>
+            <p data-testid='no-products' className='cart__no-products'>
+              Your cart is currently empty.
+            </p>
+            <Link
+              data-testid='return-to-shop'
+              to='/shop'
+              className='global-button cart__return-shop-button'>
               RETURN TO SHOP
             </Link>
           </>
