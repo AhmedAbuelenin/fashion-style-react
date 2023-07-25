@@ -9,6 +9,7 @@ const CartActions = props => {
     <div className='cart__actions-container'>
       <CouponForm />
       <button
+        data-testid='update-cart-button'
         className='global-button cart__button'
         onClick={onUpdateCart}
         disabled={!isCartUpdateNeeded}>

@@ -81,7 +81,7 @@ const CouponForm = ({formClass = ''}) => {
   }, [])
 
   return (
-    <div className='coupon-form-container'>
+    <div data-testid='coupon-form' className='coupon-form-container'>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={`coupon-form ${formClass}`}>
