@@ -8,11 +8,18 @@ const ProductInfo = ({item}) => {
 
   return (
     <div className='product-info'>
-      <p className='product-info__name'>{item.name}</p>
-      <span className='product-info__price'>${item.price.value}</span>
+      <p data-testid='product-name' className='product-info__name'>
+        {item.name}
+      </p>
+      <span data-testid='product-price' className='product-info__price'>
+        ${item.price.value}
+      </span>
       <ProductAction item={item} isAdded={isAdded} onAddToCart={markAsAdded} />
       {isAdded ? (
-        <Link to='/cart' className='product-info__view-cart-link'>
+        <Link
+          data-testid='view-cart'
+          to='/cart'
+          className='product-info__view-cart-link'>
           View cart
         </Link>
       ) : null}
