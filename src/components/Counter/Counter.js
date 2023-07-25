@@ -44,7 +44,7 @@ const Counter = props => {
   }, [qty, onChangeCount])
 
   return (
-    <div className={`counter ${containerClass}`}>
+    <div data-testid='counter' className={`counter ${containerClass}`}>
       <span
         data-testid='button-minus'
         onClick={handleDecrement}
