@@ -7,11 +7,9 @@ import {CartTotalsItem} from '../index'
 import './CartTotals.scss'
 
 const CartTotals = () => {
-  const {
-    coupon,
-    totals: {price: totalPrice}
-  } = useSelector(state => state.cart)
+  const {coupon, totals} = useSelector(state => state.cart)
 
+  const totalPrice = totals.price
   const discount = coupon.status ? totalPrice * 0.05 : 0
 
   const _data = cartSubtitles.map(item => {
@@ -34,8 +32,10 @@ const CartTotals = () => {
   }
 
   return (
-    <div className='cart-totals'>
-      <span className='cart-totals__heading'>Cart totals</span>
+    <div data-testid='cart-totals' className='cart-totals'>
+      <span data-testid='cart-totals-heading' className='cart-totals__heading'>
+        Cart totals
+      </span>
       <div className='cart-totals__content'>
         {_data.map(item => {
           if (item) {
@@ -55,6 +55,7 @@ const CartTotals = () => {
         })}
       </div>
       <Link
+        data-testid='proceed-to-checkout-link'
         to='/checkout'
         className='global-button cart-totals__checkout-button'>
         PROCEED TO CHECKOUT
