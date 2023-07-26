@@ -36,7 +36,7 @@ const CartTotals = () => {
       <span data-testid='cart-totals-heading' className='cart-totals__heading'>
         Cart totals
       </span>
-      <div className='cart-totals__content'>
+      <ol className='cart-totals__content'>
         {_data.map(item => {
           if (item) {
             const {id, name} = item
@@ -53,7 +53,7 @@ const CartTotals = () => {
           }
           return null
         })}
-      </div>
+      </ol>
       <Link
         data-testid='proceed-to-checkout-link'
         to='/checkout'

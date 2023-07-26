@@ -9,6 +9,10 @@
   min-height: 25rem;
 }
 
+.cart-totals li:last-child {
+  border: none;
+}
+
 .cart-totals__heading {
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-bold);
