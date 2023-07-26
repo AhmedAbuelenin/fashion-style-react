@@ -83,21 +83,19 @@ const Checkout = () => {
           <>
             <CheckoutCouponForm />
             <div className='checkout__main'>
-              <div>
-                <BillingDetails
-                  {...{
-                    register,
-                    Controller,
-                    control,
-                    setValue,
-                    errors,
-                    isDirty,
-                    watch,
-                    clearErrors
-                  }}
-                />
-                <AdditionalInfo {...{register, errors}} />
-              </div>
+              <BillingDetails
+                {...{
+                  register,
+                  Controller,
+                  control,
+                  setValue,
+                  errors,
+                  isDirty,
+                  watch,
+                  clearErrors
+                }}
+              />
+              <AdditionalInfo {...{register, errors}} />
               <OrderTotals
                 isSending={watch('sending')}
                 onPlaceOrder={handleSubmit(submitOrder)}
