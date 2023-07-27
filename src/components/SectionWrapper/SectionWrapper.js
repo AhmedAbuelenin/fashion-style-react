@@ -5,7 +5,11 @@ const SectionWrapper = props => {
 
   return (
     <div className={`section ${sectionClass}`}>
-      <h2 className={`section__heading ${headingClass}`}>{heading}</h2>
+      <h2
+        data-testid='section-wrapper-heading'
+        className={`section__heading ${headingClass}`}>
+        {heading}
+      </h2>
       {children}
     </div>
   )

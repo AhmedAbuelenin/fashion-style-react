@@ -5,7 +5,7 @@ const ContentWrapper = props => {
 
   return (
     <div className={`content-wrapper ${wrapperClass}`}>
-      <h1 className={`content-wrapper__heading ${headingClass}`}>{heading}</h1>
+      <h1 data-testid='content-wrapper-heading' className={`content-wrapper__heading ${headingClass}`}>{heading}</h1>
       {children}
     </div>
   )
