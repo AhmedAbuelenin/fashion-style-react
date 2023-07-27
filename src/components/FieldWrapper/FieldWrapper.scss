@@ -9,11 +9,11 @@
   margin-bottom: 0.8rem;
 }
 
-.field-wrapper__mandatory-sign {
+.field-wrapper__sign--mandatory {
   color: var(--color-red-mandatory);
   margin-inline-start: 0.3rem;
 }
 
-.field-wrapper__optional {
+.field-wrapper__sign--optional {
   color: var(--color-primary);
 }

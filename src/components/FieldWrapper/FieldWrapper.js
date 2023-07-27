@@ -3,14 +3,18 @@ import './FieldWrapper.scss'
 const FieldWrapper = props => {
   const {className = '', required, fieldId, label, children} = props
 
+  const requiredClass = !required ? 'field-wrapper__sign--optional' : ''
+
   return (
     <div className={`field-wrapper ${className}`}>
-      <label htmlFor={fieldId} className='field-wrapper__label'>
+      <label
+        data-testid='field-label'
+        htmlFor={fieldId}
+        className='field-wrapper__label'>
         {label}
         <span
-          className={`field-wrapper__mandatory-sign ${
-            !required ? 'field-wrapper__optional' : ''
-          }`}>
+          data-testid='field-state'
+          className={`field-wrapper__sign--mandatory ${requiredClass}`}>
           {required ? '*' : '(optional)'}
         </span>
       </label>
