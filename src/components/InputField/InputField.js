@@ -4,6 +4,7 @@ import './InputField.scss'
 
 const InputField = props => {
   const {
+    testId,
     containerClass = '',
     required = false,
     id,
@@ -18,6 +19,7 @@ const InputField = props => {
       {...{required, label, fieldId: id}}
       className={`input-wrapper ${containerClass}`}>
       <input
+        data-testid={testId}
         {...{id}}
         name={id}
         {...register(id, {

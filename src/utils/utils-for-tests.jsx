@@ -1,10 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {render} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import {Provider} from 'react-redux'
+import {BrowserRouter as Router} from 'react-router-dom'
+import BillingDetails from '../redux/slices/BillingDetails'
 import Cart from '../redux/slices/Cart'
 import FeaturedCollection from '../redux/slices/FeaturedCollection'
-import {BrowserRouter as Router} from 'react-router-dom'
-import userEvent from '@testing-library/user-event'
 
 export function renderWithProviders(
   ui,
@@ -12,7 +13,11 @@ export function renderWithProviders(
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
     store = configureStore({
-      reducer: {featuredCollection: FeaturedCollection, cart: Cart},
+      reducer: {
+        featuredCollection: FeaturedCollection,
+        cart: Cart,
+        billingDetails: BillingDetails
+      },
       preloadedState
     }),
     ...renderOptions
@@ -35,7 +40,11 @@ export function setup(
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
     store = configureStore({
-      reducer: {featuredCollection: FeaturedCollection, cart: Cart},
+      reducer: {
+        featuredCollection: FeaturedCollection,
+        cart: Cart,
+        billingDetails: BillingDetails
+      },
       preloadedState
     }),
     ...renderOptions

@@ -4,6 +4,7 @@ import './TextAreaField.scss'
 
 const TextAreaField = props => {
   const {
+    testId,
     containerClass = '',
     textareaClass = '',
     id,
@@ -20,6 +21,7 @@ const TextAreaField = props => {
       {...{required, label, fieldId: id}}
       className={`textarea-wrapper ${containerClass}`}>
       <textarea
+        data-testid={testId}
         {...{id}}
         name={id}
         {...{placeholder}}

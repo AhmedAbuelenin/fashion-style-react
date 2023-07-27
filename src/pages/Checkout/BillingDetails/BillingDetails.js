@@ -94,11 +94,13 @@ const BillingDetails = props => {
 
   return (
     <SectionWrapper
+      data-testid='billing-details'
       heading='Billing Details'
-      sectionClass='billing-details-wrapper'>
+      sectionClass='billing-details'>
       <form noValidate className='billing-details__form'>
         <div className='billing-details__name-container'>
           <InputField
+            testId={'first-name-input'}
             required
             {...{register}}
             id='firstName'
@@ -107,6 +109,7 @@ const BillingDetails = props => {
             containerClass='billing-details__first-name'
           />
           <InputField
+            testId={'last-name-input'}
             required
             {...{register}}
             id='lastName'
@@ -116,6 +119,7 @@ const BillingDetails = props => {
           />
         </div>
         <InputField
+          testId={'company-name-input'}
           {...{register}}
           id='companyName'
           label='Company name'
@@ -140,6 +144,7 @@ const BillingDetails = props => {
           error={getFieldErrMsg(errors, 'state')}
         />
         <InputField
+          testId={'address-input'}
           required
           {...{register}}
           id='address'
@@ -147,6 +152,7 @@ const BillingDetails = props => {
           error={getFieldErrMsg(errors, 'address')}
         />
         <InputField
+          testId={'phone-input'}
           required
           {...{register}}
           id='phone'
@@ -154,6 +160,7 @@ const BillingDetails = props => {
           error={getFieldErrMsg(errors, 'phone')}
         />
         <InputField
+          testId={'email-input'}
           required
           {...{register}}
           id='email'

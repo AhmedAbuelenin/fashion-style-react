@@ -18,6 +18,7 @@ const OrderTotals = ({isSending, onPlaceOrder}) => {
       <div className='order-totals'>
         <OrderDetails {...{data, discount, subtotal}} />
         <button
+          data-testid='place-order-button'
           type='submit'
           onClick={onPlaceOrder}
           disabled={isSending}

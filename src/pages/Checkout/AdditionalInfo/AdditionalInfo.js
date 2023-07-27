@@ -8,6 +8,7 @@ const AdditionalInfo = ({register, errors}) => {
       heading='Additional information'
       sectionClass='additional-info'>
       <TextAreaField
+        testId={'additional-info-textarea'}
         id='orderNotes'
         label='Order notes'
         {...{register}}

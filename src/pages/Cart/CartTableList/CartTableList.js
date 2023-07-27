@@ -24,9 +24,7 @@ const CartTableList = props => {
       </thead>
       <tbody>
         {data.map(item => (
-          <tr key={item.code}>
-            <CartTableItem {...{item, onChangeCount}} />
-          </tr>
+          <CartTableItem key={item.code} {...{item, onChangeCount}} />
         ))}
       </tbody>
     </table>

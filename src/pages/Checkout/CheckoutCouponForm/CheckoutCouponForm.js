@@ -15,7 +15,7 @@ const CheckoutCouponForm = ({coupon}) => {
   }
 
   return (
-    <div className='checkout-coupon'>
+    <div data-testid='checkout-coupon-form' className='checkout-coupon'>
       <div className='checkout-coupon__title'>
         <span>Have a coupon?</span>
         <Link

@@ -22,6 +22,10 @@ const Checkout = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const billingDetails = useSelector(state => state.billingDetails)
+  console.log(
+    '🚀 ~ file: Checkout.js:25 ~ Checkout ~ billingDetails:',
+    billingDetails
+  )
   const {data: cartItems} = useSelector(state => state.cart)
   const {
     register,
@@ -73,7 +77,7 @@ const Checkout = () => {
       dispatch(emptyCart())
       dispatch(resetBillingDetails())
       setValue('isSuccessMsgShown', true)
-    }, 2000)
+    }, 1000)
   }
 
   return (
@@ -112,7 +116,10 @@ const Checkout = () => {
               <strong>{watch('email')}</strong>). Thanks for shopping with
               Fashion Style.
             </SubmitSuccessMsg>
-            <Link to='/shop' className='global-button'>
+            <Link
+              data-testid='return-to-shop-link'
+              to='/shop'
+              className='global-button'>
               RETURN TO SHOP
             </Link>
           </>

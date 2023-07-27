@@ -2,7 +2,7 @@ import './SubmitSuccessMsg.scss'
 
 const SubmitSuccessMsg = ({className, children}) => (
   <p
-    data-testid='contact-success-msg'
+    data-testid='submit-success-msg'
     className={`submit-success-msg ${className}`}>
     {children}
   </p>

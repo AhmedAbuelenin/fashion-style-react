@@ -34,7 +34,7 @@ const LocationSelector = props => {
               DropdownIndicator: () => <ArrowIcon color='#888888' size={26} />
             }}
             value={data.find(c => c.value === field.value) || ''}
-            onChange={val => field.onChange(val.value)}
+            onChange={selected => field.onChange(selected.value)}
           />
         )}
       />

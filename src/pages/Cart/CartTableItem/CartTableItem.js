@@ -22,7 +22,7 @@ const CartTableItem = ({item, onChangeCount}) => {
   }
 
   return (
-    <>
+    <tr>
       <td className='cart__td-delete-icon'>
         <CloseIcon
           data-testid='delete-icon'
@@ -61,7 +61,7 @@ const CartTableItem = ({item, onChangeCount}) => {
       <td data-testid='item-subtotal' className='cart__td-subtotal'>
         ${(price * quantity).toFixed(2)}
       </td>
-    </>
+    </tr>
   )
 }
 
