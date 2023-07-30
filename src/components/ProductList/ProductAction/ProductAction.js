@@ -30,7 +30,6 @@ const ProductAction = props => {
 
   return (
     <button
-      data-testid='add-to-cart'
       className='global-button product-info__button'
       onClick={addProductToCart}>
       ADD TO CART
