@@ -10,12 +10,14 @@ const Counter = props => {
     event => {
       const maxInputLength = 3
       let _value = event.target.value
+
       if (Number(_value) < 1) {
         _value = Math.abs(_value) || 1
       }
       if (_value.length > maxInputLength) {
         _value = _value.slice(0, 3)
       }
+
       setQty(_value)
       onChangeCount(Number(_value))
     },
@@ -24,10 +26,13 @@ const Counter = props => {
 
   const handleIncrement = useCallback(() => {
     const maxQty = 999
+
     if (qty < maxQty) {
       setQty(value => {
         const _value = Number(value) + 1
+
         onChangeCount(_value)
+
         return _value
       })
     }
@@ -37,7 +42,9 @@ const Counter = props => {
     if (qty > 1) {
       setQty(value => {
         const _value = Number(value) - 1
+
         onChangeCount(_value)
+
         return _value
       })
     }
@@ -45,25 +52,25 @@ const Counter = props => {
 
   return (
     <div data-testid='counter' className={`counter ${containerClass}`}>
-      <span
-        data-testid='decrement-button'
+      <button
+        aria-label='decrement quantity'
         onClick={handleDecrement}
         className={`counter__operator ${operatorClass}`}>
         -
-      </span>
+      </button>
       <input
-        data-testid='count'
+        aria-label='quantity'
         type='number'
         value={qty}
         onChange={handleQtyChange}
         className={`counter__input ${countClass}`}
       />
-      <span
-        data-testid='increment-button'
+      <button
+        aria-label='increment quantity'
         onClick={handleIncrement}
         className={`counter__operator ${operatorClass}`}>
         +
-      </span>
+      </button>
     </div>
   )
 }

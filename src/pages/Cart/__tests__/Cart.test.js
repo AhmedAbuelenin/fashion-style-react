@@ -55,7 +55,9 @@ describe('Cart', () => {
       preloadedState: initialState
     })
 
-    const incrementButton = screen.getByTestId('increment-button')
+    const incrementButton = screen.getByRole('button', {
+      name: /increment quantity/i
+    })
     const updateCartButton = screen.getByTestId('update-cart-button')
 
     await user.click(incrementButton)
@@ -68,7 +70,9 @@ describe('Cart', () => {
       preloadedState: initialState
     })
 
-    const incrementButton = screen.getByTestId('increment-button')
+    const incrementButton = screen.getByRole('button', {
+      name: /increment quantity/i
+    })
     const updateCartButton = screen.getByTestId('update-cart-button')
 
     await user.click(incrementButton)
