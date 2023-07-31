@@ -22,10 +22,6 @@ const Checkout = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const billingDetails = useSelector(state => state.billingDetails)
-  console.log(
-    '🚀 ~ file: Checkout.js:25 ~ Checkout ~ billingDetails:',
-    billingDetails
-  )
   const {data: cartItems} = useSelector(state => state.cart)
   const {
     register,

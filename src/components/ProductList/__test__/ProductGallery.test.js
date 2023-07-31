@@ -1,8 +1,6 @@
-import {cleanup, fireEvent, screen} from '@testing-library/react'
+import {screen, waitFor} from '@testing-library/react'
 import {ProductGallery} from '..'
-import {renderWithProviders} from '../../../utils/utils-for-tests'
-
-cleanup(afterEach)
+import {setup} from '../../../utils/utils-for-tests'
 
 describe('ProductGallery', () => {
   const item = {
@@ -15,11 +13,9 @@ describe('ProductGallery', () => {
   }
 
   it('should display item details modal when user click on quick view', async () => {
-    renderWithProviders(<ProductGallery item={item} />)
+    const {user} = setup(<ProductGallery item={item} />)
 
-    const button = screen.getByText('QUICK VIEW')
-
-    fireEvent.click(button)
+    await user.click(screen.getByRole('button', {name: /quick view/i}))
 
     const productModal = await screen.findByTestId('product-modal')
     const productModalContent = await screen.findByTestId(
@@ -28,37 +24,36 @@ describe('ProductGallery', () => {
 
     expect(productModal).toBeInTheDocument()
 
-    fireEvent.click(productModalContent)
+    await user.click(productModalContent)
 
     expect(productModalContent).toBeInTheDocument()
   })
 
   it("should close product modal when user click on product modal's backdrop", async () => {
-    renderWithProviders(<ProductGallery item={item} />)
+    const {user} = setup(<ProductGallery item={item} />)
 
-    const button = screen.getByText('QUICK VIEW')
-
-    fireEvent.click(button)
+    await user.click(screen.getByRole('button', {name: /quick view/i}))
 
     const productModal = await screen.findByTestId('product-modal')
 
-    fireEvent.click(productModal)
+    await user.click(productModal)
 
-    expect(productModal).not.toBeInTheDocument()
+    await waitFor(() => {
+      expect(productModal).not.toBeInTheDocument()
+    })
   })
 
   it('should close product modal when user click on the close icon', async () => {
-    renderWithProviders(<ProductGallery item={item} />)
+    const {user} = setup(<ProductGallery item={item} />)
 
-    const button = screen.getByText('QUICK VIEW')
-
-    fireEvent.click(button)
+    await user.click(screen.getByRole('button', {name: /quick view/i}))
 
     const productModal = await screen.findByTestId('product-modal')
-    const closeIcon = screen.getByTestId('close-icon')
 
-    fireEvent.click(closeIcon)
+    await user.click(screen.getByTestId('close-icon'))
 
-    expect(productModal).not.toBeInTheDocument()
+    await waitFor(() => {
+      expect(productModal).not.toBeInTheDocument()
+    })
   })
 })

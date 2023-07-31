@@ -1,20 +1,18 @@
-import {cleanup, fireEvent, render, screen} from '@testing-library/react'
+import {screen} from '@testing-library/react'
 import ContactFormWithFeedback from '../ContactFormWithFeedback/ContactFormWithFeedback'
-
-afterEach(cleanup)
+import {setup} from '../../../utils/utils-for-tests'
 
 describe('ContactFormWithFeedback', () => {
   it('should display a success msg if all submitted inputs are valid', async () => {
-    render(<ContactFormWithFeedback />)
+    const {user} = setup(<ContactFormWithFeedback />)
 
-    const nameInput = screen.getByLabelText('Name*')
-    const emailInput = screen.getByLabelText('Email*')
-    const messageInput = screen.getByLabelText('Message*')
-
-    fireEvent.change(nameInput, {target: {value: 'testname'}})
-    fireEvent.change(emailInput, {target: {value: 'validemail@example.com'}})
-    fireEvent.change(messageInput, {target: {value: 'mgm%'}})
-    fireEvent.submit(screen.getByText('SEND MESSAGE'))
+    await user.type(screen.getByRole('textbox', {name: /name/i}), 'testname')
+    await user.type(
+      screen.getByRole('textbox', {name: /email/i}),
+      'validemail@example.com'
+    )
+    await user.type(screen.getByRole('textbox', {name: /message/i}), 'mgm%')
+    await user.click(screen.getByRole('button', {name: /send message/i}))
 
     const successMsg = await screen.findByText(
       'Thanks for contacting us! We will be in touch with you shortly.',

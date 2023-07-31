@@ -1,7 +1,5 @@
-import {cleanup, render, screen} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import CartTotalsItem from '../CartTotalsItem/CartTotalsItem'
-
-afterEach(cleanup)
 
 describe('CartTotalsItem', () => {
   const props = {

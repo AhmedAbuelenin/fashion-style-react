@@ -1,33 +1,29 @@
-import {cleanup, fireEvent, screen, waitFor} from '@testing-library/react'
-import {renderWithProviders} from '../../../utils/utils-for-tests'
+import {screen, waitFor} from '@testing-library/react'
+import {setup} from '../../../utils/utils-for-tests'
 import CouponForm from '../CouponForm'
-
-afterEach(cleanup)
 
 describe('CouponForm', () => {
   it('should display an error message if coupon is empty', async () => {
-    renderWithProviders(<CouponForm />)
+    const {user} = setup(<CouponForm />)
 
-    fireEvent.click(screen.getByText('APPLY COUPON'))
+    await user.click(screen.getByRole('button', {name: /apply coupon/i}))
 
-    const errMsg = await screen.findByText('Field is required')
+    const errMsg = await screen.findByText(/field is required/i)
 
     expect(errMsg).toBeInTheDocument()
   })
 
   it('should display an error message if coupon is not valid', async () => {
-    renderWithProviders(<CouponForm onApplyCoupon={jest.fn()} />)
+    const {user} = setup(<CouponForm />)
 
-    const couponInput = screen.getByPlaceholderText('Coupon code')
-
-    fireEvent.change(couponInput, {target: {value: 'abn'}})
-    fireEvent.click(screen.getByText('APPLY COUPON'))
+    await user.type(screen.getByRole('textbox', {name: /coupon code/i}), 'abn')
+    await user.click(screen.getByRole('button', {name: /apply coupon/i}))
 
     const errMsg = await screen.findByText(
-      'Invalid coupon code',
+      /invalid coupon code/i,
       {},
       {
-        timeout: 3000
+        timeout: 5000
       }
     )
 
@@ -35,12 +31,12 @@ describe('CouponForm', () => {
   })
 
   it('should display check mark if coupon is valid', async () => {
-    renderWithProviders(<CouponForm onApplyCoupon={jest.fn()} />)
+    const {user} = setup(<CouponForm />)
 
-    const couponInput = screen.getByPlaceholderText('Coupon code')
+    const couponInput = screen.getByRole('textbox', {name: /coupon code/i})
 
-    fireEvent.change(couponInput, {target: {value: 'testCoupon'}})
-    fireEvent.click(screen.getByText('APPLY COUPON'))
+    await user.type(couponInput, 'testCoupon')
+    await user.click(screen.getByRole('button', {name: /apply coupon/i}))
 
     await waitFor(
       () => {

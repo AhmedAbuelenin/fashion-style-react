@@ -16,10 +16,7 @@ const ProductInfo = ({item}) => {
       </span>
       <ProductAction item={item} isAdded={isAdded} onAddToCart={markAsAdded} />
       {isAdded ? (
-        <Link
-          data-testid='view-cart'
-          to='/cart'
-          className='product-info__view-cart-link'>
+        <Link to='/cart' className='product-info__view-cart-link'>
           View cart
         </Link>
       ) : null}

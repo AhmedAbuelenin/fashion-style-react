@@ -2,8 +2,6 @@ import {cleanup, screen} from '@testing-library/react'
 import {renderWithProviders} from '../../../utils/utils-for-tests'
 import CartModal from '../CartModal/CartModal'
 
-afterEach(cleanup)
-
 describe('CartModal', () => {
   it('should display a message if no product data in cart', () => {
     renderWithProviders(<CartModal data={[]} />)

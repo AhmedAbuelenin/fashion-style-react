@@ -45,7 +45,6 @@ const ContactForm = ({onSuccessfulSubmit}) => {
       className='contact-form'>
       <div className='contact-form__inputs-container'>
         <InputField
-          data-testid='name'
           required
           id='name'
           label='Name'
@@ -54,7 +53,6 @@ const ContactForm = ({onSuccessfulSubmit}) => {
           error={getFieldErrMsg(errors, 'name')}
         />
         <InputField
-          data-testid='email'
           required
           id='email'
           label='Email'
@@ -71,6 +69,7 @@ const ContactForm = ({onSuccessfulSubmit}) => {
       />
       <div className='contact-form__submit-loader'>
         <input
+          aria-label='send message'
           disabled={_sending}
           type='submit'
           value='SEND MESSAGE'

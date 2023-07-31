@@ -1,8 +1,6 @@
-import {cleanup, screen, waitFor} from '@testing-library/react'
+import {screen, waitFor} from '@testing-library/react'
 import {setup} from '../../../utils/utils-for-tests'
 import Checkout from '../Checkout'
-
-afterEach(cleanup)
 
 describe('Checkout', () => {
   const initialState = {
@@ -24,8 +22,8 @@ describe('Checkout', () => {
     async name => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('first-name-input'), name)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(screen.getByRole('textbox', {name: /first name/i}), name)
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please enter between 3 and 10 letters/i
@@ -40,8 +38,8 @@ describe('Checkout', () => {
     async name => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('last-name-input'), name)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(screen.getByRole('textbox', {name: /last name/i}), name)
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please enter between 3 and 10 letters/i
@@ -56,8 +54,11 @@ describe('Checkout', () => {
     async name => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('company-name-input'), name)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(
+        screen.getByRole('textbox', {name: /company name/i}),
+        name
+      )
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please enter between 3 and 50 chars and must include at least 3 letters/i
@@ -72,8 +73,8 @@ describe('Checkout', () => {
     async address => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('address-input'), address)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(screen.getByRole('textbox', {name: 'Address *'}), address)
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please enter between 3 and 80 chars and must include at least 3 letters/i
@@ -88,8 +89,8 @@ describe('Checkout', () => {
     async phone => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('phone-input'), phone)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(screen.getByRole('textbox', {name: /phone/i}), phone)
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please start with phone code as \+20 and enter between 8 and 16 digits/i
@@ -109,8 +110,8 @@ describe('Checkout', () => {
     async email => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('email-input'), email)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(screen.getByRole('textbox', {name: /email/i}), email)
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please enter a valid email format/i
@@ -125,8 +126,13 @@ describe('Checkout', () => {
     async notes => {
       const {user} = setup(<Checkout />)
 
-      await user.type(screen.getByTestId('additional-info-textarea'), notes)
-      await user.click(screen.getByTestId('place-order-button'))
+      await user.type(
+        screen.getByPlaceholderText(
+          /notes about your order, e.g. special notes for delivery/i
+        ),
+        notes
+      )
+      await user.click(screen.getByRole('button', {name: /place order/i}))
 
       const errMsg = await screen.findByText(
         /Please enter between 3 and 100 chars and must include at least 3 letters/i
@@ -139,7 +145,7 @@ describe('Checkout', () => {
   it('should display an error message if firstName, lastName, country, state, address, phone and email are required', async () => {
     const {user} = setup(<Checkout />)
 
-    await user.click(screen.getByTestId('place-order-button'))
+    await user.click(screen.getByRole('button', {name: /place order/i}))
 
     const errsArray = await screen.findAllByText(/This field is required/i)
 
@@ -149,7 +155,7 @@ describe('Checkout', () => {
   it('should display a loader when click place order button then disappear when order is submitted successfully', async () => {
     const {user} = setup(<Checkout />, {preloadedState: initialState})
 
-    await user.click(screen.getByTestId('place-order-button'))
+    await user.click(screen.getByRole('button', {name: /place order/i}))
 
     const loader = screen.getByTestId('loader')
 
@@ -166,26 +172,37 @@ describe('Checkout', () => {
   it('should display a success message and a return to shop button if order placed successfully', async () => {
     const {user} = setup(<Checkout />)
 
-    await user.type(screen.getByTestId('first-name-input'), 'fNTest')
-    await user.type(screen.getByTestId('last-name-input'), 'lNTest')
-    await user.type(screen.getByTestId('company-name-input'), 'mgn%')
-    await user.type(screen.getByTestId('address-input'), 'address')
-    await user.type(screen.getByTestId('phone-input'), '+201111111')
     await user.type(
-      screen.getByTestId('additional-info-textarea'),
+      screen.getByRole('textbox', {name: /first name/i}),
+      'fNTest'
+    )
+    await user.type(screen.getByRole('textbox', {name: /last name/i}), 'lNTest')
+    await user.type(
+      screen.getByRole('textbox', {name: /company name/i}),
+      'mgn%'
+    )
+    await user.type(screen.getByRole('textbox', {name: 'Address *'}), 'address')
+    await user.type(screen.getByRole('textbox', {name: /phone/i}), '+201111111')
+    await user.type(
+      screen.getByPlaceholderText(
+        /notes about your order, e.g. special notes for delivery/i
+      ),
       'test notes'
     )
-    await user.type(screen.getByTestId('email-input'), 'valid@gmail.co')
+    await user.type(
+      screen.getByRole('textbox', {name: /email/i}),
+      'valid@gmail.co'
+    )
 
-    await user.click(screen.getByLabelText(/Select a country or region/i))
+    await user.click(screen.getByLabelText(/select a country or region/i))
     const egypt = await screen.findByText('Egypt', {}, {timeout: 2500})
     await user.click(egypt)
 
-    await user.click(screen.getByLabelText(/Select a state/i))
+    await user.click(screen.getByLabelText(/select a state/i))
     const cairo = await screen.findByText('Cairo', {}, {timeout: 1500})
     await user.click(cairo)
 
-    await user.click(screen.getByTestId('place-order-button'))
+    await user.click(screen.getByRole('button', {name: /place order/i}))
 
     const successMsg = await screen.findByTestId(
       'submit-success-msg',
@@ -203,7 +220,7 @@ describe('Checkout', () => {
       preloadedState: initialState
     })
 
-    await user.click(screen.getByTestId('place-order-button'))
+    await user.click(screen.getByRole('button', {name: /place order/i}))
 
     const successMsg = await screen.findByTestId(
       'submit-success-msg',
@@ -217,7 +234,7 @@ describe('Checkout', () => {
   it('should navigate to /shop route when shop link is clicked', async () => {
     const {user} = setup(<Checkout />, {preloadedState: initialState})
 
-    await user.click(screen.getByTestId('place-order-button'))
+    await user.click(screen.getByRole('button', {name: /place order/i}))
 
     const shopLink = await screen.findByTestId(
       'return-to-shop-link',

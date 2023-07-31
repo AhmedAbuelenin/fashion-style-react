@@ -87,6 +87,7 @@ const CouponForm = ({formClass = ''}) => {
         className={`coupon-form ${formClass}`}>
         <div className='coupon-form__input-container'>
           <input
+            aria-label='coupon code'
             {...register('coupon')}
             name='coupon'
             placeholder='Coupon code'
@@ -103,6 +104,7 @@ const CouponForm = ({formClass = ''}) => {
           ) : null}
         </div>
         <input
+          aria-label='apply coupon'
           type='submit'
           value='APPLY COUPON'
           className='global-button coupon-form__button'

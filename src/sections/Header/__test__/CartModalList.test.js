@@ -2,8 +2,6 @@ import {cleanup, screen} from '@testing-library/react'
 import {renderWithProviders} from '../../../utils/utils-for-tests'
 import {CartModalList} from '../CartModal'
 
-afterEach(cleanup)
-
 describe('CartModalList', () => {
   it('should display list if data is available', () => {
     const data = [

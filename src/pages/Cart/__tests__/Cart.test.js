@@ -1,8 +1,6 @@
 import Cart from '../Cart'
 import {renderWithProviders, setup} from '../../../utils/utils-for-tests'
-import {cleanup, screen} from '@testing-library/react'
-
-afterEach(cleanup)
+import {screen} from '@testing-library/react'
 
 describe('Cart', () => {
   const item = {

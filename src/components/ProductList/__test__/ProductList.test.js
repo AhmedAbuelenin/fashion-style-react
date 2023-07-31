@@ -2,8 +2,6 @@ import {cleanup, screen} from '@testing-library/react'
 import {ProductList} from '../..'
 import {renderWithProviders} from '../../../utils/utils-for-tests'
 
-afterEach(cleanup)
-
 describe('ProductList', () => {
   it('should display a loader while data is fetching', () => {
     renderWithProviders(<ProductList loading />)

@@ -2,8 +2,6 @@ import {cleanup, screen} from '@testing-library/react'
 import {CartTotals} from '..'
 import {renderWithProviders, setup} from '../../../utils/utils-for-tests'
 
-afterEach(cleanup)
-
 describe('CartTotals', () => {
   const item = {
     code: '23_group_1245',
